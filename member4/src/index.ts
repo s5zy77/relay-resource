@@ -7,6 +7,7 @@ import { ReturnReminderWorkflow } from './workflows/returnReminder';
 import { OverdueCollectionWorkflow } from './workflows/overdueCollection';
 import { PickupConfirmationWorkflow } from './workflows/pickupConfirmation';
 import { WebSimulatedClient } from './voice/webSimulatedClient';
+import aiRoutes from './routes/aiRoutes';
 
 const app = express();
 app.use(cors());
@@ -79,6 +80,9 @@ app.post('/api/web-sim/message', async (req, res) => {
   }
 });
 
+// ── AI Operations Command Center Routes (Prompt 2) ──
+app.use('/api/ai', aiRoutes);
+
 // ── Task Queue Status ──
 app.get('/api/queue/status', (req, res) => {
   res.json({
@@ -94,6 +98,7 @@ const server = app.listen(CONFIG.AI_SERVER_PORT, () => {
   console.log(`DEMO_MODE: ${CONFIG.DEMO_MODE}`);
   console.log(`DEMO_ALLOWLIST: ${CONFIG.DEMO_ALLOWLIST.join(', ')}`);
   console.log(`LLM Provider: ${CONFIG.LLM_PROVIDER}`);
+  console.log(`AI Ops API: /api/ai/*`);
   console.log(`====================================================`);
 
   // Start background event scanner
