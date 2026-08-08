@@ -10,7 +10,7 @@
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/services/core-api/index.js" },
     { "source": "/ai/api/voice-reminder", "destination": "/api/ai-voice.py" },
-    { "source": "/admin/(.*)", "destination": "/admin/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/admin/(?!.*\\.).*", "destination": "/admin/index.html" },
+    { "source": "/(?!.*\\.).*", "destination": "/index.html" }
   ]
 }
