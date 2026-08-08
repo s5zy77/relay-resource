@@ -19,9 +19,11 @@ app.get('/', (req: Request, res: Response) => {
 import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
 import cartRoutes from './routes/cartRoutes';
+import rentalRoutes from './routes/rentalRoutes';
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/rentals', rentalRoutes);
 
 // Error Handling
 app.use(notFound);
