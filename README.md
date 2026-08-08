@@ -15,7 +15,7 @@ This project was built collaboratively during a 24-hour hackathon.
 | **Member 1** | Frontend & UI/UX | **Ranish Dutta** | Customer Storefront, Dashboards, Components, Visual Design |
 | **Member 2** | Customer Workflows | **Anushka Ghosh** | React State, Checkout, QR Pass Workflow, API Integration |
 | **Member 3** | Core Backend & DB | **Subhasree Majumder**| Node.js, Express, MongoDB, Business APIs, Auth Enforcement |
-| **Member 4** | AI & Autonomous Voice Operations | **Subhan Gupta** | Local LLM Orchestrator, Voice Agent (STT/TTS), PSTN Telephony Bridge, Risk Engine & Operations Copilot |
+| **Member 4** | AI & Autonomous Voice Operations | **Shubham Gupta** | Local LLM Orchestrator, Voice Agent (STT/TTS), PSTN Telephony Bridge, Risk Engine & Operations Copilot |
 
 ---
 
