@@ -8,7 +8,10 @@
     "start:ai": "cd services/ai-voice && python main.py",
     "start:admin": "cd apps/admin && npm run dev",
     "start:portal": "cd apps/portal && npm run dev",
-    "install:all": "npm install && cd apps/admin && npm install && cd ../portal && npm install && cd ../../services/core-api && npm install"
+    "install:all": "cd apps/admin && npm install && cd ../portal && npm install && cd ../../services/core-api && npm install",
+    "postinstall": "npm run install:all",
+    "build": "node scripts/vercel-build.js",
+    "vercel-build": "node scripts/vercel-build.js"
   },
   "dependencies": {
     "concurrently": "^8.2.2"
