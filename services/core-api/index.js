@@ -134,8 +134,13 @@ app.get('/api/admin/inventory', (req, res) => {
 });
 
 /* =========================================================================
-   BOOT
+   BOOT & SERVERLESS EXPORT
 ========================================================================= */
-app.listen(PORT, () => {
-  console.log(`Core Operations API Server bounding initialized at port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Core Operations API Server bounding initialized at port ${PORT}`);
+  });
+}
+
+// Vercel Serverless Export
+module.exports = app;

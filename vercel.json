@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "node scripts/vercel-build.js",
+  "outputDirectory": "public",
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" },
+    { "src": "services/core-api/index.js", "use": "@vercel/node" },
+    { "src": "api/ai-voice.py", "use": "@vercel/python" }
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/services/core-api/index.js" },
+    { "source": "/ai/api/voice-reminder", "destination": "/api/ai-voice.py" },
+    { "source": "/admin/(.*)", "destination": "/admin/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
