@@ -17,8 +17,9 @@ app.get('/', (req: Request, res: Response) => {
 
 // Mount Routes here
 import userRoutes from './routes/userRoutes';
+import productRoutes from './routes/productRoutes';
 app.use('/api/users', userRoutes);
-// app.use('/api/products', productRoutes);
+app.use('/api/products', productRoutes);
 
 // Error Handling
 app.use(notFound);
