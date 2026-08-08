@@ -55,45 +55,6 @@ const SocialAuth = () => (
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
       </svg>
     </button>
-  </div>
-)
-
-const GatewaySelector = () => {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--bg-body)', padding: '2rem' }}>
-      <div className="auth-brand" style={{ marginBottom: '3rem' }}>
-        <span className="brand-name" style={{ fontSize: '3rem' }}>RentalOS<span className="brand-dot">.</span></span>
-      </div>
-      <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-heading)' }}>Select your module</h1>
-      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-        
-        <Link to="/catalog" style={{ textDecoration: 'none' }}>
-          <div className="window-card" style={{ width: '300px', cursor: 'pointer', transition: 'transform 0.2s', boxShadow: 'var(--shadow-lg)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
-            <div className="window-card-body" style={{ padding: '2.5rem', textAlign: 'center' }}>
-              <div style={{ width: 64, height: 64, background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
-                <ShoppingBag size={28} color="#FFF" />
-              </div>
-              <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>Customer Storefront</h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Browse the catalog, checkout gear, and use the AI widget.</p>
-            </div>
-          </div>
-        </Link>
-        <a href="/admin/" style={{ textDecoration: 'none' }}>
-          <div className="window-card" style={{ width: '300px', cursor: 'pointer', transition: 'transform 0.2s', background: 'var(--blue-pale)', border: '2px solid var(--border-dark)', boxShadow: '4px 4px 0 var(--border-dark)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
-            <div className="window-card-body" style={{ padding: '2.5rem', textAlign: 'center' }}>
-              <div style={{ width: 64, height: 64, background: 'var(--blue)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', border: '2px solid var(--border-dark)' }}>
-                <ShieldCheck size={28} color="#FFF" />
-              </div>
-              <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--blue-deep)', fontWeight: 700 }}>System Admin</h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--blue)' }}>Manage FSM states, track inventory, and trigger Voice AI.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  )
-}
-
 const Signup = () => {
   const [agreed, setAgreed] = useState(false)
   const nav = useNavigate()
@@ -126,7 +87,17 @@ const Signup = () => {
         <button type="submit" className="btn-submit">Create Account</button>
       </form>
       <div className="auth-footer">Already have an account? <Link to="/login">Sign in</Link> | <Link to="/vendor-signup">Sell as Vendor</Link></div>
-      <div className="auth-secure-note"><ShieldCheck size={14} /><span>Secure session · 256-bit encrypted</span></div>
+      
+      {/* Gateway Quick Links */}
+      <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Quick Access:</span>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <Link to="/catalog" style={{ fontSize: '0.85rem', color: 'var(--text-heading)', fontWeight: 600, textDecoration: 'none' }}>Storefront</Link>
+          <a href="/admin/" style={{ fontSize: '0.85rem', color: 'var(--blue)', fontWeight: 600, textDecoration: 'none' }}>SysAdmin</a>
+        </div>
+      </div>
+
+      <div className="auth-secure-note" style={{ marginTop: '1.5rem' }}><ShieldCheck size={14} /><span>Secure session · 256-bit encrypted</span></div>
     </AuthLayout>
   )
 }
@@ -163,6 +134,15 @@ const Login = () => {
         <button type="submit" className="btn-submit">Sign In</button>
       </form>
       <div className="auth-footer">Don't have an account? <Link to="/signup">Sign up</Link></div>
+      
+      {/* Gateway Quick Links */}
+      <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Quick Access:</span>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <Link to="/catalog" style={{ fontSize: '0.85rem', color: 'var(--text-heading)', fontWeight: 600, textDecoration: 'none' }}>Storefront</Link>
+          <a href="/admin/" style={{ fontSize: '0.85rem', color: 'var(--blue)', fontWeight: 600, textDecoration: 'none' }}>SysAdmin</a>
+        </div>
+      </div>
     </AuthLayout>
   )
 }
@@ -628,7 +608,7 @@ const App = () => {
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cartItems} />
       
       <Routes>
-        <Route path="/" element={<GatewaySelector />} />
+        <Route path="/" element={<Signup />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/vendor-signup" element={<VendorSignup />} />
