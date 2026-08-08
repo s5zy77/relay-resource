@@ -114,6 +114,24 @@ const AIVoiceModal = ({ isOpen, onClose }) => {
 /* Admin Login View */
 const AdminLogin = () => {
   const nav = useNavigate()
+  const [loading, setLoading] = useState(false)
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    setLoading(true)
+    // Connect to actual backend API for showcase authentication sequence
+    fetch('/api/health')
+      .then(res => res.json())
+      .then(data => {
+        console.log("Backend Authorized:", data.service)
+        setTimeout(() => nav('/'), 800) // Small delay to show loading state
+      })
+      .catch(err => {
+        console.warn("Backend unlinked, forcing local fallback")
+        setTimeout(() => nav('/'), 500)
+      })
+  }
+
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '2rem' }}>
       <div className="window-card" style={{ width: '400px' }}>
@@ -126,7 +144,7 @@ const AdminLogin = () => {
             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>RelayOS Admin</h2>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Secure system access</p>
           </div>
-          <form onSubmit={e => { e.preventDefault(); nav('/') }}>
+          <form onSubmit={handleLogin}>
             <div style={{ marginBottom: '1rem' }}>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Admin ID</label>
               <input type="text" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="e.g. ADM-001" defaultValue="ADM-001" />
@@ -135,8 +153,8 @@ const AdminLogin = () => {
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Passcode</label>
               <input type="password" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="••••••••" defaultValue="password" />
             </div>
-            <button type="submit" style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', color: 'white', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: 'pointer', fontSize: '1rem', transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
-              Initialize Session
+            <button type="submit" disabled={loading} style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', color: 'white', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: loading ? 'wait' : 'pointer', fontSize: '1rem', opacity: loading ? 0.7 : 1, transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
+              {loading ? 'Authenticating...' : 'Initialize Session'}
             </button>
           </form>
         </div>
