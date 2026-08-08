@@ -154,7 +154,7 @@ const VendorSignup = () => {
   const [agreed, setAgreed] = useState(false)
   const vendorVisual = (
     <>
-      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1500&auto=format&fit=crop" alt="Vendor workplace" />
+      <img src="/images/signup-hero.png" alt="Vendor workplace" />
       <div className="auth-visual-overlay" />
       <div className="auth-visual-text">
         <div className="auth-visual-badge">Earn with your gear</div>
