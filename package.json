@@ -1,19 +1,31 @@
 {
-  "name": "rentalos-monorepo",
+  "name": "relay-backend",
   "version": "1.0.0",
-  "description": "Hackathon Monorepo orchestrator",
+  "description": "RELAY rental-management platform backend",
+  "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run start:api\" \"npm run start:ai\" \"npm run start:admin\" \"npm run start:portal\"",
-    "start:api": "cd services/core-api && node index.js",
-    "start:ai": "cd services/ai-voice && python main.py",
-    "start:admin": "cd apps/admin && npm run dev",
-    "start:portal": "cd apps/portal && npm run dev",
-    "install:all": "cd apps/admin && npm install && cd ../portal && npm install && cd ../../services/core-api && npm install",
-    "postinstall": "npm run install:all",
-    "build": "node scripts/vercel-build.js",
-    "vercel-build": "node scripts/vercel-build.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node seed/seed.js"
   },
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^7.1.0",
+    "json2csv": "^6.0.0-alpha.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.14",
+    "pdfkit": "^0.15.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
