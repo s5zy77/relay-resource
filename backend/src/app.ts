@@ -20,10 +20,12 @@ import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
 import cartRoutes from './routes/cartRoutes';
 import rentalRoutes from './routes/rentalRoutes';
+import logisticsRoutes from './routes/logisticsRoutes';
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/rentals', rentalRoutes);
+app.use('/api/logistics', logisticsRoutes);
 
 // Error Handling
 app.use(notFound);
