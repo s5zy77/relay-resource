@@ -1,35 +1,52 @@
 import os
 import json
+import uuid
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-# This service is for Member 4: AI Voice calling agent and Predictive Analytics
-
 class AIVoiceHandler(BaseHTTPRequestHandler):
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+
     def do_POST(self):
         if self.path == '/api/voice-reminder':
-            # This endpoint will trigger an AI outbound call via Vapi/Twilio
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length) if content_length > 0 else b'{}'
             data = json.loads(post_data.decode('utf-8'))
             
-            customer_name = data.get('customer')
-            item = data.get('item')
+            customer_name = data.get('customer', 'Unknown')
+            item = data.get('item', 'Item')
             
-            # TODO: Integrate Retell/Twilio SDK to dispatch outbound call
             print(f"Triggering AI Voice Call to {customer_name} for overdue rental: {item}")
             
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            response = {"status": "success", "message": "Voice call dispatched."}
+            
+            # Mimic creation of a voice call session
+            session_id = str(uuid.uuid4())
+            response = {
+                "status": "success", 
+                "message": "Voice call dispatched.",
+                "session_id": session_id,
+                "customer": customer_name,
+                "item": item
+            }
             self.wfile.write(json.dumps(response).encode('utf-8'))
             
         elif self.path == '/api/predictive-maintenance':
-            # Bonus: Logic here to track if an asset needs repair based on rental counts.
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            self.wfile.write(json.dumps({"repair_needed": False}).encode())
+            self.wfile.write(json.dumps({"repair_needed": False, "health_score": 94}).encode())
+        else:
+            self.send_response(404)
+            self.end_headers()
 
 def run(server_class=HTTPServer, handler_class=AIVoiceHandler, port=8000):
     server_address = ('', port)

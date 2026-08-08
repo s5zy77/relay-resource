@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText, List, KanbanSquare, Box } from 'lucide-react'
+import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText, List, KanbanSquare, Box, X, PhoneCall } from 'lucide-react'
 
 /* =========================================================================
    1. MOCK DATA
@@ -35,7 +35,93 @@ const WindowHeader = ({ title, children }) => (
 )
 
 /* =========================================================================
-   2. ADMIN VIEWS
+   2. AI VOICE MODAL COMPONENT
+========================================================================= */
+const AIVoiceModal = ({ isOpen, onClose }) => {
+  const [transcript, setTranscript] = useState([])
+  const [speaking, setSpeaking] = useState(false)
+  const [callState, setCallState] = useState('idle')
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTranscript([])
+      setCallState('idle')
+      setSpeaking(false)
+      return
+    }
+
+    setCallState('dialing')
+    setSpeaking(true)
+
+    // Fire backend call purely for demonstration purposes of system connectivity
+    fetch('http://localhost:8000/api/voice-reminder', {
+      method: 'POST',
+      body: JSON.stringify({ customer: 'Kim T.', item: 'Epson 4K Pro' })
+    }).catch(e => console.log('Backend not available natively', e))
+
+    // Simulated Websocket stream of transcripts
+    const flow = [
+      { t: 800, text: 'System: Call connected. WebRTC session active.', type: 'system' },
+      { t: 2500, text: 'AI: Hi Kim, this is RelayOS calling on behalf of City Lenses. I noticed your Epson 4K Pro Projector is overdue. Are you planning to drop it off today?', type: 'ai' },
+      { t: 6000, text: 'Kim: Oh my gosh, yes! I got stuck at a shoot. I will bring it in tomorrow morning around 10 AM, is that okay?', type: 'user' },
+      { t: 9500, text: 'AI: That sounds perfect. I have updated your return time to tomorrow at 10 AM. Please note a standard 1-day late fee will be applied to your card. Is there anything else I can help you with?', type: 'ai' },
+      { t: 13500, text: 'Kim: No, that is all. Thank you for letting me know.', type: 'user' },
+      { t: 15500, text: 'AI: You\'re welcome. Have a wonderful rest of your day. Goodbye!', type: 'ai' },
+      { t: 17500, text: 'System: Call ended. (01:14). Task completed -> Update DB Return Time.', type: 'system' }
+    ]
+
+    const timeouts = flow.map(msg => {
+      return setTimeout(() => {
+        setTranscript(prev => [...prev, msg])
+        if (msg.type === 'ai') setSpeaking(true)
+        if (msg.type === 'user' || msg.type === 'system') setSpeaking(false)
+        if (msg.text.includes('Call ended')) setCallState('ended')
+      }, msg.t)
+    })
+
+    return () => timeouts.forEach(clearTimeout)
+  }, [isOpen])
+
+  if (!isOpen) return null
+
+  return (
+    <div className="ai-modal-overlay" onClick={callState === 'ended' ? onClose : undefined}>
+      <div className="ai-modal" onClick={e => e.stopPropagation()}>
+        <WindowHeader title="ai_daemon.call_session" />
+        
+        <div className="ai-visualizer-section">
+          {callState !== 'ended' && (
+            <>
+              <div className={`ai-ring r1 ${speaking ? 'speaking' : ''}`}></div>
+              <div className={`ai-ring r2 ${speaking ? 'speaking' : ''}`}></div>
+              <div className={`ai-ring r3 ${speaking ? 'speaking' : ''}`}></div>
+            </>
+          )}
+          <div className={`ai-orb ${speaking ? 'speaking' : ''}`}>
+            <PhoneCall size={32} color={speaking ? 'white' : 'rgba(255,255,255,0.7)'} style={{position:'absolute', top:'50%', left:'50%', transform:'translate(-50%, -50%)', zIndex:5}} />
+          </div>
+          <div style={{ marginTop: '2rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--blue-deep)', fontWeight: 700, letterSpacing:'0.05em' }}>
+            {callState === 'dialing' ? 'CONNECTING...' : callState === 'ended' ? 'SESSION CLOSED' : speaking ? 'AI TRANSMITTING...' : 'LISTENING...'}
+          </div>
+        </div>
+
+        <div className="transcript-box" id="transcript-scroll">
+          {transcript.map((msg, i) => (
+            <div key={i} className={`bubble ${msg.type}`}>
+              {msg.text}
+            </div>
+          ))}
+          {callState === 'ended' && (
+            <button onClick={onClose} style={{margin: '1rem auto', padding: '0.5rem 1.5rem', background: 'var(--blue)', color: 'white', borderRadius: '4px', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontWeight: 700}}>Close Session</button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* =========================================================================
+   3. ADMIN VIEWS
 ========================================================================= */
 
 /* Admin Login View */
@@ -48,7 +134,7 @@ const AdminLogin = () => {
         <div className="window-card-body" style={{ padding: '2rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
             <div style={{ width: 48, height: 48, background: 'var(--blue)', borderRadius: '12px', border: '2px solid var(--border-dark)', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Settings size={24} />
+              <Settings size={24} color="#FFF" />
             </div>
             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>RelayOS Admin</h2>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Secure system access</p>
@@ -62,7 +148,7 @@ const AdminLogin = () => {
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Passcode</label>
               <input type="password" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="••••••••" />
             </div>
-            <button type="submit" style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: 'pointer', fontSize: '1rem', transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
+            <button type="submit" style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', color: 'white', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: 'pointer', fontSize: '1rem', transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
               Initialize Session
             </button>
           </form>
@@ -76,13 +162,22 @@ const AdminLogin = () => {
 const DashboardView = () => {
   const days = ['M','T','W','T','F','S','S']
   const calendarDays = Array.from({length: 28}, (_, i) => i + 1)
+  const [modalOpen, setModalOpen] = useState(false)
+
+  // Ensure scroll is at bottom upon update
+  useEffect(() => {
+    const box = document.getElementById('transcript-scroll')
+    if (box) box.scrollTop = box.scrollHeight
+  })
 
   return (
     <div className="dashboard-content">
+      <AIVoiceModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      
       <div className="topbar">
         <h1>Dashboard</h1>
         <div className="topbar-actions">
-          <div className="topbar-search"><Search /> search...</div>
+          <div className="topbar-search"><Search size={18} /> search...</div>
           <div className="user-profile"><span>Admin</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" /></div>
         </div>
       </div>
@@ -111,7 +206,9 @@ const DashboardView = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div className="quick-actions-panel">
             <button className="quick-action-btn"><Plus size={16} /> New Rental</button>
-            <button className="quick-action-btn"><Phone size={16} /> AI Call Demo</button>
+            <button className="quick-action-btn" onClick={() => setModalOpen(true)} style={{ background: 'var(--blue)', color: 'white', borderColor: 'var(--border-dark)' }}>
+               <Phone size={16} /> AI Call Demo
+            </button>
             <button className="quick-action-btn"><FileText size={16} /> Generate Invoice</button>
           </div>
           <div className="window-card blue-tint">
@@ -133,10 +230,10 @@ const DashboardView = () => {
 
 /* Rentals View (Orders list/kanban) */
 const RentalsView = () => {
-  const [viewState, setViewState] = useState('list') // 'list' | 'kanban'
+  const [viewState, setViewState] = useState('list')
   const [loading, setLoading] = useState(true)
   
-  React.useEffect(() => { setTimeout(() => setLoading(false), 600) }, [])
+  useEffect(() => { setTimeout(() => setLoading(false), 600) }, [])
 
   if (loading) {
     return (
@@ -155,7 +252,7 @@ const RentalsView = () => {
             <button className={`view-toggle-btn ${viewState === 'list' ? 'active' : ''}`} onClick={() => setViewState('list')}><List size={16}/> List</button>
             <button className={`view-toggle-btn ${viewState === 'kanban' ? 'active' : ''}`} onClick={() => setViewState('kanban')}><KanbanSquare size={16}/> Kanban</button>
           </div>
-          <div className="topbar-search"><Search /> search...</div>
+          <div className="topbar-search"><Search size={18} /> search...</div>
           <button className="quick-action-btn" style={{background: 'var(--blue)', color: 'var(--text-on-blue)'}}><Plus size={16} /> New Order</button>
         </div>
       </div>
@@ -233,7 +330,7 @@ const RentalsView = () => {
 const InventoryView = () => {
   const [loading, setLoading] = useState(true)
   
-  React.useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+  useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
 
   if (loading) {
     return (
@@ -248,7 +345,7 @@ const InventoryView = () => {
       <div className="topbar">
         <h1>Inventory Control</h1>
         <div className="topbar-actions">
-          <div className="topbar-search"><Search /> srch_sku...</div>
+          <div className="topbar-search"><Search size={18} /> srch_sku...</div>
           <button className="quick-action-btn" style={{background: 'var(--blue)', color: 'var(--text-on-blue)'}}><Plus size={16} /> Add Asset</button>
         </div>
       </div>
@@ -288,9 +385,8 @@ const InventoryView = () => {
 
 
 /* =========================================================================
-   3. APP & LAYOUT
+   4. APP & LAYOUT
 ========================================================================= */
-
 const Sidebar = () => {
   const loc = useLocation()
   const path = loc.pathname
