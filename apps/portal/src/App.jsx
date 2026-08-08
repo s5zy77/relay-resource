@@ -58,6 +58,42 @@ const SocialAuth = () => (
   </div>
 )
 
+const GatewaySelector = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--bg-body)', padding: '2rem' }}>
+      <div className="auth-brand" style={{ marginBottom: '3rem' }}>
+        <span className="brand-name" style={{ fontSize: '3rem' }}>RentalOS<span className="brand-dot">.</span></span>
+      </div>
+      <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-heading)' }}>Select your module</h1>
+      <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+        
+        <Link to="/catalog" style={{ textDecoration: 'none' }}>
+          <div className="window-card" style={{ width: '300px', cursor: 'pointer', transition: 'transform 0.2s', boxShadow: 'var(--shadow-lg)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+            <div className="window-card-body" style={{ padding: '2.5rem', textAlign: 'center' }}>
+              <div style={{ width: 64, height: 64, background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+                <ShoppingBag size={28} color="#FFF" />
+              </div>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>Customer Storefront</h2>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Browse the catalog, checkout gear, and use the AI widget.</p>
+            </div>
+          </div>
+        </Link>
+        <a href="/admin/" style={{ textDecoration: 'none' }}>
+          <div className="window-card" style={{ width: '300px', cursor: 'pointer', transition: 'transform 0.2s', background: 'var(--blue-pale)', border: '2px solid var(--border-dark)', boxShadow: '4px 4px 0 var(--border-dark)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+            <div className="window-card-body" style={{ padding: '2.5rem', textAlign: 'center' }}>
+              <div style={{ width: 64, height: 64, background: 'var(--blue)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', border: '2px solid var(--border-dark)' }}>
+                <ShieldCheck size={28} color="#FFF" />
+              </div>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--blue-deep)', fontWeight: 700 }}>System Admin</h2>
+              <p style={{ fontSize: '0.9rem', color: 'var(--blue)' }}>Manage FSM states, track inventory, and trigger Voice AI.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  )
+}
+
 const Signup = () => {
   const [agreed, setAgreed] = useState(false)
   const nav = useNavigate()
@@ -592,7 +628,7 @@ const App = () => {
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cartItems} />
       
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path="/" element={<GatewaySelector />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/vendor-signup" element={<VendorSignup />} />
