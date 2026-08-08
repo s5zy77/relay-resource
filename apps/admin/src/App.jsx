@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText } from 'lucide-react'
+import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText, List, KanbanSquare, Box } from 'lucide-react'
+
+/* =========================================================================
+   1. MOCK DATA
+========================================================================= */
+const MOCK_RENTALS = [
+  { id: 'R-7790', customer: 'Arjun M.', item: 'Sony A7 IV Camera Body', status: 'active', returnDate: 'Nov 13, 2026', assignee: 'user-1.jpg' },
+  { id: 'R-7791', customer: 'Priya S.', item: 'Godox SL200 III Kit', status: 'pending', returnDate: 'Nov 14, 2026', assignee: 'user-2.jpg' },
+  { id: 'R-7792', customer: 'Kim T.', item: 'Epson 4K Pro Projector', status: 'overdue', returnDate: 'Nov 10, 2026', assignee: 'user-3.jpg' },
+  { id: 'R-7793', customer: 'Deepak R.', item: 'Canon RF 70-200mm f/2.8', status: 'active', returnDate: 'Nov 18, 2026', assignee: 'user-1.jpg' },
+  { id: 'R-7794', customer: 'Sarah L.', item: 'DJI Mavic 3 Pro', status: 'return', returnDate: 'Nov 11, 2026', assignee: 'user-2.jpg' },
+]
+
+const MOCK_INVENTORY = [
+  { sku: 'CAM-A74-01', name: 'Sony A7 IV', category: 'Cameras', condition: 'good', status: 'Rented', nextAvailable: 'Nov 14' },
+  { sku: 'CAM-A74-02', name: 'Sony A7 IV', category: 'Cameras', condition: 'neutral', status: 'In Stock', nextAvailable: 'Now' },
+  { sku: 'LIT-GX2-01', name: 'Godox SL200 III', category: 'Lighting', condition: 'good', status: 'Rented', nextAvailable: 'Nov 15' },
+  { sku: 'LNS-RF7-01', name: 'Canon RF 70-200mm', category: 'Lenses', condition: 'warning', status: 'Rented', nextAvailable: 'Nov 19' },
+  { sku: 'DRN-MV3-01', name: 'DJI Mavic 3 Pro', category: 'Drones', condition: 'error', status: 'Maintenance', nextAvailable: 'TBD' },
+]
 
 /* Window Title Bar */
-const WindowHeader = ({ title, children, blueTint }) => (
+const WindowHeader = ({ title, children }) => (
   <div className="window-card-header">
     <div className="dots">
       <span className="window-dot red" />
@@ -14,6 +33,10 @@ const WindowHeader = ({ title, children, blueTint }) => (
     <div className="window-actions">{children}</div>
   </div>
 )
+
+/* =========================================================================
+   2. ADMIN VIEWS
+========================================================================= */
 
 /* Admin Login View */
 const AdminLogin = () => {
@@ -59,155 +82,46 @@ const DashboardView = () => {
       <div className="topbar">
         <h1>Dashboard</h1>
         <div className="topbar-actions">
-          <div className="topbar-search">
-            <Search /> search...
-          </div>
-          <div className="user-profile">
-            <span>Admin</span>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" />
-          </div>
+          <div className="topbar-search"><Search /> search...</div>
+          <div className="user-profile"><span>Admin</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" /></div>
         </div>
       </div>
-
-      {/* Blue Hero KPI Strip */}
       <div className="hero-strip">
-        <div className="kpi-item">
-          <div className="kpi-label">Active Rentals</div>
-          <div className="kpi-value">24</div>
-          <div className="kpi-sub">+3 this week</div>
-        </div>
-        <div className="kpi-item">
-          <div className="kpi-label">Revenue (Nov)</div>
-          <div className="kpi-value">₹1.2L</div>
-          <div className="kpi-sub">+12% vs Oct</div>
-        </div>
-        <div className="kpi-item">
-          <div className="kpi-label">Overdue</div>
-          <div className="kpi-value">3</div>
-          <div className="kpi-sub">needs attention</div>
-        </div>
-        <div className="kpi-item">
-          <div className="kpi-label">Pending Pickups</div>
-          <div className="kpi-value">7</div>
-          <div className="kpi-sub">2 scheduled today</div>
-        </div>
+        <div className="kpi-item"><div className="kpi-label">Active Rentals</div><div className="kpi-value">24</div><div className="kpi-sub">+3 this week</div></div>
+        <div className="kpi-item"><div className="kpi-label">Revenue (Nov)</div><div className="kpi-value">₹1.2L</div><div className="kpi-sub">+12% vs Oct</div></div>
+        <div className="kpi-item"><div className="kpi-label">Overdue</div><div className="kpi-value">3</div><div className="kpi-sub">needs attention</div></div>
+        <div className="kpi-item"><div className="kpi-label">Pending Pickups</div><div className="kpi-value">7</div><div className="kpi-sub">2 scheduled today</div></div>
       </div>
-
-      {/* Filters */}
-      <div className="filter-bar">
-        <span className="filter-label">Filter:</span>
-        <span className="filter-chip active">All</span>
-        <span className="filter-chip">Active</span>
-        <span className="filter-chip">Overdue</span>
-        <span className="filter-chip">Pending</span>
-      </div>
-
-      {/* Two Column Layout */}
       <div className="content-columns">
-
-        {/* Rentals Window */}
         <div className="window-card">
-          <WindowHeader title="active-rentals.list">
-            <span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)'}}>4 items</span>
-          </WindowHeader>
+          <WindowHeader title="active-rentals.list"><span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)'}}>{MOCK_RENTALS.length} items</span></WindowHeader>
           <div className="window-card-body">
-            <div className="rental-item">
-              <div className="rental-icon blue"><Camera size={20} /></div>
-              <div className="rental-info">
-                <h4>Sony A7 IV Camera Body</h4>
-                <p>Arjun M. · Return Nov 13</p>
+            {MOCK_RENTALS.slice(0,4).map(r => (
+              <div className="rental-item" key={r.id}>
+                <div className="rental-icon blue"><Camera size={20} /></div>
+                <div className="rental-info">
+                  <h4>{r.item}</h4>
+                  <p>{r.customer} · {r.status === 'pending' ? 'Pickup' : 'Return'} {r.returnDate}</p>
+                </div>
+                <span className={`rental-status ${r.status}`}>{r.status}</span>
               </div>
-              <span className="rental-status active">Active</span>
-            </div>
-
-            <div className="rental-item">
-              <div className="rental-icon coral"><Lightbulb size={20} /></div>
-              <div className="rental-info">
-                <h4>Godox SL200 III Lighting Kit</h4>
-                <p>Pickup pending · Priya S.</p>
-              </div>
-              <span className="rental-status pending">Pending</span>
-            </div>
-
-            <div className="rental-item">
-              <div className="rental-icon green"><MonitorPlay size={20} /></div>
-              <div className="rental-info">
-                <h4>Epson 4K Pro Projector</h4>
-                <p>Due yesterday · Kim T.</p>
-              </div>
-              <span className="rental-status overdue">Overdue</span>
-            </div>
-
-            <div className="rental-item">
-              <div className="rental-icon yellow"><Camera size={20} /></div>
-              <div className="rental-info">
-                <h4>Canon RF 70-200mm f/2.8</h4>
-                <p>Deepak R. · Return Nov 18</p>
-              </div>
-              <span className="rental-status active">Active</span>
-            </div>
+            ))}
           </div>
         </div>
-
-        {/* Right Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-
-          {/* Quick Actions — Blue Panel */}
           <div className="quick-actions-panel">
             <button className="quick-action-btn"><Plus size={16} /> New Rental</button>
             <button className="quick-action-btn"><Phone size={16} /> AI Call Demo</button>
             <button className="quick-action-btn"><FileText size={16} /> Generate Invoice</button>
           </div>
-
-          {/* Calendar — Blue Tinted Window */}
           <div className="window-card blue-tint">
             <WindowHeader title="november-2026.cal" />
             <div className="window-card-body">
               <div className="calendar-grid">
-                {days.map((d, i) => (
-                  <span key={`h-${i}`} className="calendar-day-header">{d}</span>
-                ))}
+                {days.map((d, i) => <span key={`h-${i}`} className="calendar-day-header">{d}</span>)}
                 {calendarDays.map(d => (
-                  <span
-                    key={d}
-                    className={`calendar-day${d === 11 ? ' today' : ''}${d === 4 || d === 18 ? ' has-event' : ''}`}
-                  >
-                    {d}
-                  </span>
+                  <span key={d} className={`calendar-day${d === 11 ? ' today' : ''}${d === 4 || d === 18 ? ' has-event' : ''}`}>{d}</span>
                 ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Activity Log */}
-          <div className="window-card">
-            <WindowHeader title="recent-activity.log">
-              <span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--blue-deep)', cursor: 'pointer'}}>see all</span>
-            </WindowHeader>
-            <div className="window-card-body">
-              <div className="activity-item">
-                <img className="activity-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="" />
-                <div className="activity-info">
-                  <h4>Maren Maureen</h4>
-                  <p>Deposit review completed</p>
-                </div>
-                <span className="activity-time">2m ago</span>
-              </div>
-              <div className="activity-item">
-                <img className="activity-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="" />
-                <div className="activity-info">
-                  <h4>Jennifer Jane</h4>
-                  <p>New rental booking</p>
-                </div>
-                <span className="activity-time">15m ago</span>
-              </div>
-              <div className="activity-item">
-                <img className="activity-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="" />
-                <div className="activity-info">
-                  <h4>Ryan Herwinds</h4>
-                  <p>Equipment returned</p>
-                </div>
-                <span className="activity-time">1h ago</span>
               </div>
             </div>
           </div>
@@ -217,7 +131,143 @@ const DashboardView = () => {
   )
 }
 
-/* Sidebar */
+/* Rentals View (Orders list/kanban) */
+const RentalsView = () => {
+  const [viewState, setViewState] = useState('list') // 'list' | 'kanban'
+
+  return (
+    <div className="dashboard-content">
+      <div className="topbar">
+        <h1>Rental Operations</h1>
+        <div className="topbar-actions">
+          <div className="view-toggles">
+            <button className={`view-toggle-btn ${viewState === 'list' ? 'active' : ''}`} onClick={() => setViewState('list')}><List size={16}/> List</button>
+            <button className={`view-toggle-btn ${viewState === 'kanban' ? 'active' : ''}`} onClick={() => setViewState('kanban')}><KanbanSquare size={16}/> Kanban</button>
+          </div>
+          <div className="topbar-search"><Search /> search...</div>
+          <button className="quick-action-btn" style={{background: 'var(--blue)', color: 'var(--text-on-blue)'}}><Plus size={16} /> New Order</button>
+        </div>
+      </div>
+
+      {viewState === 'list' ? (
+        <div className="data-table-container">
+          <WindowHeader title="orders.datatable" />
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Equipment</th>
+                <th>Return Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MOCK_RENTALS.map(r => (
+                <tr key={r.id}>
+                  <td className="td-id">{r.id}</td>
+                  <td className="td-main">{r.customer}</td>
+                  <td className="td-sub">{r.item}</td>
+                  <td className="td-sub">{r.returnDate}</td>
+                  <td>
+                    <span className={`status-pill ${r.status === 'active' ? 'neutral' : r.status === 'overdue' ? 'error' : r.status === 'pending' ? 'warning' : 'good'}`}>
+                      {r.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="kanban-board">
+          {['pending', 'active', 'return'].map(col => {
+            const items = MOCK_RENTALS.filter(i => i.status === col)
+            return (
+              <div className="kanban-column" key={col}>
+                <div className="kanban-col-header">
+                  <span style={{textTransform: 'uppercase'}}>{col}</span>
+                  <span className="kanban-badge">{items.length}</span>
+                </div>
+                <div className="kanban-col-body">
+                  {items.map(r => (
+                    <div className="kanban-card" key={r.id}>
+                      <div className="k-card-header">
+                        <span className="k-card-id">{r.id}</span>
+                        <span className={`status-pill ${r.status === 'active' ? 'neutral' : r.status === 'pending' ? 'warning' : 'good'}`} style={{fontSize: '0.65rem', padding: '0.1rem 0.4rem'}}>
+                          {r.status}
+                        </span>
+                      </div>
+                      <div className="k-card-title">{r.customer}</div>
+                      <div className="k-card-desc">{r.item}</div>
+                      <div className="k-card-footer">
+                        <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>{r.returnDate}</span>
+                        <div className="k-user">
+                          <img className="k-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* Inventory View (Data Grid) */
+const InventoryView = () => {
+  return (
+    <div className="dashboard-content">
+      <div className="topbar">
+        <h1>Inventory Control</h1>
+        <div className="topbar-actions">
+          <div className="topbar-search"><Search /> srch_sku...</div>
+          <button className="quick-action-btn" style={{background: 'var(--blue)', color: 'var(--text-on-blue)'}}><Plus size={16} /> Add Asset</button>
+        </div>
+      </div>
+      
+      <div className="data-table-container">
+        <WindowHeader title="assets_global.db" />
+        <table className="data-table">
+          <thead>
+            <tr>
+              <th>SKU / ID</th>
+              <th>Asset Name</th>
+              <th>Category</th>
+              <th>Health</th>
+              <th>Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+            {MOCK_INVENTORY.map(inv => (
+              <tr key={inv.sku}>
+                <td className="td-id">{inv.sku}</td>
+                <td className="td-main">{inv.name}</td>
+                <td className="td-sub">{inv.category}</td>
+                <td>
+                  <span className={`status-pill ${inv.condition}`}>
+                    {inv.condition === 'good' ? '100% OK' : inv.condition === 'neutral' ? 'Checked' : inv.condition === 'warning' ? 'Needs Insp.' : 'Repair'}
+                  </span>
+                </td>
+                <td className="td-main" style={{fontSize: '0.85rem'}}>{inv.status} <span className="td-sub" style={{marginLeft: '0.5rem'}}>({inv.nextAvailable})</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+
+/* =========================================================================
+   3. APP & LAYOUT
+========================================================================= */
+
 const Sidebar = () => {
   const loc = useLocation()
   const path = loc.pathname
@@ -232,12 +282,15 @@ const Sidebar = () => {
       </div>
 
       <div className="sidebar-nav">
-        <span className="nav-section-label">Navigation</span>
+        <span className="nav-section-label">Operations</span>
         <Link to="/" className={`nav-item ${path === '/' ? 'active' : ''}`}><LayoutDashboard /> Overview</Link>
         <Link to="/rentals" className={`nav-item ${path === '/rentals' ? 'active' : ''}`}><Folder /> Rentals</Link>
+        <Link to="/inventory" className={`nav-item ${path === '/inventory' ? 'active' : ''}`}><Box /> Inventory</Link>
+        
+        <span className="nav-section-label">Communications</span>
         <Link to="/messages" className={`nav-item ${path === '/messages' ? 'active' : ''}`}><MessageSquare /> Messages</Link>
         <Link to="/customers" className={`nav-item ${path === '/customers' ? 'active' : ''}`}><Users /> Customers</Link>
-        <Link to="/schedule" className={`nav-item ${path === '/schedule' ? 'active' : ''}`}><Calendar /> Schedule</Link>
+        
       </div>
 
       <div className="sidebar-footer">
@@ -257,6 +310,8 @@ const App = () => {
             <Sidebar />
             <Routes>
               <Route path="/" element={<DashboardView />} />
+              <Route path="/rentals" element={<RentalsView />} />
+              <Route path="/inventory" element={<InventoryView />} />
             </Routes>
           </div>
         } />
