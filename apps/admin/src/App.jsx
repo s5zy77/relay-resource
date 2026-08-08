@@ -1,136 +1,247 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, BookOpen, MessageSquare, Users, Calendar, Settings, Folder } from 'lucide-react'
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
+import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText } from 'lucide-react'
 
-// Dashboard Component matching Image 2 spatial layout precisely
-const DashboardView = () => {
+/* Window Title Bar */
+const WindowHeader = ({ title, children, blueTint }) => (
+  <div className="window-card-header">
+    <div className="dots">
+      <span className="window-dot red" />
+      <span className="window-dot yellow" />
+      <span className="window-dot green" />
+    </div>
+    <span className="window-title">{title}</span>
+    <div className="window-actions">{children}</div>
+  </div>
+)
+
+/* Admin Login View */
+const AdminLogin = () => {
+  const nav = useNavigate()
   return (
-    <div className="dashboard-content">
-      <div className="topbar">
-        <h1>My Rentals</h1>
-        <div className="topbar-actions">
-          <div className="user-profile">
-            <span>Christine Eva</span>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" />
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '2rem' }}>
+      <div className="window-card" style={{ width: '400px' }}>
+        <WindowHeader title="admin-login.exe" />
+        <div className="window-card-body" style={{ padding: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
+            <div style={{ width: 48, height: 48, background: 'var(--blue)', borderRadius: '12px', border: '2px solid var(--border-dark)', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Settings size={24} />
+            </div>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>RelayOS Admin</h2>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Secure system access</p>
           </div>
+          <form onSubmit={e => { e.preventDefault(); nav('/') }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Admin ID</label>
+              <input type="text" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="e.g. ADM-001" />
+            </div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Passcode</label>
+              <input type="password" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="••••••••" />
+            </div>
+            <button type="submit" style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: 'pointer', fontSize: '1rem', transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
+              Initialize Session
+            </button>
+          </form>
         </div>
       </div>
-      
-      {/* Top filters like in Image 2 */}
-      <div style={{display: 'flex', gap: '2rem', marginBottom: '2.5rem', color: 'var(--text-secondary)', fontSize: '0.95rem'}}>
-        <span>Filter by:</span>
-        <span style={{background: 'white', padding: '0.25rem 1rem', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'}}>Time ⌄</span>
-        <span style={{background: 'white', padding: '0.25rem 1rem', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'}}>Category ⌄</span>
-        <span style={{background: 'white', padding: '0.25rem 1rem', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'}}>Status ⌄</span>
-      </div>
-
-      <div className="content-grid">
-        <div className="card card-tint-1" style={{ display: 'flex', flexDirection: 'column'}}>
-           
-           <div className="list-item-card blue-tint">
-             <div className="item-icon"></div>
-             <div className="item-content">
-               <h3>Professional DSLR Camera</h3>
-               <p>Rented active • Return Due Nov 13</p>
-             </div>
-             <div className="action-circle">➔</div>
-           </div>
-
-           <div className="list-item-card pink-tint">
-             <div className="item-icon"></div>
-             <div className="item-content">
-               <h3>Studio Lighting Kit</h3>
-               <p>Pickup Pending • Jung Jaehyun</p>
-             </div>
-             <div className="action-circle">➔</div>
-           </div>
-           
-           <div className="list-item-card">
-             <div className="item-icon"></div>
-             <div className="item-content">
-               <h3>4K Video Projector</h3>
-               <p>Maintenance • Kim Taeyeong</p>
-             </div>
-             <div className="action-circle">➔</div>
-           </div>
-        </div>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          <div className="card">
-             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem'}}>
-               <h3>Nov 2026</h3>
-               <span style={{color: 'var(--text-secondary)', letterSpacing: '2px'}}>{'< >'}</span>
-             </div>
-             <div style={{display: 'flex', justifyContent: 'center'}}>
-               <div style={{width: '100%', height: '220px', background: 'white', borderRadius: '16px', border: '1px solid var(--bg-dashboard)'}}>
-                 {/* Visual Mock of Calendar Grid */}
-                 <div style={{display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '8px', padding: '1rem', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)'}}>
-                   <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
-                   {Array.from({length: 21}).map((_, i) => (
-                     <span key={i} style={{padding: '0.5rem', borderRadius: '50%', background: i===10 ? 'var(--text-primary)' : 'transparent', color: i===10 ? 'white' : 'var(--text-primary)'}}>{i+1}</span>
-                   ))}
-                 </div>
-               </div>
-             </div>
-          </div>
-          
-          <div className="card">
-             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem'}}>
-               <h3>Online Operations</h3>
-               <span style={{fontSize: '0.9rem', color: 'var(--text-secondary)'}}>See all</span>
-             </div>
-             
-             <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem'}}>
-               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" style={{width: '44px', height: '44px', borderRadius: '50%', objectFit:'cover'}} />
-               <div style={{flex: 1}}>
-                 <h4 style={{fontSize: '1rem'}}>Maren Maureen</h4>
-                 <p style={{fontSize: '0.85rem', color: 'var(--text-secondary)'}}>Reviewing Deposit</p>
-               </div>
-               <div style={{width: 8, height: 8, background: 'var(--text-primary)', borderRadius: '50%'}}></div>
-             </div>
-             
-             <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem'}}>
-               <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" style={{width: '44px', height: '44px', borderRadius: '50%', objectFit:'cover'}} />
-               <div style={{flex: 1}}>
-                 <h4 style={{fontSize: '1rem'}}>Jennifer Jane</h4>
-                 <p style={{fontSize: '0.85rem', color: 'var(--text-secondary)'}}>Active Chat</p>
-               </div>
-               <div style={{width: 8, height: 8, background: 'var(--text-primary)', borderRadius: '50%'}}></div>
-             </div>
-             
-          </div>
-        </div>
-      </div>
-
     </div>
   )
 }
 
+/* Dashboard View */
+const DashboardView = () => {
+  const days = ['M','T','W','T','F','S','S']
+  const calendarDays = Array.from({length: 28}, (_, i) => i + 1)
+
+  return (
+    <div className="dashboard-content">
+      <div className="topbar">
+        <h1>Dashboard</h1>
+        <div className="topbar-actions">
+          <div className="topbar-search">
+            <Search /> search...
+          </div>
+          <div className="user-profile">
+            <span>Admin</span>
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" />
+          </div>
+        </div>
+      </div>
+
+      {/* Blue Hero KPI Strip */}
+      <div className="hero-strip">
+        <div className="kpi-item">
+          <div className="kpi-label">Active Rentals</div>
+          <div className="kpi-value">24</div>
+          <div className="kpi-sub">+3 this week</div>
+        </div>
+        <div className="kpi-item">
+          <div className="kpi-label">Revenue (Nov)</div>
+          <div className="kpi-value">₹1.2L</div>
+          <div className="kpi-sub">+12% vs Oct</div>
+        </div>
+        <div className="kpi-item">
+          <div className="kpi-label">Overdue</div>
+          <div className="kpi-value">3</div>
+          <div className="kpi-sub">needs attention</div>
+        </div>
+        <div className="kpi-item">
+          <div className="kpi-label">Pending Pickups</div>
+          <div className="kpi-value">7</div>
+          <div className="kpi-sub">2 scheduled today</div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="filter-bar">
+        <span className="filter-label">Filter:</span>
+        <span className="filter-chip active">All</span>
+        <span className="filter-chip">Active</span>
+        <span className="filter-chip">Overdue</span>
+        <span className="filter-chip">Pending</span>
+      </div>
+
+      {/* Two Column Layout */}
+      <div className="content-columns">
+
+        {/* Rentals Window */}
+        <div className="window-card">
+          <WindowHeader title="active-rentals.list">
+            <span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)'}}>4 items</span>
+          </WindowHeader>
+          <div className="window-card-body">
+            <div className="rental-item">
+              <div className="rental-icon blue"><Camera size={20} /></div>
+              <div className="rental-info">
+                <h4>Sony A7 IV Camera Body</h4>
+                <p>Arjun M. · Return Nov 13</p>
+              </div>
+              <span className="rental-status active">Active</span>
+            </div>
+
+            <div className="rental-item">
+              <div className="rental-icon coral"><Lightbulb size={20} /></div>
+              <div className="rental-info">
+                <h4>Godox SL200 III Lighting Kit</h4>
+                <p>Pickup pending · Priya S.</p>
+              </div>
+              <span className="rental-status pending">Pending</span>
+            </div>
+
+            <div className="rental-item">
+              <div className="rental-icon green"><MonitorPlay size={20} /></div>
+              <div className="rental-info">
+                <h4>Epson 4K Pro Projector</h4>
+                <p>Due yesterday · Kim T.</p>
+              </div>
+              <span className="rental-status overdue">Overdue</span>
+            </div>
+
+            <div className="rental-item">
+              <div className="rental-icon yellow"><Camera size={20} /></div>
+              <div className="rental-info">
+                <h4>Canon RF 70-200mm f/2.8</h4>
+                <p>Deepak R. · Return Nov 18</p>
+              </div>
+              <span className="rental-status active">Active</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+
+          {/* Quick Actions — Blue Panel */}
+          <div className="quick-actions-panel">
+            <button className="quick-action-btn"><Plus size={16} /> New Rental</button>
+            <button className="quick-action-btn"><Phone size={16} /> AI Call Demo</button>
+            <button className="quick-action-btn"><FileText size={16} /> Generate Invoice</button>
+          </div>
+
+          {/* Calendar — Blue Tinted Window */}
+          <div className="window-card blue-tint">
+            <WindowHeader title="november-2026.cal" />
+            <div className="window-card-body">
+              <div className="calendar-grid">
+                {days.map((d, i) => (
+                  <span key={`h-${i}`} className="calendar-day-header">{d}</span>
+                ))}
+                {calendarDays.map(d => (
+                  <span
+                    key={d}
+                    className={`calendar-day${d === 11 ? ' today' : ''}${d === 4 || d === 18 ? ' has-event' : ''}`}
+                  >
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Activity Log */}
+          <div className="window-card">
+            <WindowHeader title="recent-activity.log">
+              <span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--blue-deep)', cursor: 'pointer'}}>see all</span>
+            </WindowHeader>
+            <div className="window-card-body">
+              <div className="activity-item">
+                <img className="activity-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="" />
+                <div className="activity-info">
+                  <h4>Maren Maureen</h4>
+                  <p>Deposit review completed</p>
+                </div>
+                <span className="activity-time">2m ago</span>
+              </div>
+              <div className="activity-item">
+                <img className="activity-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="" />
+                <div className="activity-info">
+                  <h4>Jennifer Jane</h4>
+                  <p>New rental booking</p>
+                </div>
+                <span className="activity-time">15m ago</span>
+              </div>
+              <div className="activity-item">
+                <img className="activity-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="" />
+                <div className="activity-info">
+                  <h4>Ryan Herwinds</h4>
+                  <p>Equipment returned</p>
+                </div>
+                <span className="activity-time">1h ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* Sidebar */
 const Sidebar = () => {
-  const loc = useLocation();
-  const path = loc.pathname;
-  
+  const loc = useLocation()
+  const path = loc.pathname
+
   return (
     <div className="sidebar">
-      <div className="brand">
-        <span style={{color: 'var(--text-primary)'}}>ē</span>
-        <span>RentalOS</span>
+      <div className="sidebar-title-bar">
+        <span className="window-dot red" />
+        <span className="window-dot yellow" />
+        <span className="window-dot green" />
+        <span className="brand">relay_os</span>
       </div>
-      
-      <p style={{fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--text-secondary)', paddingLeft: '1.25rem', marginBottom: '0.5rem', marginTop: '1rem'}}>Dashboard</p>
-      
-      <div className="nav-section">
+
+      <div className="sidebar-nav">
+        <span className="nav-section-label">Navigation</span>
         <Link to="/" className={`nav-item ${path === '/' ? 'active' : ''}`}><LayoutDashboard /> Overview</Link>
-        <Link to="/rentals" className={`nav-item ${path === '/rentals' ? 'active' : ''}`}><Folder /> All Rentals</Link>
+        <Link to="/rentals" className={`nav-item ${path === '/rentals' ? 'active' : ''}`}><Folder /> Rentals</Link>
         <Link to="/messages" className={`nav-item ${path === '/messages' ? 'active' : ''}`}><MessageSquare /> Messages</Link>
         <Link to="/customers" className={`nav-item ${path === '/customers' ? 'active' : ''}`}><Users /> Customers</Link>
         <Link to="/schedule" className={`nav-item ${path === '/schedule' ? 'active' : ''}`}><Calendar /> Schedule</Link>
       </div>
-      
-      <div style={{flex: 1}}></div>
-      
-      <div className="nav-section">
-        <Link to="/settings" className={`nav-item`}><Settings /> Settings</Link>
+
+      <div className="sidebar-footer">
+        <Link to="/settings" className="nav-item"><Settings /> Settings</Link>
       </div>
     </div>
   )
@@ -139,12 +250,17 @@ const Sidebar = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="admin-layout">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<DashboardView />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/*" element={
+          <div className="admin-layout">
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<DashboardView />} />
+            </Routes>
+          </div>
+        } />
+      </Routes>
     </BrowserRouter>
   )
 }
