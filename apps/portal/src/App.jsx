@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom'
-import { Check, ShieldCheck, ArrowRight, ArrowLeft, Search, ShoppingBag, X, User } from 'lucide-react'
+import { Check, ShieldCheck, ArrowRight, ArrowLeft, Search, ShoppingBag, X, User, MessageSquare, Send, Sparkles } from 'lucide-react'
 
 /* =========================================================================
    1. MOCK DATA
@@ -229,7 +229,7 @@ const Navbar = ({ cartCount, onOpenCart }) => (
 
 const CatalogView = () => {
   const [loading, setLoading] = useState(true)
-  React.useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+  useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
 
   if (loading) {
     return (
@@ -290,7 +290,7 @@ const ProductDetail = ({ onAddToCart }) => {
   const { id } = useParams()
   const [loading, setLoading] = useState(true)
   
-  React.useEffect(() => { setTimeout(() => setLoading(false), 500) }, [id])
+  useEffect(() => { setTimeout(() => setLoading(false), 500) }, [id])
 
   if (loading) {
     return (
@@ -321,7 +321,7 @@ const ProductDetail = ({ onAddToCart }) => {
         <h1>{product.name}</h1>
         <p style={{ color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.95rem' }}>Provided by <span style={{color: 'var(--accent)'}}>{product.vendor}</span></p>
         
-        <p>This premium mirrorless camera offers exceptional full-frame performance, perfect for hybrid shooters doing both high-end video and photography. Includes 2 batteries and a 64GB SD card.</p>
+        <p>This premium mirrorless equipment offers exceptional performance, perfect for hybrid scenarios requiring the best quality output.</p>
         
         <div className="booking-card">
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-heading)', marginBottom: '1.5rem' }}>
@@ -354,7 +354,6 @@ const ProductDetail = ({ onAddToCart }) => {
 
 const CartDrawer = ({ isOpen, onClose, cartItems }) => {
   const nav = useNavigate()
-  
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.days), 0)
   
   return (
@@ -456,8 +455,104 @@ const Checkout = () => {
 }
 
 /* =========================================================================
-   4. APP COMPONENT & ROUTING
+   4. AI CUSTOMER ASSISTANT WIDGET
 ========================================================================= */
+
+const SmartCard = ({ product }) => (
+  <Link to={`/catalog/${product.id}`} className="smart-card">
+    <img src={product.image} alt={product.name} />
+    <div className="smart-card-info">
+      <h5>{product.name}</h5>
+      <p>₹{product.price}/day</p>
+    </div>
+  </Link>
+)
+
+const AIAssistantWidget = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [messages, setMessages] = useState([
+    { type: 'ai', text: 'Hi! Building a shooting rig or looking for specific gear? Let me help.' }
+  ])
+  const [input, setInput] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
+  const chatBodyRef = useRef(null)
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight
+    }
+  }, [messages, isTyping, isOpen])
+
+  const handleSend = (e) => {
+    e.preventDefault()
+    if (!input.trim()) return
+
+    const userMsg = input
+    setInput('')
+    setMessages(prev => [...prev, { type: 'user', text: userMsg }])
+    setIsTyping(true)
+
+    // Simulate AI response logic
+    setTimeout(() => {
+      setIsTyping(false)
+      const aiResponse = { type: 'ai', text: 'For that setup, I highly recommend a versatile camera body and reliable continuous lighting alongside it. Here are some top choices:' }
+      
+      // Inject smart cards metadata to the message
+      aiResponse.smartCards = [
+        CATALOG_ITEMS.find(i => i.id === 'cam-01'),
+        CATALOG_ITEMS.find(i => i.id === 'light-01')
+      ]
+      
+      setMessages(prev => [...prev, aiResponse])
+    }, 1800)
+  }
+
+  return (
+    <div className="ai-chat-wrapper">
+      <div className={`chat-window ${isOpen ? 'open' : ''}`}>
+        <div className="chat-header">
+          <div className="header-orb"><Sparkles size={16} /></div>
+          Equipment Genie
+          <button onClick={() => setIsOpen(false)} style={{marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)'}}><X size={20}/></button>
+        </div>
+        <div className="chat-body" ref={chatBodyRef}>
+          {messages.map((msg, i) => (
+            <div key={i} style={{display:'flex', flexDirection:'column'}}>
+               <div className={`c-msg ${msg.type}`}>{msg.text}</div>
+               {msg.smartCards && (
+                 <div style={{ alignSelf: 'flex-start', marginTop: '0.25rem', width: '220px' }}>
+                   {msg.smartCards.map(prod => (
+                     <SmartCard key={prod.id} product={prod} />
+                   ))}
+                 </div>
+               )}
+            </div>
+          ))}
+          {isTyping && (
+            <div className="c-msg ai typing-dots-wrap">
+              <div className="typing-dots"><span></span><span></span><span></span></div>
+            </div>
+          )}
+        </div>
+        <form className="chat-input-area" onSubmit={handleSend}>
+          <input type="text" placeholder="e.g. Need a kit for a podcast..." value={input} onChange={e => setInput(e.target.value)} />
+          <button type="submit" className="chat-send-btn"><Send size={16} /></button>
+        </form>
+      </div>
+
+      {!isOpen && (
+        <button className="ai-toggle-btn" onClick={() => setIsOpen(true)}>
+          <MessageSquare size={26} />
+        </button>
+      )}
+    </div>
+  )
+}
+
+/* =========================================================================
+   5. APP ENTRY
+========================================================================= */
+
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [cartItems, setCartItems] = useState([
@@ -465,7 +560,6 @@ const App = () => {
   ])
 
   const handleAddToCart = (product) => {
-    // mock adding to cart for demo
     const existing = cartItems.find(i => i.id === product.id)
     if (!existing) {
       setCartItems([...cartItems, { ...product, days: 3 }])
@@ -475,18 +569,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* Drawer sits globally */}
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cartItems={cartItems} />
       
       <Routes>
-        {/* Auth Routes */}
         <Route path="/" element={<Signup />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/vendor-signup" element={<VendorSignup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Portal Core Routes */}
         <Route path="/catalog/*" element={
           <div className="portal-layout">
             <Navbar cartCount={cartItems.length} onOpenCart={() => setIsCartOpen(true)} />
@@ -494,10 +585,10 @@ const App = () => {
               <Route path="/" element={<CatalogView />} />
               <Route path="/:id" element={<ProductDetail onAddToCart={handleAddToCart} />} />
             </Routes>
+            <AIAssistantWidget />
           </div>
         } />
         
-        {/* Checkout is standalone to remove distractions */}
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </BrowserRouter>
