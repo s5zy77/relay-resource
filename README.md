@@ -1,42 +1,95 @@
-# 🚀 Relay — AI-Powered Rental Operations Platform
+# Relay — Autonomous Rental Operations Platform
 
-An end-to-end, multi-agent AI rental management platform built for 24-hour hackathon execution.
+![Relay Banner](https://via.placeholder.com/1200x300.png?text=Relay+-+Intelligent+Rental+Operations+Platform)
+
+Relay is a next-generation **AI-powered Rental Management & Autonomous Rental Operations Platform**. We aren't just building a standard CRUD rental SaaS; we are building an intelligent system that actively understands, monitors, predicts, and helps operate the rental business.
 
 ---
 
 ## 👥 Engineering Team & Contributors
 
-| Member | Role | GitHub Profile | Responsibilities |
+This project was built collaboratively during a 24-hour hackathon. 
+
+| Member | Role | Name | Responsibilities |
 | :--- | :--- | :--- | :--- |
-| **Member 1** | Frontend & UI/UX | [@s5zy77](https://github.com/s5zy77) | Customer Storefront, Dashboards, Components |
-| **Member 2** | Customer Workflows | Team Member | React State, Checkout, QR Pass Workflow |
-| **Member 3** | Core Backend & DB | Team Member | Node.js, Express, MongoDB, Business APIs |
-| **Member 4** | **AI & Autonomous Voice Operations** | [**@schach306-png**](https://github.com/schach306-png) | **Local LLM Orchestrator, Voice Agent (STT/TTS), PSTN Telephony Bridge, Safety Enforcer, Risk Engine & Operations Copilot** |
+| **Member 1** | Frontend & UI/UX | **Ranish Dutta** | Customer Storefront, Dashboards, Components, Visual Design |
+| **Member 2** | Customer Workflows | **Anushka Ghosh** | React State, Checkout, QR Pass Workflow, API Integration |
+| **Member 3** | Core Backend & DB | **Subhasree Majumder**| Node.js, Express, MongoDB, Business APIs, Auth Enforcement |
+| **Member 4** | AI & Autonomous Voice Operations | **Subhan Gupta** | Local LLM Orchestrator, Voice Agent (STT/TTS), PSTN Telephony Bridge, Risk Engine & Operations Copilot |
 
 ---
 
-## 🤖 Member 4 Subsystem Architecture (`/member4`)
+## 🚀 The Vision
 
-Maintained by **[@schach306-png](https://github.com/schach306-png)**.
+The traditional rental equipment industry relies on manual tracking, physical checks, and phone calls. Relay automates this workflow end-to-end:
+1. **Dynamic Catalog & Availability:** Real-time date engines to prevent double bookings.
+2. **Idempotent Checkout:** Frictionless carts with automated security deposit calculations.
+3. **Lifecycle Management:** Complete dashboard for tracking active, upcoming, and overdue rentals with QR-code based physical pass generation.
+4. **AI Intelligence:** Native integration of conversational AI for search, support, upselling, and dynamic decision-making.
 
-### Key Capabilities
-- **Local AI Orchestrator**: Tool selection and execution via Ollama (`llama3`) or OpenAI API fallback.
-- **Controlled DB Flow**: AI reasons and triggers REST tools against Member 3 APIs; AI never directly mutates MongoDB.
-- **Voice Agent Loop**: Full-duplex STT $\rightarrow$ LLM $\rightarrow$ TTS conversation loop with real-time transcript logging.
-- **Outbound Telephony & Safety**: PSTN calls via Twilio / Plivo with **strict server-side `DEMO_ALLOWLIST` enforcement**.
-- **Permission Classifier**: READ tools execute automatically; WRITE tools (`extend_rental`, `create_booking`) require explicit confirmation.
+## 🧠 AI-Powered Enhancements ("The Winning Features")
+
+- **AI Concierge & Natural-Language Search:** Convert prompt queries ("Show me 4k cameras under ₹3,000/day for a wedding this weekend") directly into structured determinist API queries, bypassing vector DB bloat.
+- **Smart Recommendations:** Context-aware cart suggestions (e.g., suggesting an SD card and tripod when a Sony A7 IV is rented).
+- **AI Rental Extension Engine:** Single-click extensions with real-time availability checks and dynamic price/deposit adjustments.
+- **AI Deposit Explainer:** Transparent, natural-language breakdowns explaining damage or late fee deductions to customers.
 
 ---
 
-## 💻 Running Member 4 Locally
+## 🏗 System Architecture
 
+The platform follows a modular microservice-inspired architecture:
+
+```text
+       ┌────────────────────────┐
+       │      Member 1 UI       │  (Design system, CSS, layout, visual components)
+       └───────────┬────────────┘
+                   │
+                   ▼
+       ┌────────────────────────┐
+       │        Member 2        │  (React State, TanStack Query, Zustand, API Client)
+       └───────────┬────────────┘
+                   │
+                   ▼
+       ┌────────────────────────┐
+       │   Member 3 Core API    │  (Node/Express API, MongoDB, Business logic, Auth)
+       └───────────▲────────────┘
+                   │
+                   │  Controlled Backend Tools
+       ┌───────────┴────────────┐
+       │   Member 4 AI Engine   │  (Local LLM, Voice Agent, Autonomous Operations)
+       └────────────────────────┘
+```
+
+### Technology Stack
+*   **Frontend:** React, Vite, TypeScript, Zustand, TanStack Query, React Router, Zod, Tailwind CSS.
+*   **Backend:** Node.js, Express, TypeScript, Zod, JWT Authentication.
+*   **Database:** MongoDB / Mongoose (NoSQL).
+*   **AI/Voice:** Local LLMs, STT/TTS bridges, PSTN telephony integrations.
+
+---
+
+## 📂 Repository Structure
+
+*   `/frontend` - Member 1 & 2: Customer Portal SPA (React/Vite).
+*   `/backend` - Member 3: Core API server (Express/MongoDB).
+*   `/ai` - Member 4: AI orchestrator and voice agent services.
+
+## 💻 Local Development
+
+### 1. Running the Frontend
 ```bash
-cd member4
+cd frontend
 npm install
 npm run dev
 ```
 
-Run test suite:
+### 2. Running the Backend
 ```bash
-npm test
+cd backend
+npm install
+npm run dev
 ```
+
+---
+*Built with ❤️ in 24 hours.*
