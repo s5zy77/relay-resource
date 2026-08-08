@@ -228,6 +228,18 @@ const Navbar = ({ cartCount, onOpenCart }) => (
 )
 
 const CatalogView = () => {
+  const [loading, setLoading] = useState(true)
+  React.useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+
+  if (loading) {
+    return (
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <div className="spinner"></div>
+        <p style={{ color: 'var(--text-muted)', fontWeight: 600 }}>Loading catalog...</p>
+      </div>
+    )
+  }
+
   return (
     <div className="catalog-container">
       <aside className="sidebar-filters">
@@ -276,7 +288,29 @@ const CatalogView = () => {
 
 const ProductDetail = ({ onAddToCart }) => {
   const { id } = useParams()
-  const product = CATALOG_ITEMS.find((i) => i.id === (id || 'cam-01')) || CATALOG_ITEMS[0]
+  const [loading, setLoading] = useState(true)
+  
+  React.useEffect(() => { setTimeout(() => setLoading(false), 500) }, [id])
+
+  if (loading) {
+    return (
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
+        <div className="spinner"></div>
+      </div>
+    )
+  }
+
+  const product = CATALOG_ITEMS.find((i) => i.id === (id || 'cam-01'))
+  
+  if (!product) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '6rem', color: 'var(--text-muted)' }}>
+        <h2>Product Not Found</h2>
+        <p>The requested equipment is no longer available.</p>
+        <Link to="/catalog" className="btn-submit" style={{ display: 'inline-block', marginTop: '1rem', width: 'auto' }}>Return to Catalog</Link>
+      </div>
+    )
+  }
 
   return (
     <div className="detail-layout">

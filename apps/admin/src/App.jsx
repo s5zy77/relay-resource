@@ -134,6 +134,17 @@ const DashboardView = () => {
 /* Rentals View (Orders list/kanban) */
 const RentalsView = () => {
   const [viewState, setViewState] = useState('list') // 'list' | 'kanban'
+  const [loading, setLoading] = useState(true)
+  
+  React.useEffect(() => { setTimeout(() => setLoading(false), 600) }, [])
+
+  if (loading) {
+    return (
+      <div className="dashboard-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="admin-spinner"></div>
+      </div>
+    )
+  }
 
   return (
     <div className="dashboard-content">
@@ -220,6 +231,18 @@ const RentalsView = () => {
 
 /* Inventory View (Data Grid) */
 const InventoryView = () => {
+  const [loading, setLoading] = useState(true)
+  
+  React.useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+
+  if (loading) {
+    return (
+      <div className="dashboard-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="admin-spinner"></div>
+      </div>
+    )
+  }
+
   return (
     <div className="dashboard-content">
       <div className="topbar">

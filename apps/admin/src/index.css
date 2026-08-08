@@ -765,3 +765,28 @@ h1, h2, h3, h4, .brand, .stat-value {
 .status-pill.warning { background: #F5E6A0; color: #7A6520; }
 .status-pill.error { background: #F5C4B8; color: #8B3A2A; }
 .status-pill.neutral { background: var(--blue-pale); color: #2A5A6E; }
+
+/* ── Spinner ── */
+.admin-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-dark);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 4rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 959px) {
+  .hero-strip { grid-template-columns: 1fr 1fr; }
+  .kanban-board { padding-bottom: 2rem; }
+  .window-card { margin-bottom: 1rem; }
+  .content-columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero-strip { grid-template-columns: 1fr; }
+  .topbar { flex-direction: column; align-items: flex-start; gap: 1rem; height: auto; padding: 1.5rem; }
+  .kanban-column { flex: 0 0 280px; }
+  .data-table-container { overflow-x: auto; }
+}
