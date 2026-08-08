@@ -112,6 +112,19 @@ app.patch('/api/rentals/:id/transition', (req, res) => {
      }
   }
 
+  // Integration Phase 2: Trigger AI Voice Agent on OVERDUE
+  if (newState === 'OVERDUE') {
+     console.log(`[CORE-API] Triggering Python AI Voice module for overdue asset: ${rental.item}`);
+     fetch('http://localhost:8000/api/voice-reminder', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ customer: rental.customer, item: rental.item })
+     })
+     .then(res => res.json())
+     .then(json => console.log('[CORE-API] Python response:', json))
+     .catch(err => console.error('[CORE-API] Failed to trigger Python Agent', err));
+  }
+
   res.json({ message: 'State mutated successfully over FSM Edge', updatedRental: rental });
 });
 

@@ -1,0 +1,16 @@
+{
+  "name": "rentalos-monorepo",
+  "version": "1.0.0",
+  "description": "Hackathon Monorepo orchestrator",
+  "scripts": {
+    "start": "concurrently \"npm run start:api\" \"npm run start:ai\" \"npm run start:admin\" \"npm run start:portal\"",
+    "start:api": "cd services/core-api && node index.js",
+    "start:ai": "cd services/ai-voice && python main.py",
+    "start:admin": "cd apps/admin && npm run dev",
+    "start:portal": "cd apps/portal && npm run dev",
+    "install:all": "npm install && cd apps/admin && npm install && cd ../portal && npm install && cd ../../services/core-api && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -229,7 +229,27 @@ const Navbar = ({ cartCount, onOpenCart }) => (
 
 const CatalogView = () => {
   const [loading, setLoading] = useState(true)
-  useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+  const [catalogItems, setCatalogItems] = useState(CATALOG_ITEMS)
+
+  useEffect(() => { 
+    fetch('/api/admin/inventory')
+      .then(res => res.json())
+      .then(inv => {
+         setCatalogItems(prev => prev.map(item => {
+            // Very fuzzy mapping for demo
+            const match = inv.find(i => i.name.includes(item.name.replace(' Mirrorless', '').replace(' Camera Body', '')))
+            if (match && match.condition === 'error') {
+               return { ...item, available: false }
+            }
+            return item
+         }))
+         setTimeout(() => setLoading(false), 500)
+      })
+      .catch((e) => {
+         console.warn('API Proxy not booted, using strict catalog', e)
+         setTimeout(() => setLoading(false), 500)
+      })
+  }, [])
 
   if (loading) {
     return (
@@ -263,7 +283,7 @@ const CatalogView = () => {
           <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 600 }}>Showing {CATALOG_ITEMS.length} results</span>
         </div>
         <div className="product-grid">
-          {CATALOG_ITEMS.map((item) => (
+          {catalogItems.map((item) => (
             <Link to={`/catalog/${item.id}`} key={item.id} className="product-card">
               <div className="product-img-wrap">
                 <div className={`availability-badge ${item.available ? 'available' : 'unavailable'}`}>

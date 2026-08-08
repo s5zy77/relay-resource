@@ -5,7 +5,7 @@ import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Sear
 /* =========================================================================
    1. GLOBAL HELPERS
 ========================================================================= */
-const API_BASE = 'http://localhost:5000/api'
+const API_BASE = '/api'
 
 /* Window Title Bar */
 const WindowHeader = ({ title, children }) => (
@@ -39,9 +39,10 @@ const AIVoiceModal = ({ isOpen, onClose }) => {
     setCallState('dialing')
     setSpeaking(true)
 
-    // Fire backend call purely for demonstration purposes of system connectivity
-    fetch('http://localhost:8000/api/voice-reminder', {
+    // Fire backend call mapped through Vite proxy -> Python
+    fetch('/ai/api/voice-reminder', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ customer: 'Kim T.', item: 'Epson 4K Pro' })
     }).catch(e => console.log('Backend not available natively', e))
 
