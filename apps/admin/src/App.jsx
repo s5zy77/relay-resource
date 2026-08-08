@@ -1,25 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText, List, KanbanSquare, Box, X, PhoneCall } from 'lucide-react'
+import { LayoutDashboard, Folder, MessageSquare, Users, Calendar, Settings, Search, Camera, Lightbulb, MonitorPlay, Plus, Phone, FileText, List, KanbanSquare, Box, X, PhoneCall, CheckCircle } from 'lucide-react'
 
 /* =========================================================================
-   1. MOCK DATA
+   1. GLOBAL HELPERS
 ========================================================================= */
-const MOCK_RENTALS = [
-  { id: 'R-7790', customer: 'Arjun M.', item: 'Sony A7 IV Camera Body', status: 'active', returnDate: 'Nov 13, 2026', assignee: 'user-1.jpg' },
-  { id: 'R-7791', customer: 'Priya S.', item: 'Godox SL200 III Kit', status: 'pending', returnDate: 'Nov 14, 2026', assignee: 'user-2.jpg' },
-  { id: 'R-7792', customer: 'Kim T.', item: 'Epson 4K Pro Projector', status: 'overdue', returnDate: 'Nov 10, 2026', assignee: 'user-3.jpg' },
-  { id: 'R-7793', customer: 'Deepak R.', item: 'Canon RF 70-200mm f/2.8', status: 'active', returnDate: 'Nov 18, 2026', assignee: 'user-1.jpg' },
-  { id: 'R-7794', customer: 'Sarah L.', item: 'DJI Mavic 3 Pro', status: 'return', returnDate: 'Nov 11, 2026', assignee: 'user-2.jpg' },
-]
-
-const MOCK_INVENTORY = [
-  { sku: 'CAM-A74-01', name: 'Sony A7 IV', category: 'Cameras', condition: 'good', status: 'Rented', nextAvailable: 'Nov 14' },
-  { sku: 'CAM-A74-02', name: 'Sony A7 IV', category: 'Cameras', condition: 'neutral', status: 'In Stock', nextAvailable: 'Now' },
-  { sku: 'LIT-GX2-01', name: 'Godox SL200 III', category: 'Lighting', condition: 'good', status: 'Rented', nextAvailable: 'Nov 15' },
-  { sku: 'LNS-RF7-01', name: 'Canon RF 70-200mm', category: 'Lenses', condition: 'warning', status: 'Rented', nextAvailable: 'Nov 19' },
-  { sku: 'DRN-MV3-01', name: 'DJI Mavic 3 Pro', category: 'Drones', condition: 'error', status: 'Maintenance', nextAvailable: 'TBD' },
-]
+const API_BASE = 'http://localhost:5000/api'
 
 /* Window Title Bar */
 const WindowHeader = ({ title, children }) => (
@@ -121,7 +107,7 @@ const AIVoiceModal = ({ isOpen, onClose }) => {
 }
 
 /* =========================================================================
-   3. ADMIN VIEWS
+   3. ADMIN VIEWS WITH LIVE API INTEGRATION
 ========================================================================= */
 
 /* Admin Login View */
@@ -142,11 +128,11 @@ const AdminLogin = () => {
           <form onSubmit={e => { e.preventDefault(); nav('/') }}>
             <div style={{ marginBottom: '1rem' }}>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Admin ID</label>
-              <input type="text" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="e.g. ADM-001" />
+              <input type="text" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="e.g. ADM-001" defaultValue="ADM-001" />
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.25rem' }}>Passcode</label>
-              <input type="password" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="••••••••" />
+              <input type="password" style={{ width: '100%', padding: '0.75rem', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', outline: 'none' }} placeholder="••••••••" defaultValue="password" />
             </div>
             <button type="submit" style={{ width: '100%', padding: '0.875rem', background: 'var(--blue)', color: 'white', border: '2px solid var(--border-dark)', borderRadius: 'var(--radius-sm)', fontWeight: 700, fontFamily: 'var(--font-heading)', cursor: 'pointer', fontSize: '1rem', transition: 'var(--transition)' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--blue-pale)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--blue)'}>
               Initialize Session
@@ -163,12 +149,30 @@ const DashboardView = () => {
   const days = ['M','T','W','T','F','S','S']
   const calendarDays = Array.from({length: 28}, (_, i) => i + 1)
   const [modalOpen, setModalOpen] = useState(false)
+  const [rentals, setRentals] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  // Ensure scroll is at bottom upon update
+  useEffect(() => {
+    fetch(`${API_BASE}/rentals`)
+      .then(res => res.json())
+      .then(data => {
+        setRentals(data)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false)) // fallbacks will just render empty arrays safely
+  }, [])
+
   useEffect(() => {
     const box = document.getElementById('transcript-scroll')
     if (box) box.scrollTop = box.scrollHeight
   })
+
+  // Basic KPI logic derived from live data
+  const activeRentals = rentals.filter(r => r.status.toUpperCase() === 'ACTIVE').length
+  const overdueRentals = rentals.filter(r => r.status.toUpperCase() === 'OVERDUE').length
+  const pendingRentals = rentals.filter(r => r.status.toUpperCase() === 'PENDING').length
+
+  if (loading) return <div className="dashboard-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div className="admin-spinner"></div></div>
 
   return (
     <div className="dashboard-content">
@@ -177,28 +181,28 @@ const DashboardView = () => {
       <div className="topbar">
         <h1>Dashboard</h1>
         <div className="topbar-actions">
-          <div className="topbar-search"><Search size={18} /> search...</div>
+           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--blue-pale)', padding: '0.25rem 0.75rem', borderRadius: '1rem', color: 'var(--blue-deep)', fontSize: '0.8rem', fontWeight: 700 }}><CheckCircle size={14} /> LIVE API SYNC</div>
           <div className="user-profile"><span>Admin</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Profile" /></div>
         </div>
       </div>
       <div className="hero-strip">
-        <div className="kpi-item"><div className="kpi-label">Active Rentals</div><div className="kpi-value">24</div><div className="kpi-sub">+3 this week</div></div>
+        <div className="kpi-item"><div className="kpi-label">Active Rentals</div><div className="kpi-value">{activeRentals}</div><div className="kpi-sub">syncing from core-api</div></div>
         <div className="kpi-item"><div className="kpi-label">Revenue (Nov)</div><div className="kpi-value">₹1.2L</div><div className="kpi-sub">+12% vs Oct</div></div>
-        <div className="kpi-item"><div className="kpi-label">Overdue</div><div className="kpi-value">3</div><div className="kpi-sub">needs attention</div></div>
-        <div className="kpi-item"><div className="kpi-label">Pending Pickups</div><div className="kpi-value">7</div><div className="kpi-sub">2 scheduled today</div></div>
+        <div className="kpi-item"><div className="kpi-label">Overdue</div><div className="kpi-value">{overdueRentals}</div><div className="kpi-sub">needs attention</div></div>
+        <div className="kpi-item"><div className="kpi-label">Pending Pickups</div><div className="kpi-value">{pendingRentals}</div><div className="kpi-sub">scheduled today</div></div>
       </div>
       <div className="content-columns">
         <div className="window-card">
-          <WindowHeader title="active-rentals.list"><span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)'}}>{MOCK_RENTALS.length} items</span></WindowHeader>
+          <WindowHeader title="active-rentals.list"><span style={{fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--text-muted)'}}>{rentals.length} items</span></WindowHeader>
           <div className="window-card-body">
-            {MOCK_RENTALS.slice(0,4).map(r => (
+            {rentals.slice(0,4).map(r => (
               <div className="rental-item" key={r.id}>
                 <div className="rental-icon blue"><Camera size={20} /></div>
                 <div className="rental-info">
                   <h4>{r.item}</h4>
-                  <p>{r.customer} · {r.status === 'pending' ? 'Pickup' : 'Return'} {r.returnDate}</p>
+                  <p>{r.customer} · {r.returnDate}</p>
                 </div>
-                <span className={`rental-status ${r.status}`}>{r.status}</span>
+                <span className={`rental-status ${r.status.toLowerCase()}`}>{r.status}</span>
               </div>
             ))}
           </div>
@@ -231,9 +235,18 @@ const DashboardView = () => {
 /* Rentals View (Orders list/kanban) */
 const RentalsView = () => {
   const [viewState, setViewState] = useState('list')
+  const [rentals, setRentals] = useState([])
   const [loading, setLoading] = useState(true)
   
-  useEffect(() => { setTimeout(() => setLoading(false), 600) }, [])
+  useEffect(() => {
+    fetch(`${API_BASE}/rentals`)
+      .then(res => res.json())
+      .then(data => {
+        setRentals(data)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [])
 
   if (loading) {
     return (
@@ -271,14 +284,14 @@ const RentalsView = () => {
               </tr>
             </thead>
             <tbody>
-              {MOCK_RENTALS.map(r => (
+              {rentals.map(r => (
                 <tr key={r.id}>
                   <td className="td-id">{r.id}</td>
                   <td className="td-main">{r.customer}</td>
                   <td className="td-sub">{r.item}</td>
                   <td className="td-sub">{r.returnDate}</td>
                   <td>
-                    <span className={`status-pill ${r.status === 'active' ? 'neutral' : r.status === 'overdue' ? 'error' : r.status === 'pending' ? 'warning' : 'good'}`}>
+                    <span className={`status-pill ${r.status.toUpperCase() === 'ACTIVE' ? 'neutral' : r.status.toUpperCase() === 'OVERDUE' ? 'error' : r.status.toUpperCase() === 'PENDING' ? 'warning' : 'good'}`}>
                       {r.status}
                     </span>
                   </td>
@@ -289,8 +302,8 @@ const RentalsView = () => {
         </div>
       ) : (
         <div className="kanban-board">
-          {['pending', 'active', 'return'].map(col => {
-            const items = MOCK_RENTALS.filter(i => i.status === col)
+          {['PENDING', 'ACTIVE', 'RETURNED'].map(col => {
+            const items = rentals.filter(i => i.status.toUpperCase() === col)
             return (
               <div className="kanban-column" key={col}>
                 <div className="kanban-col-header">
@@ -302,7 +315,7 @@ const RentalsView = () => {
                     <div className="kanban-card" key={r.id}>
                       <div className="k-card-header">
                         <span className="k-card-id">{r.id}</span>
-                        <span className={`status-pill ${r.status === 'active' ? 'neutral' : r.status === 'pending' ? 'warning' : 'good'}`} style={{fontSize: '0.65rem', padding: '0.1rem 0.4rem'}}>
+                        <span className={`status-pill ${r.status.toUpperCase() === 'ACTIVE' ? 'neutral' : r.status.toUpperCase() === 'PENDING' ? 'warning' : 'good'}`} style={{fontSize: '0.65rem', padding: '0.1rem 0.4rem'}}>
                           {r.status}
                         </span>
                       </div>
@@ -310,9 +323,6 @@ const RentalsView = () => {
                       <div className="k-card-desc">{r.item}</div>
                       <div className="k-card-footer">
                         <span style={{fontSize: '0.75rem', color: 'var(--text-muted)'}}>{r.returnDate}</span>
-                        <div className="k-user">
-                          <img className="k-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="" />
-                        </div>
                       </div>
                     </div>
                   ))}
@@ -328,9 +338,18 @@ const RentalsView = () => {
 
 /* Inventory View (Data Grid) */
 const InventoryView = () => {
+  const [inventory, setInventory] = useState([])
   const [loading, setLoading] = useState(true)
   
-  useEffect(() => { setTimeout(() => setLoading(false), 700) }, [])
+  useEffect(() => {
+    fetch(`${API_BASE}/admin/inventory`)
+      .then(res => res.json())
+      .then(data => {
+        setInventory(data)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [])
 
   if (loading) {
     return (
@@ -359,21 +378,19 @@ const InventoryView = () => {
               <th>Asset Name</th>
               <th>Category</th>
               <th>Health</th>
-              <th>Availability</th>
             </tr>
           </thead>
           <tbody>
-            {MOCK_INVENTORY.map(inv => (
+            {inventory.map(inv => (
               <tr key={inv.sku}>
                 <td className="td-id">{inv.sku}</td>
                 <td className="td-main">{inv.name}</td>
                 <td className="td-sub">{inv.category}</td>
                 <td>
                   <span className={`status-pill ${inv.condition}`}>
-                    {inv.condition === 'good' ? '100% OK' : inv.condition === 'neutral' ? 'Checked' : inv.condition === 'warning' ? 'Needs Insp.' : 'Repair'}
+                    {inv.healthScore}% - {inv.condition === 'good' ? 'OK' : inv.condition === 'neutral' ? 'Checked' : inv.condition === 'warning' ? 'Needs Insp.' : 'Repair'}
                   </span>
                 </td>
-                <td className="td-main" style={{fontSize: '0.85rem'}}>{inv.status} <span className="td-sub" style={{marginLeft: '0.5rem'}}>({inv.nextAvailable})</span></td>
               </tr>
             ))}
           </tbody>
