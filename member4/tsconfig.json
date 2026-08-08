@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@agent/*": ["src/agent/*"],
+      "@voice/*": ["src/voice/*"],
+      "@tools/*": ["src/tools/*"],
+      "@prompts/*": ["src/prompts/*"],
+      "@workflows/*": ["src/workflows/*"],
+      "@memory/*": ["src/memory/*"],
+      "@intelligence/*": ["src/intelligence/*"],
+      "@events/*": ["src/events/*"],
+      "@integrations/*": ["src/integrations/*"],
+      "@config/*": ["config/*"]
+    }
+  },
+  "include": ["src/**/*", "config/**/*", "scripts/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
