@@ -21,11 +21,13 @@ import productRoutes from './routes/productRoutes';
 import cartRoutes from './routes/cartRoutes';
 import rentalRoutes from './routes/rentalRoutes';
 import logisticsRoutes from './routes/logisticsRoutes';
+import aiRoutes from './routes/aiRoutes';
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/rentals', rentalRoutes);
 app.use('/api/logistics', logisticsRoutes);
+app.use('/internal/ai', aiRoutes);
 
 // Error Handling
 app.use(notFound);
