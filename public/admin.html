@@ -7,7 +7,7 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RELAY ΓÇö Every rental. Every handoff. One platform.</title>
+<title>RELAY — Every rental. Every handoff. One platform.</title>
 <style>
   :root{
     --cream:#F4F0E6;
@@ -406,9 +406,9 @@
       <a onclick="cGo('home')">Contact Us</a>
     </nav>
     <div class="site-actions">
-      <div class="searchbar"><span>≡ƒöì</span><input placeholder="Search Sony A7 IV, DJI RS3ΓÇª" onkeydown="if(event.key==='Enter'){toast('Showing results for ΓÇ£'+this.value+'ΓÇ¥');}"></div>
-      <button class="icon-btn" onclick="toast('Wishlist opened')">ΓÖí</button>
-      <button class="icon-btn" onclick="cGo('cart')">≡ƒ¢Æ<span class="badge" id="cartBadge">0</span></button>
+      <div class="searchbar"><span>🔍</span><input placeholder="Search Sony A7 IV, DJI RS3…" onkeydown="if(event.key==='Enter'){toast('Showing results for “'+this.value+'”');}"></div>
+      <button class="icon-btn" onclick="toast('Wishlist opened')">♡</button>
+      <button class="icon-btn" onclick="cGo('cart')">🛒<span class="badge" id="cartBadge">0</span></button>
       <button class="btn btn-primary session-auth-btn" id="headerAuthBtn" onclick="openAuth()">Log In / Sign Up</button>
       <div class="avatar session-avatar hide" id="headerAvatar" onclick="cGo('profile')">G</div>
     </div>
@@ -418,7 +418,7 @@
 
     <!-- HOME / MARKETPLACE -->
     <section id="c-home">
-      <div class="eyebrow" style="margin-bottom:6px;">Home Page ΓÇö signed in</div>
+      <div class="eyebrow" style="margin-bottom:6px;">Home Page — signed in</div>
       <h1 style="font-size:26px;margin-bottom:18px;">Rent what you need, when you need it.</h1>
       <div class="marketplace-grid">
         <aside class="filters">
@@ -426,14 +426,14 @@
             <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">filters.panel</span></div>
             <div class="win-body">
               <div>
-                <div class="filter-title">Brand Γû╛</div>
+                <div class="filter-title">Brand ▾</div>
                 <div class="checkrow"><input type="checkbox" checked><span>Sony</span></div>
                 <div class="checkrow"><input type="checkbox"><span>Canon</span></div>
                 <div class="checkrow"><input type="checkbox"><span>DJI</span></div>
                 <div class="checkrow"><input type="checkbox"><span>GoPro</span></div>
               </div>
               <div>
-                <div class="filter-title">Color Γû╛</div>
+                <div class="filter-title">Color ▾</div>
                 <div class="swatches">
                   <span class="swatch" style="background:#2b2b2b"></span>
                   <span class="swatch" style="background:#6FB8D6"></span>
@@ -442,7 +442,7 @@
                 </div>
               </div>
               <div>
-                <div class="filter-title">Duration Γû╛</div>
+                <div class="filter-title">Duration ▾</div>
                 <select class="field">
                   <option>All Duration</option>
                   <option>Per Hour</option>
@@ -453,9 +453,9 @@
                 </select>
               </div>
               <div>
-                <div class="filter-title">Price Range Γû╛</div>
+                <div class="filter-title">Price Range ▾</div>
                 <input type="range" class="range" min="0" max="10000">
-                <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;"><span>Γé╣0</span><span>Γé╣10,000</span></div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;"><span>₹0</span><span>₹10,000</span></div>
               </div>
             </div>
           </div>
@@ -464,10 +464,10 @@
         <div>
           <div class="product-grid" id="productGrid"></div>
           <div class="pagination">
-            <button onclick="toast('Previous page')">ΓÇ╣</button>
+            <button onclick="toast('Previous page')">‹</button>
             <button class="active">1</button>
             <button onclick="toast('Page 2')">2</button>
-            <button onclick="toast('Next page')">ΓÇ║</button>
+            <button onclick="toast('Next page')">›</button>
           </div>
         </div>
       </div>
@@ -478,19 +478,19 @@
       <div class="breadcrumb"><a onclick="cGo('home')">All Products</a> / <span id="pd-name-crumb">Product</span></div>
       <div class="product-detail">
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title" id="pd-file">product.image</span></div>
-          <div class="product-image-big" id="pd-image">≡ƒô╖</div>
+          <div class="product-image-big" id="pd-image">📷</div>
         </div>
         <div>
           <div class="eyebrow" id="pd-cat">Camera Body</div>
           <h1 style="font-size:26px;margin:4px 0 6px;" id="pd-name">Sony A7 IV</h1>
-          <div style="font-family:var(--mono);font-size:15px;margin-bottom:14px;" id="pd-price">Γé╣1,500 <span style="color:#6b675c;">/ day</span></div>
-          <span class="pill pill-green" id="pd-avail">ΓùÅ Available</span>
+          <div style="font-family:var(--mono);font-size:15px;margin-bottom:14px;" id="pd-price">₹1,500 <span style="color:#6b675c;">/ day</span></div>
+          <span class="pill pill-green" id="pd-avail">● Available</span>
           <div style="height:16px;"></div>
 
           <label class="flabel">Rental Period (UTC+05:30)</label>
           <div class="rental-period-row" style="margin-bottom:16px;">
             <input class="field" type="datetime-local" value="2026-08-12T09:00">
-            <span>ΓåÆ</span>
+            <span>→</span>
             <input class="field" type="datetime-local" value="2026-08-14T09:00">
           </div>
 
@@ -499,13 +499,13 @@
 
           <label class="flabel">Quantity</label>
           <div class="qty-stepper" style="margin-bottom:20px;">
-            <button onclick="qtyStep(-1)">ΓêÆ</button><span id="pd-qty">1</span><button onclick="qtyStep(1)">+</button>
+            <button onclick="qtyStep(-1)">−</button><span id="pd-qty">1</span><button onclick="qtyStep(1)">+</button>
           </div>
 
           <div style="display:flex;gap:10px;">
-            <button class="btn btn-primary" onclick="openConfigure()">≡ƒ¢Æ Add to cart</button>
-            <button class="btn icon-btn" onclick="toast('Saved to wishlist')">ΓÖí</button>
-            <button class="btn icon-btn" onclick="toast('Added to compare')">Γçä</button>
+            <button class="btn btn-primary" onclick="openConfigure()">🛒 Add to cart</button>
+            <button class="btn icon-btn" onclick="toast('Saved to wishlist')">♡</button>
+            <button class="btn icon-btn" onclick="toast('Added to compare')">⇄</button>
           </div>
 
           <div style="height:26px;"></div>
@@ -520,9 +520,9 @@
     <!-- CART -->
     <section id="c-cart" class="hide">
       <div class="stepper-track">
-        <span class="step-node active">1. Cart</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node">2. Address</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node">3. Payment</span><span class="step-arrow">ΓåÆ</span>
+        <span class="step-node active">1. Cart</span><span class="step-arrow">→</span>
+        <span class="step-node">2. Address</span><span class="step-arrow">→</span>
+        <span class="step-node">3. Payment</span><span class="step-arrow">→</span>
         <span class="step-node">4. Confirmation</span>
       </div>
       <div class="two-col">
@@ -533,14 +533,14 @@
         <div class="win">
           <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">totals.calc</span></div>
           <div class="win-body">
-            <div class="summary-row"><span>Subtotal</span><span id="sumSub">Γé╣0</span></div>
-            <div class="summary-row"><span>Delivery charges</span><span id="sumDeliv">Γé╣150</span></div>
-            <div class="summary-row"><span>Security deposit (held)</span><span id="sumDep">Γé╣0</span></div>
-            <div class="summary-row total"><span>Total due today</span><span id="sumTotal">Γé╣0</span></div>
-            <input class="field" placeholder="Apply coupon ΓÇö try RELAY10" style="margin:14px 0 10px;" id="couponInput">
+            <div class="summary-row"><span>Subtotal</span><span id="sumSub">₹0</span></div>
+            <div class="summary-row"><span>Delivery charges</span><span id="sumDeliv">₹150</span></div>
+            <div class="summary-row"><span>Security deposit (held)</span><span id="sumDep">₹0</span></div>
+            <div class="summary-row total"><span>Total due today</span><span id="sumTotal">₹0</span></div>
+            <input class="field" placeholder="Apply coupon — try RELAY10" style="margin:14px 0 10px;" id="couponInput">
             <button class="btn btn-block" style="margin-bottom:16px;" onclick="applyCoupon()">Apply Coupon</button>
             <button class="btn btn-primary btn-block" style="margin-bottom:8px;" onclick="cGo('address')">Checkout</button>
-            <button class="btn btn-ghost btn-block" onclick="cGo('home')">Continue Shopping ΓÇ║</button>
+            <button class="btn btn-ghost btn-block" onclick="cGo('home')">Continue Shopping ›</button>
           </div>
         </div>
       </div>
@@ -549,9 +549,9 @@
     <!-- ADDRESS -->
     <section id="c-address" class="hide">
       <div class="stepper-track">
-        <span class="step-node done">1. Cart</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node active">2. Address</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node">3. Payment</span><span class="step-arrow">ΓåÆ</span>
+        <span class="step-node done">1. Cart</span><span class="step-arrow">→</span>
+        <span class="step-node active">2. Address</span><span class="step-arrow">→</span>
+        <span class="step-node">3. Payment</span><span class="step-arrow">→</span>
         <span class="step-node">4. Confirmation</span>
       </div>
       <div class="two-col">
@@ -560,8 +560,8 @@
           <div class="win-body">
             <label class="flabel">Fulfillment method</label>
             <div style="display:flex;gap:10px;margin-bottom:18px;">
-              <button class="btn" id="fmDeliver" onclick="setFulfill('deliver')">≡ƒÜÜ Standard Delivery</button>
-              <button class="btn" id="fmPickup" onclick="setFulfill('pickup')">≡ƒÅ¼ Pick up from Store</button>
+              <button class="btn" id="fmDeliver" onclick="setFulfill('deliver')">🚚 Standard Delivery</button>
+              <button class="btn" id="fmPickup" onclick="setFulfill('pickup')">🏬 Pick up from Store</button>
             </div>
             <div class="formstack">
               <div><label class="flabel">Full name</label><input class="field" value="Arjun Mehta"></div>
@@ -575,9 +575,9 @@
         </div>
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">order-summary.cart</span></div>
           <div class="win-body">
-            <div class="summary-row"><span>Total due today</span><span id="sumTotal2">Γé╣0</span></div>
-            <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="cGo('payment')">Continue to Payment ΓÇ║</button>
-            <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="cGo('cart')">ΓÇ╣ Back to Cart</button>
+            <div class="summary-row"><span>Total due today</span><span id="sumTotal2">₹0</span></div>
+            <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="cGo('payment')">Continue to Payment ›</button>
+            <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="cGo('cart')">‹ Back to Cart</button>
           </div>
         </div>
       </div>
@@ -586,9 +586,9 @@
     <!-- PAYMENT -->
     <section id="c-payment" class="hide">
       <div class="stepper-track">
-        <span class="step-node done">1. Cart</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node done">2. Address</span><span class="step-arrow">ΓåÆ</span>
-        <span class="step-node active">3. Payment</span><span class="step-arrow">ΓåÆ</span>
+        <span class="step-node done">1. Cart</span><span class="step-arrow">→</span>
+        <span class="step-node done">2. Address</span><span class="step-arrow">→</span>
+        <span class="step-node active">3. Payment</span><span class="step-arrow">→</span>
         <span class="step-node">4. Confirmation</span>
       </div>
       <div class="two-col">
@@ -610,10 +610,10 @@
         </div>
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">totals.calc</span></div>
           <div class="win-body">
-            <div class="summary-row total"><span>Total due today</span><span id="sumTotal3">Γé╣0</span></div>
+            <div class="summary-row total"><span>Total due today</span><span id="sumTotal3">₹0</span></div>
             <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="placeOrder()">Pay Now</button>
-            <div style="text-align:center;margin:10px 0;color:#8a8577;font-size:12px;">ΓÇö or ΓÇö</div>
-            <button class="btn btn-ghost btn-block" onclick="cGo('address')">ΓÇ╣ Back to Address</button>
+            <div style="text-align:center;margin:10px 0;color:#8a8577;font-size:12px;">— or —</div>
+            <button class="btn btn-ghost btn-block" onclick="cGo('address')">‹ Back to Address</button>
           </div>
         </div>
       </div>
@@ -627,23 +627,23 @@
           <div class="win-body">
             <h2 style="color:#3d7a3d;">Thank you for your order</h2>
             <div class="eyebrow" style="margin:6px 0 14px;" id="orderNum">Order RL-1042</div>
-            <div class="pill pill-green" style="margin-bottom:16px;">Γ£ô Payment processed</div>
+            <div class="pill pill-green" style="margin-bottom:16px;">✓ Payment processed</div>
             <div style="border:2px solid var(--border);border-radius:8px;padding:12px;margin-bottom:14px;">
               <div style="font-weight:800;font-size:12.5px;margin-bottom:4px;">Delivery &amp; Billing</div>
               <div style="font-size:13px;">Arjun Mehta<br>14, Lake Gardens, Kolkata, WB 700045</div>
             </div>
-            <button class="btn" onclick="toast('Invoice sent to printer / downloading PDFΓÇª')">≡ƒû¿ Print Invoice</button>
+            <button class="btn" onclick="toast('Invoice sent to printer / downloading PDF…')">🖨 Print Invoice</button>
           </div>
         </div>
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">lifecycle.state</span></div>
           <div class="win-body">
             <div class="lifecycle-strip">
-              <span class="lc-node on">BOOKED</span><span class="lc-arrow">ΓåÆ</span>
-              <span class="lc-node on">PAID</span><span class="lc-arrow">ΓåÆ</span>
-              <span class="lc-node">PICKED UP</span><span class="lc-arrow">ΓåÆ</span>
-              <span class="lc-node">ACTIVE</span><span class="lc-arrow">ΓåÆ</span>
-              <span class="lc-node">RETURNED</span><span class="lc-arrow">ΓåÆ</span>
-              <span class="lc-node">INSPECTED</span><span class="lc-arrow">ΓåÆ</span>
+              <span class="lc-node on">BOOKED</span><span class="lc-arrow">→</span>
+              <span class="lc-node on">PAID</span><span class="lc-arrow">→</span>
+              <span class="lc-node">PICKED UP</span><span class="lc-arrow">→</span>
+              <span class="lc-node">ACTIVE</span><span class="lc-arrow">→</span>
+              <span class="lc-node">RETURNED</span><span class="lc-arrow">→</span>
+              <span class="lc-node">INSPECTED</span><span class="lc-arrow">→</span>
               <span class="lc-node">SETTLED</span>
             </div>
             <div style="height:14px;"></div>
@@ -727,19 +727,19 @@
             <!-- LOGIN -->
             <div id="loginForm" class="formstack">
               <div class="auth-hello">Welcome back</div>
-              <div class="auth-sub">Log in to manage your rentals ≡ƒæï</div>
+              <div class="auth-sub">Log in to manage your rentals 👋</div>
 
               <div class="social-row">
                 <button class="social-btn" onclick="toast('Continuing with Google')"><span style="font-weight:800;">G</span> Google</button>
                 <button class="social-btn" onclick="toast('Continuing with Facebook')">f</button>
-                <button class="social-btn" onclick="toast('Continuing with X')">≡¥òÅ</button>
+                <button class="social-btn" onclick="toast('Continuing with X')">𝕏</button>
               </div>
               <div class="divider-row"><div class="line"></div><span>or</span><div class="line"></div></div>
 
               <div style="margin-bottom:14px;"><input class="pill-field" id="loginId" placeholder="Email address"></div>
               <div class="field-wrap" style="margin-bottom:6px;">
                 <input class="pill-field has-toggle" id="loginPw" type="password" placeholder="Password">
-                <button type="button" class="pw-toggle" onclick="togglePw('loginPw',this)">≡ƒæü</button>
+                <button type="button" class="pw-toggle" onclick="togglePw('loginPw',this)">👁</button>
               </div>
               <div class="auth-err" id="loginErr">Invalid User ID or Password.</div>
 
@@ -751,17 +751,17 @@
             <!-- SIGNUP -->
             <div id="signupForm" class="formstack hide">
               <div class="auth-hello">Hello! Welcome Aboard</div>
-              <div class="auth-sub">We are glad to see you ≡ƒÿè</div>
+              <div class="auth-sub">We are glad to see you 😊</div>
 
               <div class="role-toggle" id="suRoleToggle">
-                <button type="button" class="role-btn active" data-role="customer" onclick="selectRole('customer',this)">≡ƒºæ Customer</button>
-                <button type="button" class="role-btn" data-role="admin" onclick="selectRole('admin',this)">≡ƒ¢á Admin / Vendor</button>
+                <button type="button" class="role-btn active" data-role="customer" onclick="selectRole('customer',this)">🧑 Customer</button>
+                <button type="button" class="role-btn" data-role="admin" onclick="selectRole('admin',this)">🛠 Admin / Vendor</button>
               </div>
 
               <div class="social-row">
                 <button class="social-btn" onclick="toast('Signing up with Google')"><span style="font-weight:800;">G</span> Sign up with Google</button>
                 <button class="social-btn" onclick="toast('Signing up with Facebook')">f</button>
-                <button class="social-btn" onclick="toast('Signing up with X')">≡¥òÅ</button>
+                <button class="social-btn" onclick="toast('Signing up with X')">𝕏</button>
               </div>
               <div class="divider-row"><div class="line"></div><span>or</span><div class="line"></div></div>
 
@@ -782,11 +782,11 @@
               <div class="form-grid-2">
                 <div class="field-wrap">
                   <input class="pill-field has-toggle" id="suPw" type="password" placeholder="Password">
-                  <button type="button" class="pw-toggle" onclick="togglePw('suPw',this)">≡ƒæü</button>
+                  <button type="button" class="pw-toggle" onclick="togglePw('suPw',this)">👁</button>
                 </div>
                 <div class="field-wrap">
                   <input class="pill-field has-toggle" id="suPw2" type="password" placeholder="Confirm Password">
-                  <button type="button" class="pw-toggle" onclick="togglePw('suPw2',this)">≡ƒæü</button>
+                  <button type="button" class="pw-toggle" onclick="togglePw('suPw2',this)">👁</button>
                 </div>
               </div>
               <div class="auth-err" id="signupErr">Please fill all fields correctly.</div>
@@ -798,8 +798,8 @@
 
               <button class="auth-cta" onclick="fakeSignup()">Sign up</button>
               <div style="display:flex;gap:8px;margin-top:10px;">
-                <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('customer')">ΓÜí Demo Customer</button>
-                <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('admin')">ΓÜí Demo Admin</button>
+                <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('customer')">⚡ Demo Customer</button>
+                <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('admin')">⚡ Demo Admin</button>
               </div>
               <div class="auth-toggle-line" style="text-align:center;margin-top:16px;margin-bottom:0;">Already have an account? <a onclick="authTab('login')">Log In</a></div>
             </div>
@@ -829,7 +829,7 @@
             <div id="pv-profile">
               <div style="display:flex;gap:16px;align-items:center;margin-bottom:20px;">
                 <div class="avatar session-avatar" style="width:64px;height:64px;font-size:22px;">G</div>
-                <div><h3 class="session-name">Guest</h3><div class="eyebrow"><span class="session-email"></span> ┬╖ Customer since Jan 2026</div></div>
+                <div><h3 class="session-name">Guest</h3><div class="eyebrow"><span class="session-email"></span> · Customer since Jan 2026</div></div>
               </div>
               <div class="formstack" style="max-width:420px;margin-bottom:10px;">
                 <div><label class="flabel">Address</label><input class="field" placeholder="12 Lake Town, Kolkata 700089"></div>
@@ -852,19 +852,19 @@
             <div id="pv-invoices" class="hide">
               <table class="data-table">
                 <tr><th>Invoice</th><th>Item</th><th>Status</th><th>Total</th><th></th></tr>
-                <tr><td>INV-1042</td><td>Sony A7 IV</td><td><span class="pill pill-blue">Posted</span></td><td>Γé╣6,000</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1042')">View</button></td></tr>
-                <tr><td>INV-1029</td><td>DJI RS3 Gimbal</td><td><span class="pill pill-green">Paid</span></td><td>Γé╣2,400</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1029')">View</button></td></tr>
-                <tr><td>INV-1011</td><td>GoPro Hero 12</td><td><span class="pill pill-green">Paid</span></td><td>Γé╣1,800</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1011')">View</button></td></tr>
+                <tr><td>INV-1042</td><td>Sony A7 IV</td><td><span class="pill pill-blue">Posted</span></td><td>₹6,000</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1042')">View</button></td></tr>
+                <tr><td>INV-1029</td><td>DJI RS3 Gimbal</td><td><span class="pill pill-green">Paid</span></td><td>₹2,400</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1029')">View</button></td></tr>
+                <tr><td>INV-1011</td><td>GoPro Hero 12</td><td><span class="pill pill-green">Paid</span></td><td>₹1,800</td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1011')">View</button></td></tr>
               </table>
             </div>
 
             <div id="pv-notif" class="hide">
-              <div class="list-row"><div class="ic">≡ƒôª</div><div class="meta"><div class="t">Pickup reminder</div><div class="s">Sony A7 IV pickup scheduled for tomorrow, 09:00</div></div><span class="pill pill-blue">New</span></div>
-              <div class="list-row"><div class="ic">Γå⌐∩╕Å</div><div class="meta"><div class="t">Return reminder</div><div class="s">DJI RS3 Gimbal due back on Aug 10</div></div><span class="pill pill-blue">New</span></div>
-              <div class="list-row"><div class="ic">ΓÜá∩╕Å</div><div class="meta"><div class="t">Overdue warning</div><div class="s">GoPro Hero 12 is 2 days overdue ΓÇö late fee accruing</div></div><span class="pill pill-red">Action needed</span></div>
-              <div class="list-row"><div class="ic">≡ƒÆ│</div><div class="meta"><div class="t">Payment received</div><div class="s">Γé╣3,150 charged for RL-1042</div></div><span class="pill pill-green">Done</span></div>
-              <div class="list-row"><div class="ic">≡ƒÆ░</div><div class="meta"><div class="t">Deposit refunded</div><div class="s">Γé╣4,700 refunded for RL-1029</div></div><span class="pill pill-green">Done</span></div>
-              <div class="list-row"><div class="ic">≡ƒô₧</div><div class="meta"><div class="t">AI call outcome</div><div class="s">Automated reminder call completed ΓÇö customer confirmed return by 6 PM</div></div><span class="pill pill-yellow">Logged</span></div>
+              <div class="list-row"><div class="ic">📦</div><div class="meta"><div class="t">Pickup reminder</div><div class="s">Sony A7 IV pickup scheduled for tomorrow, 09:00</div></div><span class="pill pill-blue">New</span></div>
+              <div class="list-row"><div class="ic">↩️</div><div class="meta"><div class="t">Return reminder</div><div class="s">DJI RS3 Gimbal due back on Aug 10</div></div><span class="pill pill-blue">New</span></div>
+              <div class="list-row"><div class="ic">⚠️</div><div class="meta"><div class="t">Overdue warning</div><div class="s">GoPro Hero 12 is 2 days overdue — late fee accruing</div></div><span class="pill pill-red">Action needed</span></div>
+              <div class="list-row"><div class="ic">💳</div><div class="meta"><div class="t">Payment received</div><div class="s">₹3,150 charged for RL-1042</div></div><span class="pill pill-green">Done</span></div>
+              <div class="list-row"><div class="ic">💰</div><div class="meta"><div class="t">Deposit refunded</div><div class="s">₹4,700 refunded for RL-1029</div></div><span class="pill pill-green">Done</span></div>
+              <div class="list-row"><div class="ic">📞</div><div class="meta"><div class="t">AI call outcome</div><div class="s">Automated reminder call completed — customer confirmed return by 6 PM</div></div><span class="pill pill-yellow">Logged</span></div>
             </div>
 
           </div>
@@ -886,24 +886,24 @@
     </div>
     <div class="eyebrow" style="padding:0 16px 10px;">Vendor / Business Portal</div>
     <div class="os-section-label">OPERATIONS</div>
-    <div class="os-nav-item active" onclick="aGo('overview',this)">Γûª Overview</div>
-    <div class="os-nav-item" onclick="aGo('rentals',this)">≡ƒùé Rentals</div>
-    <div class="os-nav-item" onclick="aGo('scheduler',this)">≡ƒùô Scheduler</div>
-    <div class="os-nav-item" onclick="aGo('inventory',this)">Γºë Inventory &amp; Assets</div>
-    <div class="os-nav-item" onclick="aGo('pickup',this)">≡ƒô╖ Pickup / Return</div>
-    <div class="os-nav-item" onclick="aGo('maintenance',this)">≡ƒ¢á Maintenance</div>
+    <div class="os-nav-item active" onclick="aGo('overview',this)">▦ Overview</div>
+    <div class="os-nav-item" onclick="aGo('rentals',this)">🗂 Rentals</div>
+    <div class="os-nav-item" onclick="aGo('scheduler',this)">🗓 Scheduler</div>
+    <div class="os-nav-item" onclick="aGo('inventory',this)">⧉ Inventory &amp; Assets</div>
+    <div class="os-nav-item" onclick="aGo('pickup',this)">📷 Pickup / Return</div>
+    <div class="os-nav-item" onclick="aGo('maintenance',this)">🛠 Maintenance</div>
     <div class="os-section-label">SALES</div>
-    <div class="os-nav-item" onclick="aGo('quotations',this)">≡ƒô¥ Quotations</div>
-    <div class="os-nav-item" onclick="aGo('pricelists',this)">≡ƒÅ╖ Pricelists</div>
-    <div class="os-nav-item" onclick="aGo('invoices',this)">≡ƒº╛ Invoices</div>
+    <div class="os-nav-item" onclick="aGo('quotations',this)">📝 Quotations</div>
+    <div class="os-nav-item" onclick="aGo('pricelists',this)">🏷 Pricelists</div>
+    <div class="os-nav-item" onclick="aGo('invoices',this)">🧾 Invoices</div>
     <div class="os-section-label">INSIGHTS</div>
-    <div class="os-nav-item" onclick="aGo('analytics',this)">≡ƒôê Analytics</div>
-    <div class="os-nav-item" onclick="aGo('forecast',this)">≡ƒö« Forecasting</div>
+    <div class="os-nav-item" onclick="aGo('analytics',this)">📈 Analytics</div>
+    <div class="os-nav-item" onclick="aGo('forecast',this)">🔮 Forecasting</div>
     <div class="os-section-label">COMMUNICATIONS</div>
-    <div class="os-nav-item" onclick="aGo('messages',this)">≡ƒÆ¼ Messages</div>
-    <div class="os-nav-item" onclick="aGo('customers',this)">≡ƒæñ Customers</div>
+    <div class="os-nav-item" onclick="aGo('messages',this)">💬 Messages</div>
+    <div class="os-nav-item" onclick="aGo('customers',this)">👤 Customers</div>
     <div class="os-section-label">SYSTEM</div>
-    <div class="os-nav-item" onclick="aGo('settings',this)">ΓÜÖ Settings</div>
+    <div class="os-nav-item" onclick="aGo('settings',this)">⚙ Settings</div>
   </aside>
 
   <main class="os-main">
@@ -914,7 +914,7 @@
         <h1 style="font-size:26px;">Dashboard</h1>
         <div style="display:flex;gap:10px;align-items:center;">
           <span class="live-sync"><span class="live-dot"></span> LIVE API SYNC</span>
-          <button class="btn demo-btn btn-sm" onclick="runDemoMode()">Γû╢ Demo Mode</button>
+          <button class="btn demo-btn btn-sm" onclick="runDemoMode()">▶ Demo Mode</button>
           <div class="admin-pill"><span class="av"></span> <span class="session-name">Admin</span></div>
           <button class="btn btn-ghost" onclick="logoutUser()">Logout</button>
         </div>
@@ -922,7 +922,7 @@
 
       <div class="kpi-strip">
         <div class="kpi"><div class="kpi-label">ACTIVE RENTALS</div><div class="kpi-value">42</div><div class="kpi-sub">across 5 categories</div></div>
-        <div class="kpi"><div class="kpi-label">REVENUE (AUG)</div><div class="kpi-value">Γé╣1.2L</div><div class="kpi-sub">+12% vs Jul</div></div>
+        <div class="kpi"><div class="kpi-label">REVENUE (AUG)</div><div class="kpi-value">₹1.2L</div><div class="kpi-sub">+12% vs Jul</div></div>
         <div class="kpi"><div class="kpi-label">OVERDUE</div><div class="kpi-value">3</div><div class="kpi-sub">needs attention</div></div>
         <div class="kpi"><div class="kpi-label">PENDING PICKUPS</div><div class="kpi-value">12</div><div class="kpi-sub">scheduled today</div></div>
         <div class="kpi"><div class="kpi-label">UTILIZATION</div><div class="kpi-value">76%</div><div class="kpi-sub">fleet-wide, 30d avg</div></div>
@@ -938,10 +938,10 @@
         <div class="win">
           <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">active-rentals.list</span><span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:#6b675c;">4 items</span></div>
           <div class="win-body">
-            <div class="list-row"><div class="ic">≡ƒô╖</div><div class="meta"><div class="t">Sony A7 IV Camera Body</div><div class="s">Arjun M. ┬╖ Due 14 Aug</div></div><span class="pill pill-blue">ACTIVE</span></div>
-            <div class="list-row"><div class="ic">≡ƒÆí</div><div class="meta"><div class="t">Godox SL200 III Kit</div><div class="s">Priya S. ┬╖ Due 15 Aug</div></div><span class="pill pill-yellow">PENDING PICKUP</span></div>
-            <div class="list-row"><div class="ic">≡ƒÜü</div><div class="meta"><div class="t">DJI RS3 Gimbal</div><div class="s">Rohan K. ┬╖ Was due 6 Aug</div></div><span class="pill pill-red">OVERDUE</span></div>
-            <div class="list-row"><div class="ic">≡ƒÄÑ</div><div class="meta"><div class="t">Canon R6 + 24-70mm</div><div class="s">Meera T. ┬╖ Due 20 Aug</div></div><span class="pill pill-blue">ACTIVE</span></div>
+            <div class="list-row"><div class="ic">📷</div><div class="meta"><div class="t">Sony A7 IV Camera Body</div><div class="s">Arjun M. · Due 14 Aug</div></div><span class="pill pill-blue">ACTIVE</span></div>
+            <div class="list-row"><div class="ic">💡</div><div class="meta"><div class="t">Godox SL200 III Kit</div><div class="s">Priya S. · Due 15 Aug</div></div><span class="pill pill-yellow">PENDING PICKUP</span></div>
+            <div class="list-row"><div class="ic">🚁</div><div class="meta"><div class="t">DJI RS3 Gimbal</div><div class="s">Rohan K. · Was due 6 Aug</div></div><span class="pill pill-red">OVERDUE</span></div>
+            <div class="list-row"><div class="ic">🎥</div><div class="meta"><div class="t">Canon R6 + 24-70mm</div><div class="s">Meera T. · Due 20 Aug</div></div><span class="pill pill-blue">ACTIVE</span></div>
           </div>
         </div>
         <div>
@@ -949,8 +949,8 @@
             <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">quick-actions.run</span></div>
             <div class="win-body quick-actions">
               <button class="btn btn-primary" onclick="aGo('rentals')">+ New Rental</button>
-              <button class="btn btn-yellow" onclick="openQr()">≡ƒô₧ AI Call Demo ΓåÆ Reminder</button>
-              <button class="btn" onclick="toast('Invoice RL-1042 generated')">≡ƒôä Generate Invoice</button>
+              <button class="btn btn-yellow" onclick="openQr()">📞 AI Call Demo → Reminder</button>
+              <button class="btn" onclick="toast('Invoice RL-1042 generated')">📄 Generate Invoice</button>
             </div>
           </div>
           <div class="win">
@@ -971,9 +971,9 @@
       <div class="win">
         <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">todays-schedule.log</span></div>
         <div class="win-body">
-          <div class="list-row"><div class="ic">≡ƒòÿ</div><div class="meta"><div class="t">09:00 ΓÇö Pickup ΓÇö RL-1041</div><div class="s">Sony A7 IV ┬╖ Priya S.</div></div><button class="btn btn-sm" onclick="openQr()">Scan</button></div>
-          <div class="list-row"><div class="ic">≡ƒòÑ</div><div class="meta"><div class="t">10:30 ΓÇö Return ΓÇö RL-1037</div><div class="s">DJI RS3 Gimbal ┬╖ Rohan K.</div></div><button class="btn btn-sm" onclick="openReturn()">Process</button></div>
-          <div class="list-row"><div class="ic">≡ƒò¢</div><div class="meta"><div class="t">12:00 ΓÇö Pickup ΓÇö RL-1045</div><div class="s">Godox SL200 III ┬╖ Meera T.</div></div><button class="btn btn-sm" onclick="openQr()">Scan</button></div>
+          <div class="list-row"><div class="ic">🕘</div><div class="meta"><div class="t">09:00 — Pickup — RL-1041</div><div class="s">Sony A7 IV · Priya S.</div></div><button class="btn btn-sm" onclick="openQr()">Scan</button></div>
+          <div class="list-row"><div class="ic">🕥</div><div class="meta"><div class="t">10:30 — Return — RL-1037</div><div class="s">DJI RS3 Gimbal · Rohan K.</div></div><button class="btn btn-sm" onclick="openReturn()">Process</button></div>
+          <div class="list-row"><div class="ic">🕛</div><div class="meta"><div class="t">12:00 — Pickup — RL-1045</div><div class="s">Godox SL200 III · Meera T.</div></div><button class="btn btn-sm" onclick="openQr()">Scan</button></div>
         </div>
       </div>
     </div>
@@ -985,7 +985,7 @@
         <button class="tab-btn active" onclick="rentalsView('kanban',this)">Kanban</button>
         <button class="tab-btn" onclick="rentalsView('list',this)">List View</button>
       </div>
-      <div class="eyebrow" style="margin-bottom:10px;">Draft ΓåÆ Quotation ΓåÆ Confirmed ΓåÆ Pickup ΓåÆ Active ΓåÆ Return Pending ΓåÆ Returned ΓåÆ Completed ┬╖ drag a card between columns</div>
+      <div class="eyebrow" style="margin-bottom:10px;">Draft → Quotation → Confirmed → Pickup → Active → Return Pending → Returned → Completed · drag a card between columns</div>
       <div class="kanban" id="rentalsKanban" style="grid-template-columns:repeat(8,1fr);"></div>
 
       <div class="win hide" id="rentalsListWrap">
@@ -993,11 +993,11 @@
         <div class="win-body" style="overflow:auto;">
           <table class="data-table">
             <tr><th>Order</th><th>Customer</th><th>Product</th><th>Rental period</th><th>Amount</th><th>Deposit</th><th>Status</th><th></th></tr>
-            <tr><td>RL-1042</td><td>Arjun Mehta</td><td>Sony A7 IV</td><td>10ΓÇô14 Aug</td><td>Γé╣6,000</td><td>Γé╣5,000</td><td><span class="pill pill-blue">Active</span></td><td class="row-actions"><button class="btn btn-sm" onclick="toast('RL-1042 opened')">View</button></td></tr>
-            <tr><td>RL-1043</td><td>Meera Thomas</td><td>Canon R6</td><td>15ΓÇô20 Aug</td><td>Γé╣7,500</td><td>Γé╣6,000</td><td><span class="pill pill-blue">Active</span></td><td class="row-actions"><button class="btn btn-sm" onclick="toast('RL-1043 opened')">View</button></td></tr>
-            <tr><td>RL-1037</td><td>Rohan Kapoor</td><td>DJI RS3 Gimbal</td><td>1ΓÇô6 Aug</td><td>Γé╣3,600</td><td>Γé╣5,000</td><td><span class="pill pill-red">Overdue</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openReturn()">Process</button></td></tr>
-            <tr><td>RL-1045</td><td>Meera Thomas</td><td>Godox SL200 III</td><td>8ΓÇô12 Aug</td><td>Γé╣2,800</td><td>Γé╣2,000</td><td><span class="pill pill-yellow">Pickup pending</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openQr()">Scan</button></td></tr>
-            <tr><td>RL-1029</td><td>Priya Sen</td><td>DJI RS3 Gimbal</td><td>20ΓÇô24 Jul</td><td>Γé╣2,400</td><td>Γé╣0</td><td><span class="pill pill-green">Completed</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1029')">Invoice</button></td></tr>
+            <tr><td>RL-1042</td><td>Arjun Mehta</td><td>Sony A7 IV</td><td>10–14 Aug</td><td>₹6,000</td><td>₹5,000</td><td><span class="pill pill-blue">Active</span></td><td class="row-actions"><button class="btn btn-sm" onclick="toast('RL-1042 opened')">View</button></td></tr>
+            <tr><td>RL-1043</td><td>Meera Thomas</td><td>Canon R6</td><td>15–20 Aug</td><td>₹7,500</td><td>₹6,000</td><td><span class="pill pill-blue">Active</span></td><td class="row-actions"><button class="btn btn-sm" onclick="toast('RL-1043 opened')">View</button></td></tr>
+            <tr><td>RL-1037</td><td>Rohan Kapoor</td><td>DJI RS3 Gimbal</td><td>1–6 Aug</td><td>₹3,600</td><td>₹5,000</td><td><span class="pill pill-red">Overdue</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openReturn()">Process</button></td></tr>
+            <tr><td>RL-1045</td><td>Meera Thomas</td><td>Godox SL200 III</td><td>8–12 Aug</td><td>₹2,800</td><td>₹2,000</td><td><span class="pill pill-yellow">Pickup pending</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openQr()">Scan</button></td></tr>
+            <tr><td>RL-1029</td><td>Priya Sen</td><td>DJI RS3 Gimbal</td><td>20–24 Jul</td><td>₹2,400</td><td>₹0</td><td><span class="pill pill-green">Completed</span></td><td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('INV-1029')">Invoice</button></td></tr>
           </table>
         </div>
       </div>
@@ -1017,20 +1017,20 @@
           <div class="win" style="margin-bottom:16px;">
             <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">legend.key</span></div>
             <div class="win-body" style="display:flex;flex-direction:column;gap:8px;">
-              <span class="pill pill-blue" style="width:fit-content;">ΓùÅ Booked</span>
-              <span class="pill pill-blue" style="width:fit-content;">ΓùÅ Pickup</span>
-              <span class="pill pill-red" style="width:fit-content;">ΓùÅ Late Pickup</span>
-              <span class="pill pill-green" style="width:fit-content;">ΓùÅ Return</span>
-              <span class="pill pill-red" style="width:fit-content;">ΓùÅ Late Return</span>
-              <span class="pill pill-yellow" style="width:fit-content;">ΓùÅ Maintenance Block</span>
+              <span class="pill pill-blue" style="width:fit-content;">● Booked</span>
+              <span class="pill pill-blue" style="width:fit-content;">● Pickup</span>
+              <span class="pill pill-red" style="width:fit-content;">● Late Pickup</span>
+              <span class="pill pill-green" style="width:fit-content;">● Return</span>
+              <span class="pill pill-red" style="width:fit-content;">● Late Return</span>
+              <span class="pill pill-yellow" style="width:fit-content;">● Maintenance Block</span>
             </div>
           </div>
           <div class="win">
             <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">today.detail</span></div>
             <div class="win-body">
               <div class="eyebrow" style="margin-bottom:8px;">Click any marked day to see rental detail</div>
-              <div class="list-row"><div class="ic">≡ƒòÿ</div><div class="meta"><div class="t">Aug 8 ΓÇö Pickup RL-1041</div><div class="s">Sony A7 IV ┬╖ Priya S.</div></div></div>
-              <div class="list-row"><div class="ic">≡ƒòÑ</div><div class="meta"><div class="t">Aug 10 ΓÇö Return RL-1037</div><div class="s">DJI RS3 ┬╖ Rohan K.</div></div></div>
+              <div class="list-row"><div class="ic">🕘</div><div class="meta"><div class="t">Aug 8 — Pickup RL-1041</div><div class="s">Sony A7 IV · Priya S.</div></div></div>
+              <div class="list-row"><div class="ic">🕥</div><div class="meta"><div class="t">Aug 10 — Return RL-1037</div><div class="s">DJI RS3 · Rohan K.</div></div></div>
             </div>
           </div>
         </div>
@@ -1067,7 +1067,7 @@
     <!-- INVENTORY -->
     <div id="a-inventory" class="hide">
       <div class="os-topbar"><h1 style="font-size:26px;">Inventory &amp; Physical Assets</h1><button class="btn" onclick="openProductForm()">+ Add Product</button></div>
-      <div class="eyebrow" style="margin-bottom:10px;">A product (e.g. Sony A7 IV) can have several physical units in the field ΓÇö each tracked individually as an asset.</div>
+      <div class="eyebrow" style="margin-bottom:10px;">A product (e.g. Sony A7 IV) can have several physical units in the field — each tracked individually as an asset.</div>
       <div class="win" style="margin-bottom:20px;">
         <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">physical-assets.table</span><span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:#6b675c;" id="assetCount"></span></div>
         <div class="win-body" style="overflow:auto;">
@@ -1081,9 +1081,9 @@
         <div class="win-body" style="display:flex;gap:20px;align-items:center;">
           <div class="health-ring">92/100</div>
           <div>
-            <h3>CAM-104 ┬╖ Sony A7 IV</h3>
-            <div class="eyebrow">Condition: Excellent ┬╖ Rental cycles: 38 ┬╖ Damage incidents: 2</div>
-            <div class="eyebrow">Last inspection: 6 Aug ┬╖ Recommended next: 18 Aug</div>
+            <h3>CAM-104 · Sony A7 IV</h3>
+            <div class="eyebrow">Condition: Excellent · Rental cycles: 38 · Damage incidents: 2</div>
+            <div class="eyebrow">Last inspection: 6 Aug · Recommended next: 18 Aug</div>
           </div>
         </div>
       </div>
@@ -1096,12 +1096,12 @@
         <div class="win">
           <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">qr-scanner.device</span></div>
           <div class="win-body">
-            <div class="qr-box">Γûª<div class="qr-scan-line"></div></div>
+            <div class="qr-box">▦<div class="qr-scan-line"></div></div>
             <label class="flabel">Simulated scan target</label>
             <select class="field" id="qrSimAsset" style="margin-bottom:12px;">
-              <option value="CAM-104">CAM-104 ┬╖ Sony A7 IV ┬╖ RL-1042 ┬╖ Priya S.</option>
-              <option value="CAM-105">CAM-105 ┬╖ Sony A7 IV ┬╖ unassigned</option>
-              <option value="GIM-088">GIM-088 ┬╖ DJI RS3 Gimbal ┬╖ RL-1037 ┬╖ Rohan K.</option>
+              <option value="CAM-104">CAM-104 · Sony A7 IV · RL-1042 · Priya S.</option>
+              <option value="CAM-105">CAM-105 · Sony A7 IV · unassigned</option>
+              <option value="GIM-088">GIM-088 · DJI RS3 Gimbal · RL-1037 · Rohan K.</option>
             </select>
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
               <button class="btn btn-primary" onclick="openQr('pickup')">Scan for Pickup</button>
@@ -1113,12 +1113,12 @@
         <div class="win">
           <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">route-plan.today</span></div>
           <div class="win-body">
-            <div class="list-row"><div class="ic">1</div><div class="meta"><div class="t">RL-1041 ┬╖ Pickup</div><div class="s">Salt Lake, Sector 5 ┬╖ 09:00</div></div></div>
-            <div class="list-row"><div class="ic">2</div><div class="meta"><div class="t">RL-1037 ┬╖ Return</div><div class="s">Park Street ┬╖ 10:30</div></div></div>
-            <div class="list-row"><div class="ic">3</div><div class="meta"><div class="t">RL-1045 ┬╖ Pickup</div><div class="s">Ballygunge ┬╖ 12:00</div></div></div>
+            <div class="list-row"><div class="ic">1</div><div class="meta"><div class="t">RL-1041 · Pickup</div><div class="s">Salt Lake, Sector 5 · 09:00</div></div></div>
+            <div class="list-row"><div class="ic">2</div><div class="meta"><div class="t">RL-1037 · Return</div><div class="s">Park Street · 10:30</div></div></div>
+            <div class="list-row"><div class="ic">3</div><div class="meta"><div class="t">RL-1045 · Pickup</div><div class="s">Ballygunge · 12:00</div></div></div>
             <div class="recommend-box" style="margin-top:10px;">
               <div class="rt">Route optimization</div>
-              <div style="font-size:13px;">Sequence reordered by distance ΓÇö saves an estimated 24 minutes of travel today.</div>
+              <div style="font-size:13px;">Sequence reordered by distance — saves an estimated 24 minutes of travel today.</div>
             </div>
           </div>
         </div>
@@ -1142,7 +1142,7 @@
               <polyline points="0,120 50,100 100,110 150,80 200,90 250,55 300,60 350,30 400,20" fill="none" stroke="#1B1B18" stroke-width="3"/>
               <polyline points="0,120 50,100 100,110 150,80 200,90 250,55 300,60 350,30 400,20 400,160 0,160" fill="#AEDCEE" opacity="0.5" stroke="none"/>
             </svg>
-            <div class="eyebrow">Revenue trend, last 9 weeks ┬╖ current Γé╣1.2L, +12% MoM</div>
+            <div class="eyebrow">Revenue trend, last 9 weeks · current ₹1.2L, +12% MoM</div>
           </div>
         </div>
         <div class="win">
@@ -1155,7 +1155,7 @@
               <div style="flex:1;background:var(--blue);border:2px solid var(--border);height:90%;"></div>
               <div style="flex:1;background:var(--blue);border:2px solid var(--border);height:70%;"></div>
             </div>
-            <div class="eyebrow" style="margin-top:8px;">Cameras ┬╖ Lenses ┬╖ Lighting ┬╖ Gimbals ┬╖ Audio</div>
+            <div class="eyebrow" style="margin-top:8px;">Cameras · Lenses · Lighting · Gimbals · Audio</div>
           </div>
         </div>
       </div>
@@ -1166,7 +1166,7 @@
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">underutilized.list</span></div>
           <div class="win-body"><div style="font-size:13px;">Tripod Set (12% util.)<br>Backdrop Kit (18% util.)<br>Audio Recorder (21% util.)</div></div></div>
         <div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">demand-forecast.next7d</span></div>
-          <div class="win-body"><div class="recommend-box"><div class="rt">Forecast</div><div style="font-size:13px;">Camera bodies expected to hit 95% utilization this weekend ΓÇö consider sourcing 2 backup units.</div></div></div></div>
+          <div class="win-body"><div class="recommend-box"><div class="rt">Forecast</div><div style="font-size:13px;">Camera bodies expected to hit 95% utilization this weekend — consider sourcing 2 backup units.</div></div></div></div>
       </div>
     </div>
 
@@ -1180,20 +1180,20 @@
         <div class="win-body">
           <div class="grid-2">
             <div>
-              <div class="list-row"><div class="ic">1</div><div class="meta"><div class="t">RL-1041 ┬╖ Pickup</div><div class="s">Salt Lake, Sector 5 ┬╖ 09:00</div></div></div>
-              <div class="list-row"><div class="ic">2</div><div class="meta"><div class="t">RL-1037 ┬╖ Return</div><div class="s">Park Street ┬╖ 10:30</div></div></div>
-              <div class="list-row"><div class="ic">3</div><div class="meta"><div class="t">RL-1045 ┬╖ Pickup</div><div class="s">Ballygunge ┬╖ 12:00</div></div></div>
-              <div class="list-row"><div class="ic">4</div><div class="meta"><div class="t">RL-1046 ┬╖ Pickup</div><div class="s">Howrah ┬╖ 13:30</div></div></div>
-              <div class="list-row"><div class="ic">5</div><div class="meta"><div class="t">RL-1043 ┬╖ Return</div><div class="s">New Town ┬╖ 15:00</div></div></div>
+              <div class="list-row"><div class="ic">1</div><div class="meta"><div class="t">RL-1041 · Pickup</div><div class="s">Salt Lake, Sector 5 · 09:00</div></div></div>
+              <div class="list-row"><div class="ic">2</div><div class="meta"><div class="t">RL-1037 · Return</div><div class="s">Park Street · 10:30</div></div></div>
+              <div class="list-row"><div class="ic">3</div><div class="meta"><div class="t">RL-1045 · Pickup</div><div class="s">Ballygunge · 12:00</div></div></div>
+              <div class="list-row"><div class="ic">4</div><div class="meta"><div class="t">RL-1046 · Pickup</div><div class="s">Howrah · 13:30</div></div></div>
+              <div class="list-row"><div class="ic">5</div><div class="meta"><div class="t">RL-1043 · Return</div><div class="s">New Town · 15:00</div></div></div>
               <div class="recommend-box" style="margin-top:10px;">
                 <div class="rt">AI-optimized route</div>
-                <div style="font-size:13px;">Estimated distance: 34.2 km ┬╖ Estimated duration: 2h 40m ΓÇö reordered by proximity, saving ~24 minutes versus the original sequence.</div>
+                <div style="font-size:13px;">Estimated distance: 34.2 km · Estimated duration: 2h 40m — reordered by proximity, saving ~24 minutes versus the original sequence.</div>
               </div>
             </div>
             <div class="win" style="height:100%;">
               <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">map.preview</span></div>
               <div class="win-body" style="height:220px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue-pale),var(--cream-2));">
-                <div style="text-align:center;"><div style="font-size:34px;">≡ƒù║∩╕Å</div><div class="eyebrow">Map view placeholder</div></div>
+                <div style="text-align:center;"><div style="font-size:34px;">🗺️</div><div class="eyebrow">Map view placeholder</div></div>
               </div>
             </div>
           </div>
@@ -1208,9 +1208,9 @@
       <div class="win">
         <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">reminders.outbox</span></div>
         <div class="win-body">
-          <div class="list-row"><div class="ic">≡ƒô₧</div><div class="meta"><div class="t">AI reminder call ΓÇö Rohan K.</div><div class="s">"Your DJI RS3 rental is overdue. Return by 6 PM to avoid additional charges."</div></div><span class="pill pill-yellow">Sent</span></div>
-          <div class="list-row"><div class="ic">Γ£ë∩╕Å</div><div class="meta"><div class="t">Pickup reminder ΓÇö Priya S.</div><div class="s">SMS ┬╖ Godox SL200 III pickup at 12:00 today</div></div><span class="pill pill-green">Delivered</span></div>
-          <div class="list-row"><div class="ic">≡ƒô₧</div><div class="meta"><div class="t">Inspection follow-up ΓÇö Meera T.</div><div class="s">Scheduled for tomorrow, 9:00 AM</div></div><span class="pill pill-blue">Queued</span></div>
+          <div class="list-row"><div class="ic">📞</div><div class="meta"><div class="t">AI reminder call — Rohan K.</div><div class="s">"Your DJI RS3 rental is overdue. Return by 6 PM to avoid additional charges."</div></div><span class="pill pill-yellow">Sent</span></div>
+          <div class="list-row"><div class="ic">✉️</div><div class="meta"><div class="t">Pickup reminder — Priya S.</div><div class="s">SMS · Godox SL200 III pickup at 12:00 today</div></div><span class="pill pill-green">Delivered</span></div>
+          <div class="list-row"><div class="ic">📞</div><div class="meta"><div class="t">Inspection follow-up — Meera T.</div><div class="s">Scheduled for tomorrow, 9:00 AM</div></div><span class="pill pill-blue">Queued</span></div>
         </div>
       </div>
     </div>
@@ -1223,10 +1223,10 @@
         <div class="win-body">
           <table class="data-table">
             <tr><th>Name</th><th>Orders</th><th>Total spent</th><th>Status</th></tr>
-            <tr><td>Arjun Mehta</td><td>4</td><td>Γé╣9,850</td><td><span class="pill pill-green">Good standing</span></td></tr>
-            <tr><td>Rohan Kapoor</td><td>2</td><td>Γé╣4,200</td><td><span class="pill pill-red">Overdue item</span></td></tr>
-            <tr><td>Priya Sen</td><td>6</td><td>Γé╣15,300</td><td><span class="pill pill-green">Good standing</span></td></tr>
-            <tr><td>Meera Thomas</td><td>3</td><td>Γé╣7,050</td><td><span class="pill pill-blue">Vendor</span></td></tr>
+            <tr><td>Arjun Mehta</td><td>4</td><td>₹9,850</td><td><span class="pill pill-green">Good standing</span></td></tr>
+            <tr><td>Rohan Kapoor</td><td>2</td><td>₹4,200</td><td><span class="pill pill-red">Overdue item</span></td></tr>
+            <tr><td>Priya Sen</td><td>6</td><td>₹15,300</td><td><span class="pill pill-green">Good standing</span></td></tr>
+            <tr><td>Meera Thomas</td><td>3</td><td>₹7,050</td><td><span class="pill pill-blue">Vendor</span></td></tr>
           </table>
         </div>
       </div>
@@ -1247,8 +1247,8 @@
           <div class="formstack" style="max-width:420px;">
             <div><label class="flabel">Grace period (minutes)</label><input class="field" value="30"></div>
             <div><label class="flabel">Charge basis</label><select class="field"><option>Hourly</option><option>Daily</option><option>Weekly</option></select></div>
-            <div><label class="flabel">Rate</label><input class="field" value="Γé╣50 / hour"></div>
-            <div><label class="flabel">Maximum late fee cap</label><input class="field" value="Γé╣2,000"></div>
+            <div><label class="flabel">Rate</label><input class="field" value="₹50 / hour"></div>
+            <div><label class="flabel">Maximum late fee cap</label><input class="field" value="₹2,000"></div>
             <button class="btn btn-primary" style="width:fit-content;" onclick="toast('Late fee rules saved')">Save Rules</button>
           </div>
         </div>
@@ -1262,7 +1262,7 @@
 
 <div class="modal-bg" id="configureModal">
   <div class="modal win">
-    <div class="win-bar"><span class="win-title">configure.dialog</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('configureModal')">Γ£ò</button></div>
+    <div class="win-bar"><span class="win-title">configure.dialog</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('configureModal')">✕</button></div>
     <div class="win-body">
       <h3 style="margin-bottom:14px;">Configure your rental</h3>
       <label class="flabel">Color</label>
@@ -1273,7 +1273,7 @@
       <label class="flabel">Kit type</label>
       <div class="formstack" style="margin-bottom:18px;">
         <div class="checkrow"><input type="checkbox" checked><span>Body only</span></div>
-        <div class="checkrow"><input type="checkbox"><span>Body + 24-70mm lens (+Γé╣500/day)</span></div>
+        <div class="checkrow"><input type="checkbox"><span>Body + 24-70mm lens (+₹500/day)</span></div>
       </div>
       <div style="display:flex;gap:10px;">
         <button class="btn btn-primary" onclick="confirmAddToCart()">Configure &amp; Add</button>
@@ -1285,24 +1285,24 @@
 
 <div class="modal-bg" id="qrModal">
   <div class="modal win">
-    <div class="win-bar"><span class="win-title">qr-pickup.scan</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('qrModal')">Γ£ò</button></div>
+    <div class="win-bar"><span class="win-title">qr-pickup.scan</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('qrModal')">✕</button></div>
     <div class="win-body" id="qrModalBody">
-      <div class="qr-box">Γûª<div class="qr-scan-line"></div></div>
-      <div class="eyebrow" style="text-align:center;">Scanning asset tagΓÇª</div>
+      <div class="qr-box">▦<div class="qr-scan-line"></div></div>
+      <div class="eyebrow" style="text-align:center;">Scanning asset tag…</div>
     </div>
   </div>
 </div>
 
 <div class="modal-bg" id="returnModal">
   <div class="modal win">
-    <div class="win-bar"><span class="win-title">return-inspection.flow</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('returnModal')">Γ£ò</button></div>
+    <div class="win-bar"><span class="win-title">return-inspection.flow</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('returnModal')">✕</button></div>
     <div class="win-body">
       <div class="tabs-row" style="margin-bottom:14px;">
-        <span class="pill pill-blue">RL-1037 ┬╖ DJI RS3 Gimbal</span>
+        <span class="pill pill-blue">RL-1037 · DJI RS3 Gimbal</span>
         <span class="pill pill-red">Rohan Kapoor</span>
       </div>
       <div style="font-size:13px;margin-bottom:14px;">
-        Expected return: <b>6 Aug, 6:00 PM</b> ┬╖ Actual return: <b>8 Aug, 11:20 AM</b> ΓåÆ <span style="color:#a83a2e;font-weight:700;">Late by 41h 20m</span>
+        Expected return: <b>6 Aug, 6:00 PM</b> · Actual return: <b>8 Aug, 11:20 AM</b> → <span style="color:#a83a2e;font-weight:700;">Late by 41h 20m</span>
       </div>
       <label class="flabel">Condition inspection</label>
       <div class="formstack" style="margin-bottom:14px;">
@@ -1315,10 +1315,10 @@
         <label class="flabel">Damage charge</label>
         <input class="field" id="dmgAmount" value="1000" oninput="recalcSettle()">
       </div>
-      <div class="settle-row"><span>Security deposit held</span><span>Γé╣5,000</span></div>
-      <div class="settle-row"><span>Late fee</span><span id="lateFeeVal">ΓêÆ Γé╣300</span></div>
-      <div class="settle-row" id="dmgRow" style="display:none;"><span>Damage charge</span><span id="dmgRowVal">ΓêÆ Γé╣1,000</span></div>
-      <div class="settle-row final"><span>Refund to customer</span><span id="refundVal">Γé╣4,700</span></div>
+      <div class="settle-row"><span>Security deposit held</span><span>₹5,000</span></div>
+      <div class="settle-row"><span>Late fee</span><span id="lateFeeVal">− ₹300</span></div>
+      <div class="settle-row" id="dmgRow" style="display:none;"><span>Damage charge</span><span id="dmgRowVal">− ₹1,000</span></div>
+      <div class="settle-row final"><span>Refund to customer</span><span id="refundVal">₹4,700</span></div>
       <div style="display:flex;gap:10px;margin-top:16px;">
         <button class="btn btn-primary" onclick="settleReturn()">Settle &amp; Update Asset</button>
         <button class="btn btn-ghost" onclick="closeModal('returnModal')">Cancel</button>
@@ -1329,7 +1329,7 @@
 
 <div class="modal-bg confirm-modal" id="confirmModal">
   <div class="modal win">
-    <div class="win-bar"><span class="win-title">confirm.dialog</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('confirmModal')">Γ£ò</button></div>
+    <div class="win-bar"><span class="win-title">confirm.dialog</span><button class="btn btn-sm" style="margin-left:auto;" onclick="closeModal('confirmModal')">✕</button></div>
     <div class="win-body" id="confirmModalBody"></div>
   </div>
 </div>
@@ -1356,7 +1356,7 @@ async function apiFetch(path, options = {}){
 
   let res = await fetch(path, opts);
 
-  // Access token expired mid-session ΓÇö try a silent refresh once, then retry.
+  // Access token expired mid-session — try a silent refresh once, then retry.
   if(res.status === 401 && !options._retried){
     const refreshed = await apiRefresh();
     if(refreshed) return apiFetch(path, { ...options, _retried: true });
@@ -1423,32 +1423,32 @@ const productImages = {
 
 /* ============ DATA ============ */
 const products = [
-  {id:'p1',name:'Sony A7 IV',cat:'Camera Body',price:1500,unit:'day',emoji:'≡ƒô╖',cycles:38,avail:true, variants:['Body only','With 24-70mm']},
-  {id:'p2',name:'Canon R6',cat:'Camera Body',price:1350,unit:'day',emoji:'≡ƒÄÑ',cycles:29,avail:true, variants:['Body only','With kit lens']},
-  {id:'p3',name:'DJI RS3 Gimbal',cat:'Stabilizer',price:900,unit:'day',emoji:'≡ƒÜü',cycles:52,avail:false, variants:['Standard']},
-  {id:'p4',name:'GoPro Hero 12',cat:'Action Camera',price:600,unit:'day',emoji:'≡ƒÄ¼',cycles:64,avail:true, variants:['Standard','With extra battery']},
-  {id:'p5',name:'Godox SL200 III',cat:'Lighting',price:750,unit:'day',emoji:'≡ƒÆí',cycles:19,avail:true, variants:['Single head','Twin head kit']},
-  {id:'p6',name:'24ΓÇô70mm f/2.8 Lens',cat:'Lens',price:850,unit:'day',emoji:'≡ƒöì',cycles:41,avail:true, variants:['Standard']},
-  {id:'p7',name:'DJI Mavic 3 Pro',cat:'Drone',price:2200,unit:'day',emoji:'≡ƒÜü',cycles:14,avail:true, variants:['Standard','Fly More Combo']},
-  {id:'p8',name:'Glidecam HD-4000',cat:'Stabilizer',price:500,unit:'day',emoji:'≡ƒÄÑ',cycles:26,avail:true, variants:['Standard']},
-  {id:'p9',name:'DJI Mini 4 Pro',cat:'Drone',price:1200,unit:'day',emoji:'≡ƒÜü',cycles:33,avail:true, variants:['Standard','With RC-N2 Controller']},
-  {id:'p10',name:'V-Mount Battery + Charger Kit',cat:'Power',price:350,unit:'day',emoji:'≡ƒöï',cycles:58,avail:true, variants:['Single kit','Twin kit']},
-  {id:'p11',name:'SanDisk Extreme Pro CFexpress 256GB',cat:'Storage',price:250,unit:'day',emoji:'≡ƒÆ╛',cycles:72,avail:true, variants:['256GB']},
-  {id:'p12',name:'Portable Green Screen Kit',cat:'Studio',price:400,unit:'day',emoji:'≡ƒƒ⌐',cycles:20,avail:true, variants:['5├ù6.5ft with stand']},
-  {id:'p13',name:'Aputure 300d Mark II',cat:'Lighting',price:1600,unit:'day',emoji:'≡ƒÆí',cycles:31,avail:true, variants:['Standard']},
-  {id:'p14',name:'Aputure MC RGB LED',cat:'Lighting',price:300,unit:'day',emoji:'≡ƒÆí',cycles:47,avail:true, variants:['Single','4-Light Kit']},
-  {id:'p15',name:'Blackmagic Pocket Cinema Camera 6K Pro',cat:'Camera Body',price:2500,unit:'day',emoji:'≡ƒÄÑ',cycles:12,avail:true, variants:['Body only']},
-  {id:'p16',name:'Canon RF 50mm f/1.2L',cat:'Lens',price:1100,unit:'day',emoji:'≡ƒöì',cycles:24,avail:true, variants:['Standard']},
-  {id:'p17',name:'DJI RS 4 Pro Gimbal',cat:'Stabilizer',price:1400,unit:'day',emoji:'≡ƒÄÑ',cycles:18,avail:true, variants:['Combo Kit']},
-  {id:'p18',name:'Fujifilm X-T5',cat:'Camera Body',price:1300,unit:'day',emoji:'≡ƒô╖',cycles:27,avail:true, variants:['Body only','With 18-55mm']},
-  {id:'p19',name:'Manfrotto BeFree Tripod',cat:'Support',price:350,unit:'day',emoji:'≡ƒÄ¼',cycles:65,avail:true, variants:['Standard']},
-  {id:'p20',name:'Godox AD200Pro Flash',cat:'Lighting',price:600,unit:'day',emoji:'ΓÜí',cycles:39,avail:true, variants:['Standard']},
-  {id:'p21',name:'Zoom H6 Recorder',cat:'Audio',price:450,unit:'day',emoji:'≡ƒÄÖ',cycles:44,avail:true, variants:['Standard']},
-  {id:'p22',name:'Sony A7S III',cat:'Camera Body',price:1800,unit:'day',emoji:'≡ƒô╖',cycles:29,avail:true, variants:['Body only','With 24-70mm']},
-  {id:'p23',name:'Sony FE 70-200mm f/2.8 GM II',cat:'Lens',price:1700,unit:'day',emoji:'≡ƒöì',cycles:21,avail:true, variants:['Standard']},
-  {id:'p24',name:'Sigma 18-35mm f/1.8 Art',cat:'Lens',price:700,unit:'day',emoji:'≡ƒöì',cycles:36,avail:true, variants:['Standard']},
-  {id:'p25',name:'Rode Wireless Pro',cat:'Audio',price:900,unit:'day',emoji:'≡ƒÄÖ',cycles:53,avail:true, variants:['2-mic kit']},
-  {id:'p26',name:'Shure SM7B',cat:'Audio',price:550,unit:'day',emoji:'≡ƒÄÖ',cycles:48,avail:true, variants:['Standard']},
+  {id:'p1',name:'Sony A7 IV',cat:'Camera Body',price:1500,unit:'day',emoji:'📷',cycles:38,avail:true, variants:['Body only','With 24-70mm']},
+  {id:'p2',name:'Canon R6',cat:'Camera Body',price:1350,unit:'day',emoji:'🎥',cycles:29,avail:true, variants:['Body only','With kit lens']},
+  {id:'p3',name:'DJI RS3 Gimbal',cat:'Stabilizer',price:900,unit:'day',emoji:'🚁',cycles:52,avail:false, variants:['Standard']},
+  {id:'p4',name:'GoPro Hero 12',cat:'Action Camera',price:600,unit:'day',emoji:'🎬',cycles:64,avail:true, variants:['Standard','With extra battery']},
+  {id:'p5',name:'Godox SL200 III',cat:'Lighting',price:750,unit:'day',emoji:'💡',cycles:19,avail:true, variants:['Single head','Twin head kit']},
+  {id:'p6',name:'24–70mm f/2.8 Lens',cat:'Lens',price:850,unit:'day',emoji:'🔍',cycles:41,avail:true, variants:['Standard']},
+  {id:'p7',name:'DJI Mavic 3 Pro',cat:'Drone',price:2200,unit:'day',emoji:'🚁',cycles:14,avail:true, variants:['Standard','Fly More Combo']},
+  {id:'p8',name:'Glidecam HD-4000',cat:'Stabilizer',price:500,unit:'day',emoji:'🎥',cycles:26,avail:true, variants:['Standard']},
+  {id:'p9',name:'DJI Mini 4 Pro',cat:'Drone',price:1200,unit:'day',emoji:'🚁',cycles:33,avail:true, variants:['Standard','With RC-N2 Controller']},
+  {id:'p10',name:'V-Mount Battery + Charger Kit',cat:'Power',price:350,unit:'day',emoji:'🔋',cycles:58,avail:true, variants:['Single kit','Twin kit']},
+  {id:'p11',name:'SanDisk Extreme Pro CFexpress 256GB',cat:'Storage',price:250,unit:'day',emoji:'💾',cycles:72,avail:true, variants:['256GB']},
+  {id:'p12',name:'Portable Green Screen Kit',cat:'Studio',price:400,unit:'day',emoji:'🟩',cycles:20,avail:true, variants:['5×6.5ft with stand']},
+  {id:'p13',name:'Aputure 300d Mark II',cat:'Lighting',price:1600,unit:'day',emoji:'💡',cycles:31,avail:true, variants:['Standard']},
+  {id:'p14',name:'Aputure MC RGB LED',cat:'Lighting',price:300,unit:'day',emoji:'💡',cycles:47,avail:true, variants:['Single','4-Light Kit']},
+  {id:'p15',name:'Blackmagic Pocket Cinema Camera 6K Pro',cat:'Camera Body',price:2500,unit:'day',emoji:'🎥',cycles:12,avail:true, variants:['Body only']},
+  {id:'p16',name:'Canon RF 50mm f/1.2L',cat:'Lens',price:1100,unit:'day',emoji:'🔍',cycles:24,avail:true, variants:['Standard']},
+  {id:'p17',name:'DJI RS 4 Pro Gimbal',cat:'Stabilizer',price:1400,unit:'day',emoji:'🎥',cycles:18,avail:true, variants:['Combo Kit']},
+  {id:'p18',name:'Fujifilm X-T5',cat:'Camera Body',price:1300,unit:'day',emoji:'📷',cycles:27,avail:true, variants:['Body only','With 18-55mm']},
+  {id:'p19',name:'Manfrotto BeFree Tripod',cat:'Support',price:350,unit:'day',emoji:'🎬',cycles:65,avail:true, variants:['Standard']},
+  {id:'p20',name:'Godox AD200Pro Flash',cat:'Lighting',price:600,unit:'day',emoji:'⚡',cycles:39,avail:true, variants:['Standard']},
+  {id:'p21',name:'Zoom H6 Recorder',cat:'Audio',price:450,unit:'day',emoji:'🎙',cycles:44,avail:true, variants:['Standard']},
+  {id:'p22',name:'Sony A7S III',cat:'Camera Body',price:1800,unit:'day',emoji:'📷',cycles:29,avail:true, variants:['Body only','With 24-70mm']},
+  {id:'p23',name:'Sony FE 70-200mm f/2.8 GM II',cat:'Lens',price:1700,unit:'day',emoji:'🔍',cycles:21,avail:true, variants:['Standard']},
+  {id:'p24',name:'Sigma 18-35mm f/1.8 Art',cat:'Lens',price:700,unit:'day',emoji:'🔍',cycles:36,avail:true, variants:['Standard']},
+  {id:'p25',name:'Rode Wireless Pro',cat:'Audio',price:900,unit:'day',emoji:'🎙',cycles:53,avail:true, variants:['2-mic kit']},
+  {id:'p26',name:'Shure SM7B',cat:'Audio',price:550,unit:'day',emoji:'🎙',cycles:48,avail:true, variants:['Standard']},
 ];
 products.forEach(p=>{ if(typeof productImages!=='undefined' && productImages[p.id]) p.img = productImages[p.id]; });
 function mediaHtml(p, altSize){
@@ -1456,8 +1456,8 @@ function mediaHtml(p, altSize){
 }
 
 const categoryEmoji = {
-  Cameras:'≡ƒô╖', Lenses:'≡ƒöì', Lighting:'≡ƒÆí', Audio:'≡ƒÄÖ', Accessories:'≡ƒÜü',
-  Fees:'≡ƒº╛', Uncategorized:'≡ƒôª',
+  Cameras:'📷', Lenses:'🔍', Lighting:'💡', Audio:'🎙', Accessories:'🚁',
+  Fees:'🧾', Uncategorized:'📦',
 };
 const demoImageKeys = Object.keys(productImages); // reused so real products still get a demo photo
 
@@ -1478,11 +1478,11 @@ async function loadProducts(){
       cat,
       price: p.rental?.price || p.salesPrice || 0,
       unit: p.rental?.periodicityUnit === 'weekly' ? 'week' : (p.rental?.periodicityUnit || 'day'),
-      emoji: categoryEmoji[cat] || '≡ƒôª',
+      emoji: categoryEmoji[cat] || '📦',
       cycles: 0,
       avail: (p.qtyOnHand ?? 0) > 0,
       variants: (p.variants && p.variants.length) ? p.variants.map(v=>v.sku || 'Variant') : ['Standard'],
-      img: productImages[demoImageKeys[i % demoImageKeys.length]], // cosmetic only ΓÇö real product images come from Product.images[] once uploaded
+      img: productImages[demoImageKeys[i % demoImageKeys.length]], // cosmetic only — real product images come from Product.images[] once uploaded
       depositAmount: p.rental?.depositAmount || 0,
       _raw: p, // keep the original API object around for checkout/order creation
     });
@@ -1496,10 +1496,8 @@ let fulfill = 'deliver';
 
 /* ============ APP SWITCH ============ */
 function showApp(which){
-  const c = document.getElementById('customerApp');
-  if(c) c.classList.toggle('hide', which!=='customer');
-  const a = document.getElementById('adminApp');
-  if(a) a.classList.toggle('hide', which!=='admin');
+  document.getElementById('customerApp').classList.toggle('hide', which!=='customer');
+  document.getElementById('adminApp').classList.toggle('hide', which!=='admin');
   window.scrollTo(0,0);
 }
 
@@ -1528,7 +1526,7 @@ function renderProducts(){
       <div class="thumb">${mediaHtml(p)}</div>
       <div class="pinfo">
         <div class="pname">${p.name}</div>
-        <div class="pprice">Γé╣${p.price.toLocaleString('en-IN')} / ${p.unit}</div>
+        <div class="pprice">₹${p.price.toLocaleString('en-IN')} / ${p.unit}</div>
         <span class="pill ${p.avail?'pill-green':'pill-red'}"><span class="avail-dot" style="background:${p.avail?'#3d7a3d':'#a83a2e'}"></span>${p.avail?'Available':'Out of stock'}</span>
       </div>
     </div>`).join('');
@@ -1541,11 +1539,11 @@ function openProduct(id){
   document.getElementById('pd-name').textContent = currentProduct.name;
   document.getElementById('pd-name-crumb').textContent = currentProduct.name;
   document.getElementById('pd-cat').textContent = currentProduct.cat;
-  document.getElementById('pd-price').innerHTML = 'Γé╣'+currentProduct.price.toLocaleString('en-IN')+' <span style="color:#6b675c;">/ '+currentProduct.unit+'</span>';
+  document.getElementById('pd-price').innerHTML = '₹'+currentProduct.price.toLocaleString('en-IN')+' <span style="color:#6b675c;">/ '+currentProduct.unit+'</span>';
   document.getElementById('pd-image').innerHTML = mediaHtml(currentProduct);
   document.getElementById('pd-file').textContent = currentProduct.id+'.image';
   document.getElementById('pd-avail').className = 'pill ' + (currentProduct.avail?'pill-green':'pill-red');
-  document.getElementById('pd-avail').textContent = currentProduct.avail?'ΓùÅ Available':'ΓùÅ Currently rented';
+  document.getElementById('pd-avail').textContent = currentProduct.avail?'● Available':'● Currently rented';
   document.getElementById('pd-cycles').textContent = currentProduct.cycles;
   pdQty = 1; document.getElementById('pd-qty').textContent = 1;
   document.getElementById('pd-variants').innerHTML = currentProduct.variants.map((v,i)=>
@@ -1583,25 +1581,25 @@ function renderCart(){
         <div class="thumb-sm">${mediaHtml(c)}</div>
         <div style="flex:1;">
           <div style="font-weight:800;font-size:13.5px;">${c.name}</div>
-          <div class="eyebrow">Γé╣${c.price}/${c.unit} ├ù ${c.qty} ┬╖ 12ΓÇô14 Aug</div>
+          <div class="eyebrow">₹${c.price}/${c.unit} × ${c.qty} · 12–14 Aug</div>
           <div class="cart-actions"><a onclick="removeLine(${i})">Remove</a><a onclick="toast('Saved for later')">Save For Later</a></div>
         </div>
-        <div style="font-weight:800;">Γé╣${(c.price*c.qty).toLocaleString('en-IN')}</div>
+        <div style="font-weight:800;">₹${(c.price*c.qty).toLocaleString('en-IN')}</div>
       </div>`).join('');
   }
   const sub = cart.reduce((a,c)=>a+c.price*c.qty,0);
   const dep = cart.reduce((a,c)=>a+c.deposit*c.qty,0);
   const total = sub + 150;
-  document.getElementById('sumSub').textContent = 'Γé╣'+sub.toLocaleString('en-IN');
-  document.getElementById('sumDep').textContent = 'Γé╣'+dep.toLocaleString('en-IN');
-  document.getElementById('sumTotal').textContent = 'Γé╣'+total.toLocaleString('en-IN');
-  document.getElementById('sumTotal2').textContent = 'Γé╣'+total.toLocaleString('en-IN');
-  document.getElementById('sumTotal3').textContent = 'Γé╣'+total.toLocaleString('en-IN');
+  document.getElementById('sumSub').textContent = '₹'+sub.toLocaleString('en-IN');
+  document.getElementById('sumDep').textContent = '₹'+dep.toLocaleString('en-IN');
+  document.getElementById('sumTotal').textContent = '₹'+total.toLocaleString('en-IN');
+  document.getElementById('sumTotal2').textContent = '₹'+total.toLocaleString('en-IN');
+  document.getElementById('sumTotal3').textContent = '₹'+total.toLocaleString('en-IN');
 }
 function removeLine(i){ cart.splice(i,1); document.getElementById('cartBadge').textContent = cart.length; renderCart(); }
 function applyCoupon(){
   const v = document.getElementById('couponInput').value.trim().toUpperCase();
-  if(v==='RELAY10'){ toast('Coupon RELAY10 applied ΓÇö 10% off'); } else { toast('Enter a valid coupon code'); }
+  if(v==='RELAY10'){ toast('Coupon RELAY10 applied — 10% off'); } else { toast('Enter a valid coupon code'); }
 }
 function setFulfill(mode){
   fulfill = mode;
@@ -1614,7 +1612,7 @@ async function placeOrder(){
   const session = getSession();
   if(!session){ toast('Please sign in to place an order'); cGo('auth'); return; }
 
-  // Rental period: today ΓåÆ +4 days, matching the "12ΓÇô14 Aug"-style placeholder shown in the cart UI.
+  // Rental period: today → +4 days, matching the "12–14 Aug"-style placeholder shown in the cart UI.
   const start = new Date();
   const end = new Date(); end.setDate(end.getDate()+4);
 
@@ -1675,7 +1673,7 @@ function togglePw(id, btn){
   const el = document.getElementById(id);
   const showing = el.type === 'text';
   el.type = showing ? 'password' : 'text';
-  btn.textContent = showing ? '≡ƒæü' : '≡ƒÖê';
+  btn.textContent = showing ? '👁' : '🙈';
 }
 async function fakeLogin(){
   const errEl = document.getElementById('loginErr');
@@ -1759,7 +1757,7 @@ async function fakeSignup(){
 
     setSession({ name: data.user.name, email: data.user.email, role: uiRole, id: data.user.id, apiRole: data.user.role });
     applySessionToUI();
-    toast((uiRole==='admin' ? 'Admin account created ΓÇö welcome, ' : 'Account created ΓÇö welcome to RELAY, ') + name.split(' ')[0]);
+    toast((uiRole==='admin' ? 'Admin account created — welcome, ' : 'Account created — welcome to RELAY, ') + name.split(' ')[0]);
 
     document.getElementById('suName').value = '';
     document.getElementById('suEmail').value = '';
@@ -1833,30 +1831,24 @@ function applySessionToUI(){
 }
 applySessionToUI();
 (async function bootstrapSession(){
-  // Force admin login for the admin portal
-  const stamp = Date.now().toString().slice(-5);
-  const email = `demo-admin-${stamp}@relay.test`;
-  try {
-    const res = await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: 'Demo Admin', email, password: 'demo', role: 'admin' })
-    });
-    const data = await res.json();
-    if(data.success) {
-      accessToken = data.data.accessToken;
-      setSession({ name: 'Demo Admin', email, role: 'admin', id: data.data.user.id, apiRole: 'admin' });
+  // A cached session name lets the UI paint instantly; the refresh cookie
+  // (if present and valid) is what actually re-establishes a real session.
+  const cached = getSession();
+  const refreshed = await apiRefresh();
+  if(refreshed){
+    try{
+      const me = await apiFetch('/api/auth/me');
+      const uiRole = apiRoleToUiRole(me.role);
+      setSession({ name: me.name, email: me.email, role: uiRole, id: me.id, apiRole: me.role });
       applySessionToUI();
-      
-      // Hide customerApp entirely to be safe
-      const c = document.getElementById('customerApp');
-      if (c) c.style.display = 'none';
-      
-      await enterApp('admin');
-    }
-  } catch(e) {
-    console.error('Auto login failed', e);
+      await enterApp(uiRole);
+      return;
+    }catch(e){ /* fall through to logged-out state */ }
   }
+  clearSession();
+  applySessionToUI();
+  showApp('customer');
+  openAuth();
 })();
 
 /* ============ ADMIN NAV ============ */
@@ -1869,36 +1861,36 @@ function aGo(section, el){
   window.scrollTo(0,0);
 }
 
-/* Physical asset registry ΓÇö each row is one individually tracked unit of a product */
+/* Physical asset registry — each row is one individually tracked unit of a product */
 const assets = [
-  {tag:'CAM-101',product:'Sony A7 IV',status:'Available',cond:'Excellent',cycles:31,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'CAM-102',product:'Sony A7 IV',status:'Rented',cond:'Excellent',cycles:45,loc:'With customer',current:'RL-1042 ┬╖ Arjun M.',maint:'Healthy'},
-  {tag:'CAM-104',product:'Sony A7 IV',status:'Rented',cond:'Excellent',cycles:38,loc:'With customer',current:'RL-1042 ┬╖ Priya S.',maint:'Healthy'},
-  {tag:'CAM-105',product:'Sony A7 IV',status:'Available',cond:'Excellent',cycles:22,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'CAM-106',product:'Canon R6',status:'Maintenance',cond:'Fair',cycles:71,loc:'Service Bay 2',current:'ΓÇö',maint:'In Maintenance'},
-  {tag:'LNS-221',product:'24ΓÇô70mm Lens',status:'Reserved',cond:'Good',cycles:41,loc:'Main Warehouse',current:'RL-1046 (upcoming)',maint:'Healthy'},
-  {tag:'GIM-088',product:'DJI RS3 Gimbal',status:'Overdue',cond:'Good',cycles:52,loc:'With customer',current:'RL-1037 ┬╖ Rohan K.',maint:'Inspection Required'},
-  {tag:'GPR-014',product:'GoPro Hero 12',status:'Available',cond:'Excellent',cycles:64,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'DRN-201',product:'DJI Mavic 3 Pro',status:'Available',cond:'Excellent',cycles:14,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'STB-301',product:'Glidecam HD-4000',status:'Available',cond:'Good',cycles:26,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'DRN-202',product:'DJI Mini 4 Pro',status:'Available',cond:'Excellent',cycles:33,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'PWR-401',product:'V-Mount Battery + Charger Kit',status:'Available',cond:'Good',cycles:58,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'STO-501',product:'SanDisk Extreme Pro CFexpress 256GB',status:'Available',cond:'Excellent',cycles:72,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'STU-601',product:'Portable Green Screen Kit',status:'Available',cond:'Good',cycles:20,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'LGT-701',product:'Aputure 300d Mark II',status:'Available',cond:'Excellent',cycles:31,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'LGT-702',product:'Aputure MC RGB LED',status:'Rented',cond:'Excellent',cycles:47,loc:'With customer',current:'RL-1052 ┬╖ Isha D.',maint:'Healthy'},
-  {tag:'CAM-107',product:'Blackmagic Pocket Cinema Camera 6K Pro',status:'Available',cond:'Excellent',cycles:12,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'LNS-222',product:'Canon RF 50mm f/1.2L',status:'Available',cond:'Excellent',cycles:24,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
+  {tag:'CAM-101',product:'Sony A7 IV',status:'Available',cond:'Excellent',cycles:31,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'CAM-102',product:'Sony A7 IV',status:'Rented',cond:'Excellent',cycles:45,loc:'With customer',current:'RL-1042 · Arjun M.',maint:'Healthy'},
+  {tag:'CAM-104',product:'Sony A7 IV',status:'Rented',cond:'Excellent',cycles:38,loc:'With customer',current:'RL-1042 · Priya S.',maint:'Healthy'},
+  {tag:'CAM-105',product:'Sony A7 IV',status:'Available',cond:'Excellent',cycles:22,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'CAM-106',product:'Canon R6',status:'Maintenance',cond:'Fair',cycles:71,loc:'Service Bay 2',current:'—',maint:'In Maintenance'},
+  {tag:'LNS-221',product:'24–70mm Lens',status:'Reserved',cond:'Good',cycles:41,loc:'Main Warehouse',current:'RL-1046 (upcoming)',maint:'Healthy'},
+  {tag:'GIM-088',product:'DJI RS3 Gimbal',status:'Overdue',cond:'Good',cycles:52,loc:'With customer',current:'RL-1037 · Rohan K.',maint:'Inspection Required'},
+  {tag:'GPR-014',product:'GoPro Hero 12',status:'Available',cond:'Excellent',cycles:64,loc:'North Warehouse',current:'—',maint:'Healthy'},
+  {tag:'DRN-201',product:'DJI Mavic 3 Pro',status:'Available',cond:'Excellent',cycles:14,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'STB-301',product:'Glidecam HD-4000',status:'Available',cond:'Good',cycles:26,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'DRN-202',product:'DJI Mini 4 Pro',status:'Available',cond:'Excellent',cycles:33,loc:'North Warehouse',current:'—',maint:'Healthy'},
+  {tag:'PWR-401',product:'V-Mount Battery + Charger Kit',status:'Available',cond:'Good',cycles:58,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'STO-501',product:'SanDisk Extreme Pro CFexpress 256GB',status:'Available',cond:'Excellent',cycles:72,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'STU-601',product:'Portable Green Screen Kit',status:'Available',cond:'Good',cycles:20,loc:'North Warehouse',current:'—',maint:'Healthy'},
+  {tag:'LGT-701',product:'Aputure 300d Mark II',status:'Available',cond:'Excellent',cycles:31,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'LGT-702',product:'Aputure MC RGB LED',status:'Rented',cond:'Excellent',cycles:47,loc:'With customer',current:'RL-1052 · Isha D.',maint:'Healthy'},
+  {tag:'CAM-107',product:'Blackmagic Pocket Cinema Camera 6K Pro',status:'Available',cond:'Excellent',cycles:12,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'LNS-222',product:'Canon RF 50mm f/1.2L',status:'Available',cond:'Excellent',cycles:24,loc:'Main Warehouse',current:'—',maint:'Healthy'},
   {tag:'STB-302',product:'DJI RS 4 Pro Gimbal',status:'Reserved',cond:'Excellent',cycles:18,loc:'Main Warehouse',current:'RL-1053 (upcoming)',maint:'Healthy'},
-  {tag:'CAM-108',product:'Fujifilm X-T5',status:'Available',cond:'Excellent',cycles:27,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'SUP-801',product:'Manfrotto BeFree Tripod',status:'Available',cond:'Good',cycles:65,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'LGT-703',product:'Godox AD200Pro Flash',status:'Available',cond:'Good',cycles:39,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'AUD-901',product:'Zoom H6 Recorder',status:'Available',cond:'Excellent',cycles:44,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'CAM-109',product:'Sony A7S III',status:'Rented',cond:'Excellent',cycles:29,loc:'With customer',current:'RL-1054 ┬╖ Sameer R.',maint:'Healthy'},
-  {tag:'LNS-223',product:'Sony FE 70-200mm f/2.8 GM II',status:'Available',cond:'Excellent',cycles:21,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'LNS-224',product:'Sigma 18-35mm f/1.8 Art',status:'Available',cond:'Good',cycles:36,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'AUD-902',product:'Rode Wireless Pro',status:'Available',cond:'Excellent',cycles:53,loc:'Main Warehouse',current:'ΓÇö',maint:'Healthy'},
-  {tag:'AUD-903',product:'Shure SM7B',status:'Available',cond:'Excellent',cycles:48,loc:'North Warehouse',current:'ΓÇö',maint:'Healthy'},
+  {tag:'CAM-108',product:'Fujifilm X-T5',status:'Available',cond:'Excellent',cycles:27,loc:'North Warehouse',current:'—',maint:'Healthy'},
+  {tag:'SUP-801',product:'Manfrotto BeFree Tripod',status:'Available',cond:'Good',cycles:65,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'LGT-703',product:'Godox AD200Pro Flash',status:'Available',cond:'Good',cycles:39,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'AUD-901',product:'Zoom H6 Recorder',status:'Available',cond:'Excellent',cycles:44,loc:'North Warehouse',current:'—',maint:'Healthy'},
+  {tag:'CAM-109',product:'Sony A7S III',status:'Rented',cond:'Excellent',cycles:29,loc:'With customer',current:'RL-1054 · Sameer R.',maint:'Healthy'},
+  {tag:'LNS-223',product:'Sony FE 70-200mm f/2.8 GM II',status:'Available',cond:'Excellent',cycles:21,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'LNS-224',product:'Sigma 18-35mm f/1.8 Art',status:'Available',cond:'Good',cycles:36,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'AUD-902',product:'Rode Wireless Pro',status:'Available',cond:'Excellent',cycles:53,loc:'Main Warehouse',current:'—',maint:'Healthy'},
+  {tag:'AUD-903',product:'Shure SM7B',status:'Available',cond:'Excellent',cycles:48,loc:'North Warehouse',current:'—',maint:'Healthy'},
 ];
 function statusPill(s){
   const map = {Rented:'pill-blue',Available:'pill-green',Maintenance:'pill-yellow',Reserved:'pill-blue',Overdue:'pill-red'};
@@ -1918,7 +1910,7 @@ function renderAssetTable(){
     return;
   }
   tbl.innerHTML = '<tr><th>Asset ID</th><th>QR</th><th>Product</th><th>Status</th><th>Condition</th><th>Location</th><th>Rental Count</th><th>Maintenance</th><th></th></tr>' +
-    assets.map(a=>`<tr><td><b>${a.tag}</b></td><td><span class="qr-chip" onclick="assetDetail('${a.tag}')" title="View QR">Γûª</span></td><td>${a.product}</td><td>${statusPill(a.status)}</td><td>${a.cond}</td><td>${a.loc}</td><td>${a.cycles}</td><td>${maintPill(a.maint)}</td>
+    assets.map(a=>`<tr><td><b>${a.tag}</b></td><td><span class="qr-chip" onclick="assetDetail('${a.tag}')" title="View QR">▦</span></td><td>${a.product}</td><td>${statusPill(a.status)}</td><td>${a.cond}</td><td>${a.loc}</td><td>${a.cycles}</td><td>${maintPill(a.maint)}</td>
       <td class="row-actions"><button class="btn btn-sm" onclick="assetDetail('${a.tag}')">View</button></td></tr>`).join('');
 }
 renderAssetTable();
@@ -1927,7 +1919,7 @@ function assetDetail(tag){
   if(!a) return;
   document.getElementById('configureModal').classList.add('show');
   document.getElementById('configureModal').querySelector('.win-body').innerHTML = `
-    <div class="qr-big">Γûª</div>
+    <div class="qr-big">▦</div>
     <h3 style="text-align:center;margin-bottom:2px;">${a.tag}</h3>
     <div class="eyebrow" style="text-align:center;margin-bottom:16px;">${a.product}</div>
     <div class="summary-row"><span>Status</span><span>${statusPill(a.status)}</span></div>
@@ -1937,23 +1929,23 @@ function assetDetail(tag){
     <div class="summary-row"><span>Rental count</span><span>${a.cycles} cycles</span></div>
     <div class="summary-row"><span>Maintenance status</span><span>${maintPill(a.maint)}</span></div>
     <div style="display:flex;gap:8px;margin-top:14px;">
-      <button class="btn" style="flex:1;" onclick="toast('${a.tag} QR label sent to printer')">≡ƒû¿ Print QR</button>
+      <button class="btn" style="flex:1;" onclick="toast('${a.tag} QR label sent to printer')">🖨 Print QR</button>
       <button class="btn btn-ghost" style="flex:1;" onclick="closeModal('configureModal')">Close</button>
     </div>`;
 }
 
-/* Maintenance workflow: Healthy ΓåÆ Inspection Required ΓåÆ Maintenance ΓåÆ Available */
+/* Maintenance workflow: Healthy → Inspection Required → Maintenance → Available */
 const maintStages = ['Inspection Required','Maintenance','Available'];
 const maint = [
   {tag:'CAM-106', item:'Canon R6', issue:'Sensor calibration needed after drop incident.', priority:'High', lastInsp:'3 Aug', rec:'Send to authorized service center', stage:'Maintenance'},
   {tag:'GIM-088', item:'DJI RS3 Gimbal', issue:'Motor arm reported loose after return.', priority:'Medium', lastInsp:'6 Aug', rec:'Bench inspection before next booking', stage:'Inspection Required'},
-  {tag:'LNS-221', item:'24ΓÇô70mm Lens', issue:'Routine check before next reservation.', priority:'Low', lastInsp:'29 Jul', rec:'Standard cleaning + glass check', stage:'Inspection Required'},
-  {tag:'CAM-104', item:'Sony A7 IV', issue:'38 rental cycles completed ΓÇö due for check-up.', priority:'Low', lastInsp:'6 Aug', rec:'Preventive inspection at 40 cycles', stage:'Inspection Required'},
+  {tag:'LNS-221', item:'24–70mm Lens', issue:'Routine check before next reservation.', priority:'Low', lastInsp:'29 Jul', rec:'Standard cleaning + glass check', stage:'Inspection Required'},
+  {tag:'CAM-104', item:'Sony A7 IV', issue:'38 rental cycles completed — due for check-up.', priority:'Low', lastInsp:'6 Aug', rec:'Preventive inspection at 40 cycles', stage:'Inspection Required'},
 ];
 function prioPill(p){ return `<span class="pill ${p==='High'?'pill-red':p==='Medium'?'pill-yellow':'pill-blue'}">${p} priority</span>`; }
 function renderMaint(){
   const grid = document.getElementById('maintGrid');
-  if(!maint.length){ grid.innerHTML = '<div class="state-box" style="grid-column:1/-1;">No open maintenance items ΓÇö fleet is healthy.</div>'; return; }
+  if(!maint.length){ grid.innerHTML = '<div class="state-box" style="grid-column:1/-1;">No open maintenance items — fleet is healthy.</div>'; return; }
   grid.innerHTML = maint.map((m,i)=>`
     <div class="win" id="maintCard${i}">
       <div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">${m.tag}.task</span></div>
@@ -1978,10 +1970,10 @@ function advanceMaint(i){
     m.stage = maintStages[idx+1];
     if(m.stage==='Available'){
       const asset = assets.find(a=>a.tag===m.tag);
-      if(asset){ asset.status='Available'; asset.maint='Healthy'; asset.current='ΓÇö'; asset.loc='Main Warehouse'; renderAssetTable(); }
+      if(asset){ asset.status='Available'; asset.maint='Healthy'; asset.current='—'; asset.loc='Main Warehouse'; renderAssetTable(); }
       const card = document.getElementById('maintCard'+i);
       card.querySelector('.win-body').innerHTML = `<div style="font-weight:800;margin-bottom:6px;">${m.item}</div><span class="pill pill-green">Available</span><div style="font-size:13px;margin-top:10px;">Asset returned to active inventory.</div>`;
-      toast(m.tag+' marked ready ΓÇö status set to Available');
+      toast(m.tag+' marked ready — status set to Available');
     } else {
       renderMaint();
       toast(m.tag+' moved to '+m.stage);
@@ -1989,7 +1981,7 @@ function advanceMaint(i){
   }
 }
 
-/* QR rental lifecycle scanner ΓÇö simulated scan ΓåÆ identify asset/customer/rental ΓåÆ perform action */
+/* QR rental lifecycle scanner — simulated scan → identify asset/customer/rental → perform action */
 let qrCurrentTag = null, qrCurrentMode = 'pickup';
 function openQr(mode){
   qrCurrentMode = mode || 'pickup';
@@ -1997,30 +1989,30 @@ function openQr(mode){
   qrCurrentTag = sel ? sel.value : 'CAM-104';
   document.getElementById('qrModal').classList.add('show');
   document.querySelector('#qrModal .win-title').textContent = 'qr-'+qrCurrentMode+'.scan';
-  document.getElementById('qrModalBody').innerHTML = `<div class="qr-box">Γûª<div class="qr-scan-line"></div></div><div class="eyebrow" style="text-align:center;">Scanning asset tag ${qrCurrentTag}ΓÇª</div>`;
+  document.getElementById('qrModalBody').innerHTML = `<div class="qr-box">▦<div class="qr-scan-line"></div></div><div class="eyebrow" style="text-align:center;">Scanning asset tag ${qrCurrentTag}…</div>`;
   setTimeout(()=>{
     const a = assets.find(x=>x.tag===qrCurrentTag) || assets[0];
     if(qrCurrentMode==='inspection'){
       document.getElementById('qrModalBody').innerHTML = `
         <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;">
-          <div class="ic" style="width:54px;height:54px;font-size:24px;">≡ƒöì</div>
-          <div><h3>${a.tag} ┬╖ ${a.product}</h3><div class="eyebrow">${a.current!=='ΓÇö'?a.current:'No active rental'}</div></div>
+          <div class="ic" style="width:54px;height:54px;font-size:24px;">🔍</div>
+          <div><h3>${a.tag} · ${a.product}</h3><div class="eyebrow">${a.current!=='—'?a.current:'No active rental'}</div></div>
         </div>
-        <div class="ai-box"><div class="ai-head">≡ƒñû AI Damage Inspection (mock)</div>Scratch detected on housing ┬╖ Medium severity ┬╖ Manual inspection recommended.</div>
+        <div class="ai-box"><div class="ai-head">🤖 AI Damage Inspection (mock)</div>Scratch detected on housing · Medium severity · Manual inspection recommended.</div>
         <div style="display:flex;gap:8px;">
           <button class="btn btn-primary btn-block" onclick="toast('${a.tag} inspection logged');closeModal('qrModal')">Log Inspection Result</button>
         </div>`;
     } else {
       document.getElementById('qrModalBody').innerHTML = `
         <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;">
-          <div class="ic" style="width:54px;height:54px;font-size:24px;">≡ƒô╖</div>
-          <div><h3>${a.tag} ┬╖ ${a.product}</h3><div class="eyebrow">${a.current!=='ΓÇö'?a.current:'RL-1042 ┬╖ Priya S.'}</div></div>
+          <div class="ic" style="width:54px;height:54px;font-size:24px;">📷</div>
+          <div><h3>${a.tag} · ${a.product}</h3><div class="eyebrow">${a.current!=='—'?a.current:'RL-1042 · Priya S.'}</div></div>
         </div>
         <label class="flabel">Pickup checklist</label>
         <div class="formstack" style="margin-bottom:16px;">
           <div class="checkrow"><input type="checkbox" checked><span>Battery + charger included</span></div>
           <div class="checkrow"><input type="checkbox" checked><span>Memory card included</span></div>
-          <div class="checkrow"><input type="checkbox" checked><span>Body inspected ΓÇö no visible damage</span></div>
+          <div class="checkrow"><input type="checkbox" checked><span>Body inspected — no visible damage</span></div>
         </div>
         <button class="btn btn-primary btn-block" onclick="confirmPickup()">Confirm Pickup</button>`;
     }
@@ -2030,7 +2022,7 @@ function confirmPickup(){
   closeModal('qrModal');
   const a = assets.find(x=>x.tag===qrCurrentTag);
   if(a){ a.status='Rented'; a.loc='With customer'; renderAssetTable(); }
-  toast('Pickup confirmed ΓÇö '+(qrCurrentTag||'asset')+' status set to Rented');
+  toast('Pickup confirmed — '+(qrCurrentTag||'asset')+' status set to Rented');
 }
 function openReturn(){
   document.getElementById('returnModal').classList.add('show');
@@ -2046,7 +2038,7 @@ function toggleDamage(){
     const fields = document.getElementById('dmgFields');
     const box = document.createElement('div');
     box.className = 'ai-box'; box.id = 'aiInspectBox';
-    box.innerHTML = '<div class="ai-head">≡ƒñû AI Damage Inspection (mock)</div>Scratch detected on housing ┬╖ Medium severity ┬╖ Manual inspection recommended.';
+    box.innerHTML = '<div class="ai-head">🤖 AI Damage Inspection (mock)</div>Scratch detected on housing · Medium severity · Manual inspection recommended.';
     fields.prepend(box);
   } else if(!on && aiBox){ aiBox.remove(); }
   recalcSettle();
@@ -2056,32 +2048,32 @@ function recalcSettle(){
   const dmgOn = document.getElementById('dmgCheck').checked;
   const dmg = dmgOn ? (parseInt(document.getElementById('dmgAmount').value)||0) : 0;
   document.getElementById('dmgRow').style.display = dmgOn ? 'flex' : 'none';
-  document.getElementById('dmgRowVal').textContent = 'ΓêÆ Γé╣'+dmg.toLocaleString('en-IN');
+  document.getElementById('dmgRowVal').textContent = '− ₹'+dmg.toLocaleString('en-IN');
   const refund = deposit - lateFee - dmg;
-  document.getElementById('refundVal').textContent = 'Γé╣'+Math.max(refund,0).toLocaleString('en-IN');
+  document.getElementById('refundVal').textContent = '₹'+Math.max(refund,0).toLocaleString('en-IN');
 }
 function settleReturn(){
   closeModal('returnModal');
   const a = assets.find(x=>x.tag==='GIM-088');
-  if(a){ a.status='Available'; a.loc='Main Warehouse'; a.current='ΓÇö'; renderAssetTable(); }
-  toast('Deposit settled ΓÇö RL-1037 asset marked Available');
+  if(a){ a.status='Available'; a.loc='Main Warehouse'; a.current='—'; renderAssetTable(); }
+  toast('Deposit settled — RL-1037 asset marked Available');
 }
 
 /* ============ RENTALS KANBAN (full lifecycle) ============ */
 const lifecycleStages = ['Draft','Quotation','Confirmed','Pickup','Active','Return Pending','Returned','Completed'];
 let kanbanCards = [
   {id:'Q-0092', title:'Event PA System', sub:'Sameer R.', stage:'Draft'},
-  {id:'Q-0091', title:'24ΓÇô70mm Lens', sub:'Sent to Neha V. ┬╖ Γé╣900/day', stage:'Quotation'},
+  {id:'Q-0091', title:'24–70mm Lens', sub:'Sent to Neha V. · ₹900/day', stage:'Quotation'},
   {id:'RL-1046', title:'Canon R6', sub:'Pickup 11 Aug', stage:'Confirmed'},
   {id:'RL-1044', title:'GoPro Hero 12', sub:'Pickup 10 Aug', stage:'Confirmed'},
-  {id:'RL-1045', title:'Godox SL200 III', sub:'Pickup 8 Aug ┬╖ 12:00', stage:'Pickup'},
-  {id:'RL-1042', title:'Sony A7 IV', sub:'Arjun M. ┬╖ Due 14 Aug', stage:'Active'},
-  {id:'RL-1043', title:'Canon R6', sub:'Meera T. ┬╖ Due 20 Aug', stage:'Active'},
-  {id:'RL-1040', title:'Speaker Set', sub:'Isha D. ┬╖ Due 16 Aug', stage:'Active'},
-  {id:'RL-1037', title:'DJI RS3', sub:'Rohan K. ┬╖ Overdue', stage:'Return Pending'},
+  {id:'RL-1045', title:'Godox SL200 III', sub:'Pickup 8 Aug · 12:00', stage:'Pickup'},
+  {id:'RL-1042', title:'Sony A7 IV', sub:'Arjun M. · Due 14 Aug', stage:'Active'},
+  {id:'RL-1043', title:'Canon R6', sub:'Meera T. · Due 20 Aug', stage:'Active'},
+  {id:'RL-1040', title:'Speaker Set', sub:'Isha D. · Due 16 Aug', stage:'Active'},
+  {id:'RL-1037', title:'DJI RS3', sub:'Rohan K. · Overdue', stage:'Return Pending'},
   {id:'RL-1035', title:'Tripod Set', sub:'Returned this morning', stage:'Returned'},
-  {id:'RL-1029', title:'DJI RS3', sub:'Posted ┬╖ Paid', stage:'Completed'},
-  {id:'RL-1011', title:'GoPro Hero 12', sub:'Posted ┬╖ Late fee Γé╣300', stage:'Completed'},
+  {id:'RL-1029', title:'DJI RS3', sub:'Posted · Paid', stage:'Completed'},
+  {id:'RL-1011', title:'GoPro Hero 12', sub:'Posted · Late fee ₹300', stage:'Completed'},
 ];
 function renderKanban(){
   const wrap = document.getElementById('rentalsKanban');
@@ -2090,15 +2082,15 @@ function renderKanban(){
     const cards = kanbanCards.filter(c=>c.stage===stage);
     return `<div class="kanban-col" ondragover="event.preventDefault()" ondrop="dropCard(event,'${stage}')">
       <h4>${stage} <span>${cards.length}</span></h4>
-      ${cards.map(c=>`<div class="kanban-card" draggable="true" ondragstart="event.dataTransfer.setData('text', '${c.id}')" onclick="toast('${c.id} ΓÇö ${c.title}')">
-        <div class="kt">${c.id} ΓÇö ${c.title}</div><div class="ks">${c.sub}</div>
+      ${cards.map(c=>`<div class="kanban-card" draggable="true" ondragstart="event.dataTransfer.setData('text', '${c.id}')" onclick="toast('${c.id} — ${c.title}')">
+        <div class="kt">${c.id} — ${c.title}</div><div class="ks">${c.sub}</div>
       </div>`).join('')}
     </div>`;
   }).join('');
 }
 /* Maps a backend RentalOrder onto a kanban stage. Backend enforces a strict
-   state machine (draftΓåÆquotationΓåÆquotation_sentΓåÆsale_orderΓåÆpickupΓåÆactiveΓåÆ
-   return_pendingΓåÆreturnedΓåÆcompleted), so dragging a card to a stage with
+   state machine (draft→quotation→quotation_sent→sale_order→pickup→active→
+   return_pending→returned→completed), so dragging a card to a stage with
    no matching transition endpoint below is rejected with an explanation
    rather than silently accepted the way the pure-mock version did. */
 const stageToOrderStatus = {
@@ -2128,7 +2120,7 @@ async function dropCard(ev, stage){
 
   const action = kanbanActionForStage(stage);
   if(!action || !card._apiId){
-    toast(`Can't move to "${stage}" directly ΓÇö use the order's own action buttons for that transition.`);
+    toast(`Can't move to "${stage}" directly — use the order's own action buttons for that transition.`);
     return;
   }
   try{
@@ -2147,10 +2139,10 @@ async function loadOrdersForKanban(){
   kanbanCards = items
     .map(order=>{
       const stage = orderStatusToStage(order.status);
-      if(!stage) return null; // e.g. cancelled ΓÇö not shown on the board
+      if(!stage) return null; // e.g. cancelled — not shown on the board
       const custName = (order.customer && order.customer.name) || 'Customer';
       const pickup = order.rentalPeriod ? fmtDateShort(order.rentalPeriod.start) : '';
-      return { id: order.orderRef, _apiId: order.id, title: custName, sub: `${custName} ┬╖ ${pickup}`, stage };
+      return { id: order.orderRef, _apiId: order.id, title: custName, sub: `${custName} · ${pickup}`, stage };
     })
     .filter(Boolean);
   renderKanban();
@@ -2165,12 +2157,12 @@ function rentalsView(mode, el){
 
 /* ============ SCHEDULER ============ */
 const schedEvents = {
-  8:{type:'Pickup', label:'RL-1041 ┬╖ Pickup', color:'pill-blue'},
-  10:{type:'Return', label:'RL-1037 ┬╖ Return', color:'pill-yellow'},
-  13:{type:'Booked', label:'RL-1046 ┬╖ Booked', color:'pill-blue'},
-  6:{type:'Late Return', label:'RL-1037 ┬╖ Late Return', color:'pill-red'},
-  15:{type:'Maintenance', label:'CAM-106 ┬╖ Maintenance', color:'pill-yellow'},
-  20:{type:'Return', label:'RL-1043 ┬╖ Return', color:'pill-green'},
+  8:{type:'Pickup', label:'RL-1041 · Pickup', color:'pill-blue'},
+  10:{type:'Return', label:'RL-1037 · Return', color:'pill-yellow'},
+  13:{type:'Booked', label:'RL-1046 · Booked', color:'pill-blue'},
+  6:{type:'Late Return', label:'RL-1037 · Late Return', color:'pill-red'},
+  15:{type:'Maintenance', label:'CAM-106 · Maintenance', color:'pill-yellow'},
+  20:{type:'Return', label:'RL-1043 · Return', color:'pill-green'},
 };
 function renderScheduler(){
   const grid = document.getElementById('schedGrid');
@@ -2179,7 +2171,7 @@ function renderScheduler(){
   for(let i=0;i<5;i++) html += `<div class="day"></div>`;
   for(let d=1; d<=31; d++){
     const ev = schedEvents[d];
-    html += `<div class="day ${ev?'marked':''}" style="cursor:pointer;${d===8?'font-weight:800;text-decoration:underline;':''}" onclick="openSchedEvent(${d})">${d}${ev?'<br><span style="font-size:8px;">ΓùÅ</span>':''}</div>`;
+    html += `<div class="day ${ev?'marked':''}" style="cursor:pointer;${d===8?'font-weight:800;text-decoration:underline;':''}" onclick="openSchedEvent(${d})">${d}${ev?'<br><span style="font-size:8px;">●</span>':''}</div>`;
   }
   grid.innerHTML = html;
 }
@@ -2195,23 +2187,23 @@ function openSchedEvent(d){
     <div class="summary-row"><span>Product</span><span>Sony A7 IV</span></div>
     <div class="summary-row"><span>Pickup</span><span>Aug ${d}, 09:00</span></div>
     <div class="summary-row"><span>Return</span><span>Aug ${d+4}, 18:00</span></div>
-    <div class="summary-row"><span>Deposit</span><span>Γé╣5,000</span></div>
+    <div class="summary-row"><span>Deposit</span><span>₹5,000</span></div>
     <div class="summary-row"><span>Risk</span><span>${ev.type==='Late Return'?'High':'Low'}</span></div>
     <button class="btn btn-primary btn-block" style="margin-top:14px;" onclick="closeModal('configureModal');toast('Event updated')">Close</button>`;
 }
 
 /* ============ QUOTATIONS ============ */
 const quotations = [
-  {id:'Q-0091', cust:'Neha Verma', product:'24ΓÇô70mm Lens', period:'12ΓÇô16 Aug', qty:1, unit:900, status:'Sent'},
-  {id:'Q-0092', cust:'Sameer Rao', product:'Event PA System', period:'20ΓÇô21 Aug', qty:2, unit:2200, status:'Draft'},
-  {id:'Q-0090', cust:'Isha Desai', product:'Speaker Set', period:'5ΓÇô9 Aug', qty:1, unit:1400, status:'Accepted'},
+  {id:'Q-0091', cust:'Neha Verma', product:'24–70mm Lens', period:'12–16 Aug', qty:1, unit:900, status:'Sent'},
+  {id:'Q-0092', cust:'Sameer Rao', product:'Event PA System', period:'20–21 Aug', qty:2, unit:2200, status:'Draft'},
+  {id:'Q-0090', cust:'Isha Desai', product:'Speaker Set', period:'5–9 Aug', qty:1, unit:1400, status:'Accepted'},
 ];
 function renderQuotations(){
   const tbl = document.getElementById('quotationsTable');
   if(!tbl) return;
   const map = {Draft:'pill-yellow', Sent:'pill-blue', Accepted:'pill-green', Rejected:'pill-red'};
   tbl.innerHTML = '<tr><th>Quote</th><th>Customer</th><th>Product</th><th>Period</th><th>Qty</th><th>Unit price</th><th>Status</th><th></th></tr>' +
-    quotations.map(q=>`<tr><td>${q.id}</td><td>${q.cust}</td><td>${q.product}</td><td>${q.period}</td><td>${q.qty}</td><td>Γé╣${q.unit.toLocaleString('en-IN')}/day</td><td><span class="pill ${map[q.status]}">${q.status}</span></td>
+    quotations.map(q=>`<tr><td>${q.id}</td><td>${q.cust}</td><td>${q.product}</td><td>${q.period}</td><td>${q.qty}</td><td>₹${q.unit.toLocaleString('en-IN')}/day</td><td><span class="pill ${map[q.status]}">${q.status}</span></td>
       <td class="row-actions"><button class="btn btn-sm" onclick="openQuote('${q.id}')">Open</button></td></tr>`).join('');
 }
 renderQuotations();
@@ -2221,11 +2213,11 @@ function openQuote(id){
   document.getElementById('configureModal').classList.add('show');
   document.getElementById('configureModal').querySelector('.win-body').innerHTML = `
     <h3 style="margin-bottom:2px;">Quotation ${q.id}</h3>
-    <div class="eyebrow" style="margin-bottom:14px;">${q.cust} ┬╖ ${q.period}</div>
-    <div class="summary-row"><span>${q.product} ├ù ${q.qty} (${days} days)</span><span>Γé╣${subtotal.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row"><span>Security deposit</span><span>Γé╣${deposit.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row"><span>Tax (18% GST)</span><span>Γé╣${tax.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row total"><span>Total</span><span>Γé╣${total.toLocaleString('en-IN')}</span></div>
+    <div class="eyebrow" style="margin-bottom:14px;">${q.cust} · ${q.period}</div>
+    <div class="summary-row"><span>${q.product} × ${q.qty} (${days} days)</span><span>₹${subtotal.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Security deposit</span><span>₹${deposit.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Tax (18% GST)</span><span>₹${tax.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row total"><span>Total</span><span>₹${total.toLocaleString('en-IN')}</span></div>
     <div style="display:flex;gap:8px;margin-top:14px;">
       <button class="btn btn-primary" style="flex:1;" onclick="toast('${q.id} sent to customer');closeModal('configureModal')">Send Quote</button>
       <button class="btn btn-yellow" style="flex:1;" onclick="toast('${q.id} converted to Confirmed order');closeModal('configureModal')">Convert to Order</button>
@@ -2236,19 +2228,19 @@ function newQuotation(){
   document.getElementById('configureModal').querySelector('.win-body').innerHTML = `
     <h3 style="margin-bottom:14px;">New Quotation</h3>
     <div class="formstack">
-      <div><label class="flabel">Customer</label><input class="field" placeholder="Search customerΓÇª"></div>
-      <div><label class="flabel">Product</label><input class="field" placeholder="Search productΓÇª"></div>
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Rental period</label><input class="field" placeholder="e.g. 12ΓÇô16 Aug"></div><div style="flex:1;"><label class="flabel">Quantity</label><input class="field" value="1"></div></div>
+      <div><label class="flabel">Customer</label><input class="field" placeholder="Search customer…"></div>
+      <div><label class="flabel">Product</label><input class="field" placeholder="Search product…"></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Rental period</label><input class="field" placeholder="e.g. 12–16 Aug"></div><div style="flex:1;"><label class="flabel">Quantity</label><input class="field" value="1"></div></div>
       <button class="btn btn-primary" onclick="toast('Quotation Q-0093 created as Draft');closeModal('configureModal')">Create Draft</button>
     </div>`;
 }
 
 /* ============ PRICELISTS ============ */
 const pricelists = [
-  {name:'Standard Retail', rule:'Fixed price', products:'All camera bodies', min:1, price:'Γé╣1,500/day', valid:'Ongoing'},
-  {name:'Weekend Special', rule:'20% discount', products:'Lighting & Audio', min:1, price:'ΓêÆ20%', valid:'FriΓÇôSun'},
-  {name:'Bulk Event Rate', rule:'Min. quantity', products:'PA / Speaker sets', min:5, price:'Γé╣1,100/unit/day', valid:'Ongoing'},
-  {name:'Festive Offer', rule:'Fixed price', products:'Gimbals', min:1, price:'Γé╣1,800/day', valid:'1ΓÇô15 Sep'},
+  {name:'Standard Retail', rule:'Fixed price', products:'All camera bodies', min:1, price:'₹1,500/day', valid:'Ongoing'},
+  {name:'Weekend Special', rule:'20% discount', products:'Lighting & Audio', min:1, price:'−20%', valid:'Fri–Sun'},
+  {name:'Bulk Event Rate', rule:'Min. quantity', products:'PA / Speaker sets', min:5, price:'₹1,100/unit/day', valid:'Ongoing'},
+  {name:'Festive Offer', rule:'Fixed price', products:'Gimbals', min:1, price:'₹1,800/day', valid:'1–15 Sep'},
 ];
 function renderPricelists(){
   const tbl = document.getElementById('pricelistTable');
@@ -2266,8 +2258,8 @@ function newPriceRule(){
       <div><label class="flabel">Price list</label><input class="field" placeholder="e.g. Weekend Special"></div>
       <div><label class="flabel">Price type</label><select class="field"><option>Fixed price</option><option>Percentage discount</option></select></div>
       <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Minimum quantity</label><input class="field" value="1"></div><div style="flex:1;"><label class="flabel">Selectable</label><select class="field"><option>Yes</option><option>No</option></select></div></div>
-      <div><label class="flabel">Product selection</label><input class="field" placeholder="Search productsΓÇª"></div>
-      <div><label class="flabel">Date validity</label><input class="field" placeholder="e.g. 1ΓÇô15 Sep 2026"></div>
+      <div><label class="flabel">Product selection</label><input class="field" placeholder="Search products…"></div>
+      <div><label class="flabel">Date validity</label><input class="field" placeholder="e.g. 1–15 Sep 2026"></div>
       <button class="btn btn-primary" onclick="toast('Pricing rule saved');closeModal('configureModal')">Save Rule</button>
     </div>`;
 }
@@ -2284,7 +2276,7 @@ function renderInvoices(){
   if(!tbl) return;
   const map = {Draft:'pill-yellow', Posted:'pill-blue', Paid:'pill-green'};
   tbl.innerHTML = '<tr><th>Invoice</th><th>Customer</th><th>Product</th><th>Amount</th><th>Deposit</th><th>Status</th><th></th></tr>' +
-    invoices.map(v=>`<tr><td>${v.id}</td><td>${v.cust}</td><td>${v.product}</td><td>Γé╣${v.amount.toLocaleString('en-IN')}</td><td>Γé╣${v.deposit.toLocaleString('en-IN')}</td><td><span class="pill ${map[v.status]}">${v.status}</span></td>
+    invoices.map(v=>`<tr><td>${v.id}</td><td>${v.cust}</td><td>${v.product}</td><td>₹${v.amount.toLocaleString('en-IN')}</td><td>₹${v.deposit.toLocaleString('en-IN')}</td><td><span class="pill ${map[v.status]}">${v.status}</span></td>
       <td class="row-actions"><button class="btn btn-sm" onclick="openInvoice('${v.id}')">View</button></td></tr>`).join('');
 }
 renderInvoices();
@@ -2299,13 +2291,13 @@ function openInvoice(id){
     </div>
     <h3 style="margin-bottom:2px;">${v.id}</h3>
     <div class="eyebrow" style="margin-bottom:14px;">Billed to ${v.cust}</div>
-    <div class="summary-row"><span>${v.product} ΓÇö rental line</span><span>Γé╣${v.amount.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row"><span>Security deposit</span><span>Γé╣${v.deposit.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row"><span>Tax (18% GST)</span><span>Γé╣${tax.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row total"><span>Total payable</span><span>Γé╣${(v.amount+v.deposit+tax).toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>${v.product} — rental line</span><span>₹${v.amount.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Security deposit</span><span>₹${v.deposit.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Tax (18% GST)</span><span>₹${tax.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row total"><span>Total payable</span><span>₹${(v.amount+v.deposit+tax).toLocaleString('en-IN')}</span></div>
     <div style="display:flex;gap:8px;margin-top:14px;">
-      <button class="btn" style="flex:1;" onclick="toast('${v.id} downloaded as PDF')">Γ¼ç Download</button>
-      <button class="btn btn-primary" style="flex:1;" onclick="toast('${v.id} sent to printer')">≡ƒû¿ Print</button>
+      <button class="btn" style="flex:1;" onclick="toast('${v.id} downloaded as PDF')">⬇ Download</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="toast('${v.id} sent to printer')">🖨 Print</button>
     </div>`;
 }
 
@@ -2315,8 +2307,8 @@ function renderForecast(){
   if(!el) return;
   const data = [
     {cat:'Camera Bodies', peak:'Friday', rec:'Transfer 2 units from North warehouse before Friday to meet expected peak demand.'},
-    {cat:'Lighting Kits', peak:'Saturday', rec:'Demand steady ΓÇö no transfer needed this week.'},
-    {cat:'Audio / PA', peak:'Sunday', rec:'Event bookings trending up 30% ΓÇö consider sourcing 1 backup PA system.'},
+    {cat:'Lighting Kits', peak:'Saturday', rec:'Demand steady — no transfer needed this week.'},
+    {cat:'Audio / PA', peak:'Sunday', rec:'Event bookings trending up 30% — consider sourcing 1 backup PA system.'},
   ];
   el.innerHTML = data.map(d=>`<div class="win"><div class="win-bar"><span class="win-dot dot-r"></span><span class="win-dot dot-y"></span><span class="win-dot dot-g"></span><span class="win-title">${d.cat.toLowerCase().replace(/\s/g,'-')}.forecast</span></div>
     <div class="win-body"><div class="recommend-box"><div class="rt">Peak demand: ${d.peak}</div><div style="font-size:13px;">Recommendation: ${d.rec}</div></div></div></div>`).join('');
@@ -2344,20 +2336,20 @@ function openProductForm(){
     </div>
     <div id="pf-general" class="formstack">
       <div><label class="flabel">Product name</label><input class="field" placeholder="e.g. Sony A7 IV"></div>
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Product type</label><select class="field"><option>Rental ΓÇö Goods</option><option>Rental ΓÇö Service</option></select></div><div style="flex:1;"><label class="flabel">Publish status</label><select class="field"><option>Draft</option><option>Published</option></select></div></div>
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Sales price</label><input class="field" placeholder="Γé╣120,000"></div><div style="flex:1;"><label class="flabel">Cost price</label><input class="field" placeholder="Γé╣95,000"></div></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Product type</label><select class="field"><option>Rental — Goods</option><option>Rental — Service</option></select></div><div style="flex:1;"><label class="flabel">Publish status</label><select class="field"><option>Draft</option><option>Published</option></select></div></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Sales price</label><input class="field" placeholder="₹120,000"></div><div style="flex:1;"><label class="flabel">Cost price</label><input class="field" placeholder="₹95,000"></div></div>
       <div><label class="flabel">Quantity on hand</label><input class="field" value="1"></div>
-      <div><label class="flabel">Product image</label><div class="product-image-big" style="height:100px;font-size:34px;border:2px dashed var(--border);">≡ƒô╖ Upload</div></div>
+      <div><label class="flabel">Product image</label><div class="product-image-big" style="height:100px;font-size:34px;border:2px dashed var(--border);">📷 Upload</div></div>
     </div>
     <div id="pf-attrs" class="formstack hide">
       <div><label class="flabel">Brand</label><input class="field" placeholder="e.g. Sony"></div>
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Color</label><input class="field" placeholder="Black"></div><div style="flex:1;"><label class="flabel">Size</label><input class="field" placeholder="ΓÇö"></div></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Color</label><input class="field" placeholder="Black"></div><div style="flex:1;"><label class="flabel">Size</label><input class="field" placeholder="—"></div></div>
       <div><label class="flabel">Manufacturer</label><input class="field" placeholder="Sony Corp."></div>
       <div><label class="flabel">Custom attribute</label><input class="field" placeholder="e.g. Sensor: Full-frame"></div>
     </div>
     <div id="pf-rental" class="formstack hide">
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Rental price</label><input class="field" placeholder="Γé╣1,500 / day"></div><div style="flex:1;"><label class="flabel">Rental period unit</label><select class="field"><option>Day</option><option>Week</option><option>Hour</option></select></div></div>
-      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Security deposit</label><input class="field" placeholder="Γé╣5,000"></div><div style="flex:1;"><label class="flabel">Late fee</label><input class="field" placeholder="Γé╣300 / day"></div></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Rental price</label><input class="field" placeholder="₹1,500 / day"></div><div style="flex:1;"><label class="flabel">Rental period unit</label><select class="field"><option>Day</option><option>Week</option><option>Hour</option></select></div></div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Security deposit</label><input class="field" placeholder="₹5,000"></div><div style="flex:1;"><label class="flabel">Late fee</label><input class="field" placeholder="₹300 / day"></div></div>
       <div style="display:flex;gap:10px;"><div style="flex:1;"><label class="flabel">Pickup location</label><input class="field" placeholder="Main warehouse"></div><div style="flex:1;"><label class="flabel">Return location</label><input class="field" placeholder="Main warehouse"></div></div>
     </div>
     <button class="btn btn-primary btn-block" style="margin-top:16px;" onclick="toast('Product saved as draft');closeModal('configureModal')">Save Product</button>
@@ -2369,10 +2361,10 @@ function renderInsights(){
   const el = document.getElementById('insightsBox');
   if(!el) return;
   const items = [
-    {icon:'≡ƒôê', text:'High demand expected Friday for Camera Bodies ΓÇö consider transferring 2 units from North Warehouse.'},
-    {icon:'≡ƒ¢á', text:'GIM-088 (DJI RS3 Gimbal) is overdue for return ΓÇö asset inspection recommended once back.'},
-    {icon:'ΓÅ░', text:'RL-1037 is overdue and requires attention ΓÇö follow up with Rohan Kapoor.'},
-    {icon:'≡ƒÆñ', text:'Godox SL200 III has low utilization this month ΓÇö consider a Weekend Special pricing rule.'},
+    {icon:'📈', text:'High demand expected Friday for Camera Bodies — consider transferring 2 units from North Warehouse.'},
+    {icon:'🛠', text:'GIM-088 (DJI RS3 Gimbal) is overdue for return — asset inspection recommended once back.'},
+    {icon:'⏰', text:'RL-1037 is overdue and requires attention — follow up with Rohan Kapoor.'},
+    {icon:'💤', text:'Godox SL200 III has low utilization this month — consider a Weekend Special pricing rule.'},
   ];
   el.innerHTML = items.map(i=>`<div class="recommend-box"><div class="rt">${i.icon} Recommendation</div><div style="font-size:13px;">${i.text}</div></div>`).join('');
 }
@@ -2383,21 +2375,21 @@ const lifecyclePath = ['Booking Confirmed','Paid','Pickup','Active','Return','In
 function renderTimeline(currentIdx, timestamps){
   return `<div class="rtimeline">${lifecyclePath.map((s,i)=>{
     const cls = i<currentIdx?'done':i===currentIdx?'current':'';
-    return `<div class="rt-step ${cls}"><div class="rt-line"></div><div class="rt-dot">${i<currentIdx?'Γ£ô':''}</div><div class="rt-label">${s}</div><div class="rt-ts">${timestamps[i]||''}</div></div>`;
+    return `<div class="rt-step ${cls}"><div class="rt-line"></div><div class="rt-dot">${i<currentIdx?'✓':''}</div><div class="rt-label">${s}</div><div class="rt-ts">${timestamps[i]||''}</div></div>`;
   }).join('')}</div>`;
 }
 
-/* ============ CUSTOMER "MY RENTALS" ΓÇö timeline, extension, cancellation ============ */
+/* ============ CUSTOMER "MY RENTALS" — timeline, extension, cancellation ============ */
 const myRentals = [
-  {id:'RL-1042', product:'Sony A7 IV', period:'10ΓÇô14 Aug', amount:6000, deposit:5000, status:'Active', stageIdx:3,
+  {id:'RL-1042', product:'Sony A7 IV', period:'10–14 Aug', amount:6000, deposit:5000, status:'Active', stageIdx:3,
     ts:['8 Aug, 10:02am','8 Aug, 10:04am','10 Aug, 9:12am','10 Aug, 9:20am','','',''], extendable:true},
-  {id:'RL-1045', product:'Godox SL200 III', period:'8ΓÇô12 Aug', amount:2800, deposit:2000, status:'Upcoming', stageIdx:1,
-    ts:['6 Aug, 4:40pm','6 Aug, 4:41pm','','','','',''], extendable:false, blockedBy:'Booked by another customer 13ΓÇô15 Aug'},
-  {id:'RL-1029', product:'DJI RS3 Gimbal', period:'20ΓÇô24 Jul', amount:2400, deposit:0, status:'Completed', stageIdx:7,
+  {id:'RL-1045', product:'Godox SL200 III', period:'8–12 Aug', amount:2800, deposit:2000, status:'Upcoming', stageIdx:1,
+    ts:['6 Aug, 4:40pm','6 Aug, 4:41pm','','','','',''], extendable:false, blockedBy:'Booked by another customer 13–15 Aug'},
+  {id:'RL-1029', product:'DJI RS3 Gimbal', period:'20–24 Jul', amount:2400, deposit:0, status:'Completed', stageIdx:7,
     ts:['18 Jul, 11:00am','18 Jul, 11:02am','20 Jul, 9:30am','20 Jul, 9:35am','24 Jul, 5:10pm','24 Jul, 5:40pm','24 Jul, 6:00pm'], extendable:false},
-  {id:'RL-1037', product:'DJI RS3 Gimbal', period:'1ΓÇô6 Aug', amount:3600, deposit:5000, status:'Overdue', stageIdx:3,
+  {id:'RL-1037', product:'DJI RS3 Gimbal', period:'1–6 Aug', amount:3600, deposit:5000, status:'Overdue', stageIdx:3,
     ts:['30 Jul, 2:00pm','30 Jul, 2:05pm','1 Aug, 9:00am','1 Aug, 9:10am','','',''], extendable:false},
-  {id:'RL-0998', product:'GoPro Hero 12', period:'2ΓÇô4 Jul', amount:1200, deposit:1500, status:'Cancelled', stageIdx:1,
+  {id:'RL-0998', product:'GoPro Hero 12', period:'2–4 Jul', amount:1200, deposit:1500, status:'Cancelled', stageIdx:1,
     ts:['28 Jun, 1:00pm','28 Jun, 1:02pm','','','','',''], extendable:false},
 ];
 function statusPillGeneric(s){
@@ -2426,7 +2418,7 @@ function fmtDateShort(d){
 /* Replaces the local mock "My Rentals" list with the signed-in customer's
    real orders (GET /api/rental-orders auto-scopes to req.user for the
    customer role). Fetches each order's detail so line items are populated
-   with product names ΓÇö fine at demo scale. */
+   with product names — fine at demo scale. */
 async function loadMyRentals(){
   const session = getSession();
   if(!session || session.role !== 'customer') return;
@@ -2440,7 +2432,7 @@ async function loadMyRentals(){
     const firstLine = (order.lines && order.lines[0]) || {};
     const productName = (firstLine.product && firstLine.product.name) || 'Rental item';
     const period = order.rentalPeriod
-      ? `${fmtDateShort(order.rentalPeriod.start)} ΓÇô ${fmtDateShort(order.rentalPeriod.end)}`
+      ? `${fmtDateShort(order.rentalPeriod.start)} – ${fmtDateShort(order.rentalPeriod.end)}`
       : '';
     const ts = new Array(7).fill('');
     if(order.createdAt) ts[0] = new Date(order.createdAt).toLocaleString('en-IN', { day:'numeric', month:'short', hour:'numeric', minute:'2-digit' });
@@ -2476,11 +2468,11 @@ function renderMyRentals(){
   wrap.innerHTML = list.map(r=>`
     <div class="rental-card">
       <div class="rental-card-top">
-        <div><b>${r.id}</b> ΓÇö ${r.product}<div class="eyebrow">${r.period} ┬╖ Γé╣${r.amount.toLocaleString('en-IN')} + Γé╣${r.deposit.toLocaleString('en-IN')} deposit</div></div>
+        <div><b>${r.id}</b> — ${r.product}<div class="eyebrow">${r.period} · ₹${r.amount.toLocaleString('en-IN')} + ₹${r.deposit.toLocaleString('en-IN')} deposit</div></div>
         ${statusPillGeneric(r.status)}
       </div>
       ${renderTimeline(r.stageIdx, r.ts)}
-      ${r.blockedBy ? `<div class="eyebrow" style="color:#a83a2e;margin-top:6px;">ΓÜá Extension unavailable ΓÇö ${r.blockedBy}</div>` : ''}
+      ${r.blockedBy ? `<div class="eyebrow" style="color:#a83a2e;margin-top:6px;">⚠ Extension unavailable — ${r.blockedBy}</div>` : ''}
       <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
         ${r.status==='Active'||r.status==='Upcoming' ? `<button class="btn btn-sm" ${r.extendable?'':'disabled style="opacity:.45;cursor:not-allowed;"'} onclick="${r.extendable?`requestExtension('${r.id}')`:''}">Request Extension</button>` : ''}
         ${r.status==='Active'||r.status==='Upcoming' ? `<button class="btn btn-sm btn-ghost" onclick="openCancelConfirm('${r.id}')">Cancel Rental</button>` : ''}
@@ -2491,7 +2483,7 @@ function renderMyRentals(){
 function requestExtension(id){
   const r = myRentals.find(x=>x.id===id);
   if(!r) return;
-  toast(id+' extension request sent ΓÇö +2 days pending vendor confirmation');
+  toast(id+' extension request sent — +2 days pending vendor confirmation');
 }
 let cancelTargetId = null;
 function openCancelConfirm(id){
@@ -2500,9 +2492,9 @@ function openCancelConfirm(id){
   document.getElementById('confirmModalBody').innerHTML = `
     <h3 style="margin-bottom:10px;">Cancel ${id}?</h3>
     <div style="font-size:13.5px;margin-bottom:14px;">This will cancel your booking for <b>${r.product}</b>. Refund policy applies based on how close to pickup you are.</div>
-    <div class="summary-row"><span>Rental amount</span><span>Γé╣${r.amount.toLocaleString('en-IN')}</span></div>
-    <div class="summary-row"><span>Cancellation fee</span><span>ΓêÆ Γé╣${Math.round(r.amount*0.1).toLocaleString('en-IN')}</span></div>
-    <div class="summary-row total"><span>Deposit + refund</span><span>Γé╣${(r.deposit + r.amount - Math.round(r.amount*0.1)).toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Rental amount</span><span>₹${r.amount.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span>Cancellation fee</span><span>− ₹${Math.round(r.amount*0.1).toLocaleString('en-IN')}</span></div>
+    <div class="summary-row total"><span>Deposit + refund</span><span>₹${(r.deposit + r.amount - Math.round(r.amount*0.1)).toLocaleString('en-IN')}</span></div>
     <div style="display:flex;gap:10px;margin-top:16px;">
       <button class="btn btn-primary" style="flex:1;" onclick="confirmCancel()">Confirm Cancellation</button>
       <button class="btn btn-ghost" style="flex:1;" onclick="closeModal('confirmModal')">Keep Rental</button>
@@ -2518,32 +2510,32 @@ async function confirmCancel(){
   }
   if(r){ r.status='Cancelled'; }
   renderMyRentals();
-  toast(cancelTargetId+' cancelled ΓÇö refund of Γé╣'+(r?Math.round(r.deposit+r.amount*0.9).toLocaleString('en-IN'):'0')+' initiated');
+  toast(cancelTargetId+' cancelled — refund of ₹'+(r?Math.round(r.deposit+r.amount*0.9).toLocaleString('en-IN'):'0')+' initiated');
 }
 renderMyRentals();
 
-/* ============ DEMO MODE ΓÇö walks through the full RELAY lifecycle ============ */
+/* ============ DEMO MODE — walks through the full RELAY lifecycle ============ */
 let demoRunning = false;
 function demoBanner(msg){
   let b = document.getElementById('demoBanner');
   if(!b){ b = document.createElement('div'); b.id='demoBanner'; b.className='demo-banner'; document.body.appendChild(b); }
-  b.innerHTML = `<span class="live-dot"></span> DEMO MODE ΓÇö ${msg}`;
+  b.innerHTML = `<span class="live-dot"></span> DEMO MODE — ${msg}`;
 }
 function removeDemoBanner(){ const b = document.getElementById('demoBanner'); if(b) b.remove(); }
 function runDemoMode(){
-  if(demoRunning){ toast('Demo already runningΓÇª'); return; }
+  if(demoRunning){ toast('Demo already running…'); return; }
   demoRunning = true;
   const steps = [
     ()=>{ demoBanner('Customer books DJI RS3 Gimbal'); aGo('scheduler', document.querySelector('.os-nav-item[onclick*="scheduler"]')); toast('Demo: booking RL-9001 confirmed'); },
-    ()=>{ demoBanner('Payment captured'); toast('Demo: payment of Γé╣2,700 captured for RL-9001'); },
-    ()=>{ demoBanner('Pickup ΓÇö scanning asset'); aGo('pickup', document.querySelector('.os-nav-item[onclick*="pickup"]')); openQr('pickup'); },
-    ()=>{ closeModal('qrModal'); demoBanner('Rental now Active'); const a = assets.find(x=>x.tag==='CAM-105'); if(a){a.status='Rented';a.loc='With customer';a.current='RL-9001 ┬╖ Demo Customer';renderAssetTable();} toast('Demo: RL-9001 is now Active'); },
+    ()=>{ demoBanner('Payment captured'); toast('Demo: payment of ₹2,700 captured for RL-9001'); },
+    ()=>{ demoBanner('Pickup — scanning asset'); aGo('pickup', document.querySelector('.os-nav-item[onclick*="pickup"]')); openQr('pickup'); },
+    ()=>{ closeModal('qrModal'); demoBanner('Rental now Active'); const a = assets.find(x=>x.tag==='CAM-105'); if(a){a.status='Rented';a.loc='With customer';a.current='RL-9001 · Demo Customer';renderAssetTable();} toast('Demo: RL-9001 is now Active'); },
     ()=>{ demoBanner('Customer returns asset'); openReturn(); document.getElementById('dmgCheck').checked = true; toggleDamage(); },
     ()=>{ demoBanner('AI damage inspection run'); toast('Demo: AI flagged a medium-severity scratch'); },
-    ()=>{ settleReturn(); demoBanner('Deposit settled, refund issued'); toast('Demo: refund of Γé╣4,700 issued to customer'); },
+    ()=>{ settleReturn(); demoBanner('Deposit settled, refund issued'); toast('Demo: refund of ₹4,700 issued to customer'); },
     ()=>{ demoBanner('Maintenance triggered'); aGo('maintenance', document.querySelector('.os-nav-item[onclick*="maintenance"]')); maint.unshift({tag:'CAM-105',item:'Sony A7 IV',issue:'Scratch found during demo return inspection.',priority:'Medium',lastInsp:'Today',rec:'Bench inspection then clear for rebooking',stage:'Inspection Required'}); renderMaint(); },
     ()=>{ advanceMaint(0); },
-    ()=>{ advanceMaint(0); demoBanner('Asset available again ΓÇö cycle complete Γ£ô'); toast('Demo complete ΓÇö asset back in active inventory'); setTimeout(()=>{ removeDemoBanner(); demoRunning=false; }, 2600); },
+    ()=>{ advanceMaint(0); demoBanner('Asset available again — cycle complete ✓'); toast('Demo complete — asset back in active inventory'); setTimeout(()=>{ removeDemoBanner(); demoRunning=false; }, 2600); },
   ];
   let i = 0;
   function nextStep(){
@@ -2554,6 +2546,7 @@ function runDemoMode(){
   nextStep();
 }
 </script>
+
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     // Hide auth screen immediately to prevent flash
@@ -2563,5 +2556,6 @@ function runDemoMode(){
     if (adminApp) adminApp.classList.remove('hide');
   });
 </script>
+
 </body>
 </html>
