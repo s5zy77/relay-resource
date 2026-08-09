@@ -1760,7 +1760,6 @@ async function fakeSignup(){
     toast((uiRole==='admin' ? 'Admin account created — welcome, ' : 'Account created — welcome to RELAY, ') + name.split(' ')[0]);
 
     document.getElementById('suName').value = '';
-    document.getElementById('suEmail').value = '';
     document.getElementById('suPw').value = '';
     document.getElementById('suPw2').value = '';
     document.getElementById('suAgree').checked = false;
@@ -1847,8 +1846,8 @@ applySessionToUI();
   }
   clearSession();
   applySessionToUI();
-  showApp('customer');
-  openAuth();
+  showApp('admin');
+  aGo('overview');
 })();
 
 /* ============ ADMIN NAV ============ */

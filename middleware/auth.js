@@ -26,6 +26,20 @@ async function verifyAccessTokenMw(req, res, next) {
   next();
 }
 
+/** Attaches req.user if a valid Bearer token is present, but never blocks the request. */
+async function optionalAuth(req, res, next) {
+  try {
+    const header = req.headers.authorization || '';
+    const [scheme, token] = header.split(' ');
+    if (scheme === 'Bearer' && token) {
+      const payload = verifyAccessToken(token);
+      const user = await User.findById(payload.sub);
+      if (user) req.user = { id: user._id.toString(), role: user.role, email: user.email };
+    }
+  } catch (_) { /* ignore — guest access allowed */ }
+  next();
+}
+
 function requireRole(...roles) {
   return function (req, res, next) {
     if (!req.user) {
@@ -38,4 +52,4 @@ function requireRole(...roles) {
   };
 }
 
-module.exports = { verifyAccessTokenMw, requireRole };
+module.exports = { verifyAccessTokenMw, optionalAuth, requireRole };

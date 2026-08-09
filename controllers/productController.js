@@ -2,8 +2,9 @@ const Product = require('../models/Product');
 const { ok, paginated, ApiError } = require('../utils/apiResponse');
 
 function scopeToVendor(req, filter) {
-  if (req.user.role === 'vendor') filter.vendor = req.user.id;
-  if (req.user.role === 'customer') filter.publish = true;
+  const role = req.user?.role;
+  if (role === 'vendor') filter.vendor = req.user.id;
+  if (!role || role === 'customer') filter.publish = true; // guests + customers see only published
   return filter;
 }
 
@@ -12,9 +13,10 @@ async function listProducts(req, res) {
   const filter = {};
   if (search) filter.name = new RegExp(search, 'i');
   if (type) filter.type = type;
-  if (publish !== undefined) filter.publish = publish === 'true';
-  if (vendor && req.user.role === 'admin') filter.vendor = vendor;
+  if (publish !== undefined && req.user?.role === 'admin') filter.publish = publish === 'true';
+  if (vendor && req.user?.role === 'admin') filter.vendor = vendor;
   scopeToVendor(req, filter);
+
 
   const total = await Product.countDocuments(filter);
   const items = await Product.find(filter)

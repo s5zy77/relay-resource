@@ -31,8 +31,8 @@ async function runOverdueCheck() {
 async function start() {
   try {
     await connectDB();
-    app.listen(PORT, () => {
-      console.log(`[server] RELAY backend listening on http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`[server] RELAY backend listening on http://localhost:${PORT} and http://127.0.0.1:${PORT}`);
     });
     setInterval(runOverdueCheck, OVERDUE_CHECK_INTERVAL_MS);
   } catch (err) {

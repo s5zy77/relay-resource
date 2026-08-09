@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Static frontend + uploaded files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { setHeaders: (res) => { res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private'); } }));
 
 // API routes
 app.use('/api/auth', authRoutes);
