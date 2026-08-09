@@ -749,10 +749,7 @@
               <div class="auth-hello">Hello! Welcome Aboard</div>
               <div class="auth-sub">We are glad to see you 😊</div>
 
-              <div class="role-toggle" id="suRoleToggle">
-                <button type="button" class="role-btn active" data-role="customer" onclick="selectRole('customer',this)">🧑 Customer</button>
-                <button type="button" class="role-btn" data-role="admin" onclick="selectRole('admin',this)">🛠 Admin / Vendor</button>
-              </div>
+
 
               <div class="social-row">
                 <button class="social-btn" onclick="toast('Signing up with Google')"><span style="font-weight:800;">G</span> Sign up with Google</button>
@@ -765,16 +762,7 @@
                 <input class="pill-field" id="suName" placeholder="Name">
                 <input class="pill-field" id="suEmail" placeholder="Email Address">
               </div>
-              <div id="vendorFields" class="hide">
-                <div class="form-grid-2">
-                  <input class="pill-field" id="vCompany" placeholder="Company name">
-                  <input class="pill-field" id="vCategory" placeholder="Product category (e.g. Cameras)">
-                </div>
-                <div class="form-grid-2">
-                  <input class="pill-field" id="vGst" placeholder="GST number">
-                  <input class="pill-field" id="vContact" placeholder="Contact phone number">
-                </div>
-              </div>
+
               <div class="form-grid-2">
                 <div class="field-wrap">
                   <input class="pill-field has-toggle" id="suPw" type="password" placeholder="Password">
@@ -795,7 +783,6 @@
               <button class="auth-cta" onclick="fakeSignup()">Sign up</button>
               <div style="display:flex;gap:8px;margin-top:10px;">
                 <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('customer')">⚡ Demo Customer</button>
-                <button type="button" class="btn btn-ghost btn-block" onclick="demoSignup('admin')">⚡ Demo Admin</button>
               </div>
               <div class="auth-toggle-line" style="text-align:center;margin-top:16px;margin-bottom:0;">Already have an account? <a onclick="authTab('login')">Log In</a></div>
             </div>
