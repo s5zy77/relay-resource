@@ -57,8 +57,13 @@ app.get('/api/health', (req, res) => res.json({ success: true, data: { status: '
 
 // Anything not matched under /api/* falls through to the SPA index
 app.use(notFoundHandler);
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'relay_version_4.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.use(errorHandler);
