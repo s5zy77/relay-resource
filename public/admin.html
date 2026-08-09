@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -2546,13 +2546,18 @@ function runDemoMode(){
 </script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    // Only show admin options for admin portal
-    const roleToggleRow = document.getElementById('suRoleToggle');
-    if(roleToggleRow) roleToggleRow.style.display = 'none';
-    const adminToggle = document.querySelector('.role-btn[data-role="admin"]');
-    if(adminToggle) selectRole('admin', adminToggle);
-    const demoCust = document.querySelector('button[onclick*="demoSignup(\'customer\')"]');
-    if(demoCust) demoCust.style.display = 'none';
+    // Hide auth screen immediately to prevent flash
+    const auth = document.getElementById('c-auth');
+    if (auth) auth.classList.add('hide');
+    const adminApp = document.getElementById('adminApp');
+    if (adminApp) adminApp.classList.remove('hide');
+    
+    // Automatically log in to the admin dashboard when visiting /admin
+    setTimeout(() => {
+      if (typeof demoSignup === 'function') {
+        demoSignup('admin');
+      }
+    }, 50);
   });
 </script>
 </body>
