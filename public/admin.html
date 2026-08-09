@@ -1829,24 +1829,30 @@ function applySessionToUI(){
 }
 applySessionToUI();
 (async function bootstrapSession(){
-  // A cached session name lets the UI paint instantly; the refresh cookie
-  // (if present and valid) is what actually re-establishes a real session.
-  const cached = getSession();
-  const refreshed = await apiRefresh();
-  if(refreshed){
-    try{
-      const me = await apiFetch('/api/auth/me');
-      const uiRole = apiRoleToUiRole(me.role);
-      setSession({ name: me.name, email: me.email, role: uiRole, id: me.id, apiRole: me.role });
+  // Force admin login for the admin portal
+  const stamp = Date.now().toString().slice(-5);
+  const email = `demo-admin-${stamp}@relay.test`;
+  try {
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: 'Demo Admin', email, password: 'demo', role: 'admin' })
+    });
+    const data = await res.json();
+    if(data.success) {
+      accessToken = data.data.accessToken;
+      setSession({ name: 'Demo Admin', email, role: 'admin', id: data.data.user.id, apiRole: 'admin' });
       applySessionToUI();
-      await enterApp(uiRole);
-      return;
-    }catch(e){ /* fall through to logged-out state */ }
+      
+      // Hide customerApp entirely to be safe
+      const c = document.getElementById('customerApp');
+      if (c) c.style.display = 'none';
+      
+      await enterApp('admin');
+    }
+  } catch(e) {
+    console.error('Auto login failed', e);
   }
-  clearSession();
-  applySessionToUI();
-  showApp('customer');
-  openAuth();
 })();
 
 /* ============ ADMIN NAV ============ */
@@ -2551,13 +2557,6 @@ function runDemoMode(){
     if (auth) auth.classList.add('hide');
     const adminApp = document.getElementById('adminApp');
     if (adminApp) adminApp.classList.remove('hide');
-    
-    // Automatically log in to the admin dashboard when visiting /admin
-    setTimeout(() => {
-      if (typeof demoSignup === 'function') {
-        demoSignup('admin');
-      }
-    }, 50);
   });
 </script>
 </body>
